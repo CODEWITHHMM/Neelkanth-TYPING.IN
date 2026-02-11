@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Neelkanth Typing – Hindi Typing Test</title>
+    <style>
+        body {
+            font-family: Mangal, Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            justify-items: center;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        input,
+        select,
+        button {
+            font-family: Mangal;
+            font-size: 16px;
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        #timer {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        #paragraph {
+            font-size: 3vh;
+            width: 98%;
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 10px;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #typingArea {
+            width: 98%;
+            height: 200px;
+            padding: 10px;
+            font-size: 3vh;
+            font-family: Mangal;
+            margin-top: 40px;
+        }
+
+        #result {
+            width: 90%;
+            display: none;
+            margin-top: 15px;
+            background: #ecfdf5;
+            border: 1px solid #2ecc71;
+            padding: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            margin-top: 10px;
+        }
+
+
+        /* ===== RESULT UI DESIGN ===== */
+        #result {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: none;
+            background: linear-gradient(135deg, #e8f8ff, #f9fffc);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        #result h2 {
+            text-align: center;
+            margin: 0 0 15px;
+            color: #2c3e50;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .result-box {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-box span {
+            display: block;
+            font-size: 22px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .result-box label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .result-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .result-footer button {
+            padding: 8px 20px;
+            font-size: 16px;
+            border-radius: 20px;
+            background: #27ae60;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Neelkanth Typing & Steno Classes <br> Hindi Typing Test</h1>
+
+        <div class="controls">
+            <div>नाम: <input id="studentName"></div>
+
+            <div>
+                Chapter:
+                <select id="chapterSelect"></select>
+            </div>
+
+            <div>
+                समय:
+                <select id="timeSelect">
+                    <option value="60">1 मिनट</option>
+                    <option value="300">5 मिनट</option>
+                    <option value="600">10 मिनट</option>
+                    <option value="900">15 मिनट</option>
+                </select>
+            </div>
+
+            <div>⏱️ <span id="timer">00:00</span></div>
+            <button style=" background:#e74c3c;" id="backspaceBtn" onclick="toggleBackspace()">Backspace: OFF</button>
+
+        </div>
+
+        <div style="margin-bottom:10px;">
+            <button onclick="startTest()">Start</button>
+            <button onclick="pauseTest()">Pause</button>
+            <button onclick="submitTest()">Submit</button>
+        </div>
+
+
+        <div id="paragraph"></div>
+        <textarea id="typingArea" disabled placeholder="यहाँ टाइप करें..."></textarea>
+
+        <div id="result">
+            <h2>📊 Test Result</h2>
+
+            <div style="text-align:center;margin-bottom:10px;">
+                <b id="rName"></b>
+            </div>
+
+            <div class="result-grid">
+                <div class="result-box">
+                    <span id="rWpm">0</span>
+                    <label>WPM</label>
+                </div>
+
+                <div class="result-box">
+                    <span id="rErrors">0</span>
+                    <label>Errors</label>
+                </div>
+
+                <div class="result-box">
+                    <span id="rAccuracy">0%</span>
+                    <label>Accuracy</label>
+                </div>
+
+                <div class="result-box">
+                    <span id="finalGrade">-</span>
+                    <label>Grade</label>
+                </div>
+            </div>
+
+            <div class="result-footer">
+                <button onclick="window.print()">🖨️ Print Result</button>
+            </div>
+        </div>
+
+
+        <div class="footer">© Neelkanth Typing & Steno Classes</div>
+    </div>
+
+    <script>
+
+        document.addEventListener("copy", e => e.preventDefault());
+        document.addEventListener("cut", e => e.preventDefault());
+        document.addEventListener("paste", e => e.preventDefault());
+
+        document.addEventListener("contextmenu", e => e.preventDefault());
+
+        // ==================== DEVTOOLS / INSPECT DISABLE ====================
+        document.addEventListener("keydown", function (e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+            }
+            // Ctrl + Shift + I / J / C
+            if (e.ctrlKey && e.shiftKey &&
+                (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+                e.preventDefault();
+            }
+            // Ctrl + U (view source)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+            }
+        });
+
+        // ==================== FULLSCREEN ON START ====================
+        function goFullScreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) elem.requestFullscreen();
+            else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
+            else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+            else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
+        }
+
+        // 🔥 Start button click pe fullscreen add
+        const originalStartTest = startTest;
+        startTest = function () {
+            goFullScreen();      // F11 jaisa effect
+            originalStartTest(); // purana startTest bhi chalega
+        }
+        const chapters = {
+            1: "sad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fad sad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fadsad ask lad all hall fall dash flask flash salad lakhs jakhs halls has dad fad ",
+            2: "आज के डिजिटल युग में साइबर अपराध तेजी से बढ़ रहे हैं। ठग नए-नए तरीके अपनाकर आम लोगों को ठगने की कोशिश कर रहे हैं। इसलिए सभी नागरिकों को सतर्क रहने और किसी भी अनजान कॉल या संदेश पर भरोसा न करने की सलाह दी जाती है।",
+            3: "कंप्यूटर और इंटरनेट ने हमारे जीवन को आसान बना दिया है, लेकिन इसके साथ ही जोखिम भी बढ़े हैं। मजबूत पासवर्ड का उपयोग करना और समय-समय पर उसे बदलते रहना ऑनलाइन सुरक्षा के लिए बहुत जरूरी है।",
+            4: "सरकार लगातार साइबर सुरक्षा को मजबूत करने के लिए नए नियम और कानून बना रही है। इसके बावजूद लोगों को स्वयं जागरूक रहना होगा ताकि वे किसी भी प्रकार की ऑनलाइन धोखाधड़ी से बच सकें।",
+            5: "शिक्षा के क्षेत्र में तकनीक का उपयोग बढ़ता जा रहा है। ऑनलाइन कक्षाएं, डिजिटल नोट्स और ई-लर्निंग प्लेटफॉर्म छात्रों के लिए काफी उपयोगी साबित हो रहे हैं।"
+        };
+
+
+        const chapterSelect = document.getElementById("chapterSelect");
+        const paragraph = document.getElementById("paragraph");
+        const typingArea = document.getElementById("typingArea");
+        const studentName = document.getElementById("studentName");
+        const timeSelect = document.getElementById("timeSelect");
+        const timer = document.getElementById("timer");
+        const result = document.getElementById("result");
+        const rName = document.getElementById("rName");
+        const rWpm = document.getElementById("rWpm");
+        const rErrors = document.getElementById("rErrors");
+        const rAccuracy = document.getElementById("rAccuracy");
+
+        let text = "", paraWords = [], timeLeft = 0, interval = null, paused = false;
+
+        // Dynamically populate chapter select
+        for (let key in chapters) {
+            let opt = document.createElement("option");
+            opt.value = key;
+            opt.innerText = `Chapter ${key}`;
+            chapterSelect.appendChild(opt);
+        }
+
+        function loadChapter() {
+            text = chapters[chapterSelect.value];
+            paraWords = text.split(" ");
+            paragraph.innerHTML = paraWords.map(w => `<span>${w} </span>`).join("");
+            typingArea.value = "";
+        }
+        chapterSelect.addEventListener("change", loadChapter);
+        loadChapter();
+
+        function startTest() {
+            if (studentName.value.trim() === "") { alert("कृपया नाम लिखें"); return; }
+            if (!interval) {
+                timeLeft = parseInt(timeSelect.value);
+            }
+            paused = false;
+            typingArea.disabled = false;
+            typingArea.focus();
+            interval = setInterval(() => {
+                if (!paused) {
+                    timeLeft--;
+                    updateTimer();
+                    if (timeLeft <= 0) endTest();
+                }
+            }, 1000);
+        }
+
+        function pauseTest() { paused = !paused; }
+
+        function submitTest() {
+            if (!interval) { alert("Test start नहीं हुआ"); return; }
+            endTest(); finalGrade.innerText = getGrade(acc);
+        }
+
+        function updateTimer() {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            timer.innerText = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }
+
+        typingArea.addEventListener("input", () => {
+            const typed = typingArea.value.split(" ");
+            const spans = document.querySelectorAll("#paragraph span");
+            spans.forEach((span, i) => {
+                if (typed[i] == null) span.className = "";
+                else if (typed[i] === paraWords[i]) span.className = "correct";
+                else span.className = "incorrect";
+            });
+        });
+
+        function endTest() {
+            clearInterval(interval);
+            interval = null;
+            typingArea.disabled = true;
+
+            const typed = typingArea.value.trim().split(" ");
+            let errors = 0;
+            typed.forEach((w, i) => { if (w !== paraWords[i]) errors++; });
+
+            let totalTime = parseInt(timeSelect.value) - timeLeft;
+            let minutes = totalTime / 60 || 1;
+            let wpm = Math.round(typed.length / minutes);
+            let acc = typed.length ? Math.round(((typed.length - errors) / typed.length) * 100) : 0;
+
+            rName.innerText = studentName.value;
+            rWpm.innerText = wpm;
+            rErrors.innerText = errors;
+            rAccuracy.innerText = acc;
+            result.style.display = "block";
+        }
+
+        const finalGrade = document.getElementById("finalGrade");
+
+        // Grade logic
+        function getGrade(acc) {
+            if (acc >= 95) return "A+";
+            if (acc >= 90) return "A";
+            if (acc >= 80) return "B";
+            if (acc >= 70) return "C";
+            return "Needs Practice";
+        }
+        let backspaceDisabled = true;
+        const backspaceBtn = document.getElementById("backspaceBtn");
+
+        // Button toggle
+        function toggleBackspace() {
+            backspaceDisabled = !backspaceDisabled;
+            backspaceBtn.innerText = backspaceDisabled
+                ? "Backspace: OFF"
+                : "Backspace: ON";
+        }
+
+        // Actual backspace block
+        typingArea.addEventListener("keydown", function (e) {
+            if (backspaceDisabled && e.key === "Backspace") {
+                e.preventDefault();
+            }
+        });
+
+    </script>
+</body>
+
+</html>
