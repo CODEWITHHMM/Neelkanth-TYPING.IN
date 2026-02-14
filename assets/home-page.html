@@ -3,46 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Soni Typing Tutor – Responsive UI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Soni Typing Tutor – UI Demo</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             background: #f2f2f2;
         }
 
-        /* TOP BAR */
         .topbar {
             background: #e9eef3;
-            padding: 10px 15px;
+            padding: 8px 15px;
             font-size: 14px;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 5px;
         }
 
-        /* NOTICE */
         .notice {
             background: #ffe6c7;
             padding: 10px 15px;
             font-size: 14px;
         }
 
-        /* MAIN LAYOUT */
         .container {
             display: flex;
             padding: 15px;
             gap: 15px;
         }
 
-        /* PANELS */
         .left,
         .right {
             background: #fff;
@@ -58,7 +46,6 @@
             width: 40%;
         }
 
-        /* SECTIONS */
         .section {
             border: 1px solid #ddd;
             margin-bottom: 15px;
@@ -71,9 +58,7 @@
             color: #333;
         }
 
-        /* BOXES */
-        .boxes,
-        .exam {
+        .boxes {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
@@ -81,12 +66,11 @@
 
         .box {
             border: 1px solid #ff9800;
-            padding: 12px;
+            padding: 10px;
             width: 120px;
             text-align: center;
             cursor: pointer;
             background: #fff8ef;
-            border-radius: 6px;
         }
 
         .box:hover {
@@ -101,55 +85,25 @@
             font-weight: bold;
         }
 
+        .exam {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         .exam div {
             border: 1px solid #ccc;
-            padding: 12px;
+            padding: 10px;
             width: 130px;
             text-align: center;
             background: #fafafa;
-            border-radius: 6px;
         }
 
-        /* FOOTER */
         .footer {
             text-align: center;
             font-size: 13px;
             color: #666;
             padding: 10px;
-        }
-
-        /* ===================== */
-        /* RESPONSIVE DESIGN */
-        /* ===================== */
-
-        /* Tablet */
-        @media(max-width:992px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .left,
-            .right {
-                width: 100%;
-            }
-        }
-
-        /* Mobile */
-        @media(max-width:600px) {
-            .topbar {
-                font-size: 13px;
-                text-align: center;
-                justify-content: center;
-            }
-
-            .box,
-            .exam div {
-                width: 100%;
-            }
-
-            .section h3 {
-                font-size: 15px;
-            }
         }
     </style>
 </head>
@@ -158,7 +112,7 @@
 
     <div class="topbar">
         <div>✔ Version 5.1.102 (Demo UI)</div>
-        <div>Customer Care: 7424910327</div>
+        <div>Customer Care: 07424910327</div>
     </div>
 
     <div class="notice">
@@ -232,7 +186,7 @@
     </div>
 
     <div class="footer">
-        Demo Responsive UI – For Learning Purpose Only
+        Demo UI – For Learning Purpose Only
     </div>
 
 </body>
