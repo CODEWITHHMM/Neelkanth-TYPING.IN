@@ -1,586 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-     <title>Neelkanth Typing & Steno Classes</title>
-    <link rel="stylesheet" type="text/css" target="_blank" href="style.css" />
-    
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
-* {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-@media (max-width: 768px) {
-  main section {
-    grid-template-columns: 1fr !important;
-    text-align: center;
-  }
-}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Neelkanth Typing & Steno Classes</title>
+  <link rel="stylesheet" type="text/css" target="_blank" href="style.css" />
 
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-}
-
-nav {
-  padding: 5px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  z-index: 1;
-}
-nav .logo {
-  display: flex;
-  align-items: center;
-}
-nav .logo img {
-  height: 40px;
-  width: auto;
-  margin-right: 10px;
-}
-nav .logo h1 {
-  font-size: 1.3rem;
-  background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-}
-nav ul li {
-  margin-left: 1.3rem;
-}
-nav ul li a {
-  text-decoration: none;
-  color: #000;
-  font-size: 95%;
-  font-weight: 400;
-  padding: 4px 8px;
-  border-radius: 5px;
-}
-
-nav ul li a:hover {
-  background-color: #085fe29d;
-   color: #ffffff;
-  
-}
-
-.hamburger {
-  display: none;
-  cursor: pointer;
-}
-
-.hamburger .line {
-  width: 25px;
-  height: 1px;
-  background-color: #1f1f1f;
-  display: block;
-  margin: 7px auto;
-  transition: all 0.3s ease-in-out;
-}
-.hamburger-active {
-  transition: all 0.3s ease-in-out;
-  transition-delay: 0.6s;
-  transform: rotate(45deg);
-}
-
-.hamburger-active .line:nth-child(2) {
-  width: 0px;
-}
-
-.hamburger-active .line:nth-child(1),
-.hamburger-active .line:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-.hamburger-active .line:nth-child(1) {
-  transform: translateY(12px);
-}
-
-.hamburger-active .line:nth-child(3) {
-  transform: translateY(-5px) rotate(90deg);
-}
-
-.menubar {
-  position: absolute;
-  top: 0;
-  left: -60%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 60%;
-  height: 100vh;
-  padding: 20% 0;
-  background: rgba(255, 255, 255);
-  transition: all 0.5s ease-in;
-  z-index: 2;
-}
-.active {
-  left: 0;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-.menubar ul {
-  padding: 0;
-  list-style: none;
-}
-.menubar ul li {
-  margin-bottom: 32px;
-}
-
-.menubar ul li a {
-  text-decoration: none;
-  color: #000;
-  font-size: 95%;
-  font-weight: 400;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.menubar ul li a:hover {
-  background-color: #f5f5f5;
-}
-@media screen and (max-width: 790px) {
-  .hamburger {
-    display: block;
-  }
-  nav ul {
-    display: none;
-  }
-}
-.btn-login {
-  border: 1px solid #2c64fc;
-  color: #2c64fc !important;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-weight: 500;
-}
-
-.btn-login:hover {
-  background: #2c64fc;
-  color: #fff !important;
-}
-
-.btn-signup {
-  background: linear-gradient(to right, #b927fc, #2c64fc);
-  color: #fff !important;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-weight: 500;
-}
-
-.btn-signup:hover {
-  
-
-  opacity: 0.9;
-}
-
-
-    </style>
-  </head>
-  <body>
-   <nav>
-  <div class="logo">
-    <img src="assets/img/logo.png" alt="logo" />
-    <h1>Neelkanth Typing & Steno Classes</h1>
-  </div>
-
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Exam</a></li>
-   <li><a href="/assets/page.html">Typing</a></li>
-    <li><a href="#">Typing Tips</a></li>
-    <li><a href="#">Contact Us</a></li>
-    <!-- Buttons -->
-<ul>
-  <li><a href="#" class="btn-login" id="openLogin">Login</a></li>
-  <li><a href="#" class="btn-signup" id="openSignup">New User</a></li>
-</ul>
-
-<!-- LOGIN MODAL -->
-<div id="loginModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
-  <div style="background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; position:relative;">
-    <span class="close" style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
-    <h2 style="text-align:center; margin-bottom:20px;">Login</h2>
-    <form>
-      <label>Email / Username</label>
-      <input type="text" placeholder="Enter your email or username" style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-      <label>Password</label>
-      <input type="password" placeholder="Enter your password" style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-      <button type="submit" style="width:100%; padding:10px; margin-top:15px; background:#2c64fc; color:#fff; border:none; border-radius:5px; cursor:pointer;">Login</button>
-    </form>
-  </div>
-</div>
-
-<!-- SIGNUP MODAL -->
-<div id="signupModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
-  <div style="background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; position:relative;">
-    <span class="close" style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
-    <h2 style="text-align:center; margin-bottom:20px;">Sign Up</h2>
-    <form>
-      <label>Full Name</label>
-      <input type="text" placeholder="Enter your full name" style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-      <label>Email</label>
-      <input type="email" placeholder="Enter your email" style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-      <label>Password</label>
-      <input type="password" placeholder="Enter password" style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-      <button type="submit" style="width:100%; padding:10px; margin-top:15px; background:#2c64fc; color:#fff; border:none; border-radius:5px; cursor:pointer;">Sign Up</button>
-    </form>
-  </div>
-</div>
-
-<!-- JS -->
-<script>
-  // Get elements
-  const loginModal = document.getElementById('loginModal');
-  const signupModal = document.getElementById('signupModal');
-  const openLogin = document.getElementById('openLogin');
-  const openSignup = document.getElementById('openSignup');
-  const closeButtons = document.querySelectorAll('.close');
-
-  // Open modals
-  openLogin.onclick = () => loginModal.style.display = 'flex';
-  openSignup.onclick = () => signupModal.style.display = 'flex';
-
-  // Close modals
-  closeButtons.forEach(btn => {
-    btn.onclick = () => {
-      loginModal.style.display = 'none';
-      signupModal.style.display = 'none';
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-  });
 
-  // Close on outside click
-  window.onclick = (e) => {
-    if(e.target == loginModal) loginModal.style.display = 'none';
-    if(e.target == signupModal) signupModal.style.display = 'none';
-  }
-</script>
+    @media (max-width: 768px) {
+      main section {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+      }
+    }
 
-  </ul>
 
-  <div class="hamburger">
-    <span class="line"></span>
-    <span class="line"></span>
-    <span class="line"></span>
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    nav {
+      padding: 5px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      z-index: 1;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    nav .logo img {
+      height: 40px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    nav .logo h1 {
+      font-size: 1.3rem;
+      background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 1.3rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 95%;
+      font-weight: 400;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    nav ul li a:hover {
+      background-color: #085fe29d;
+      color: #ffffff;
+
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger .line {
+      width: 25px;
+      height: 1px;
+      background-color: #1f1f1f;
+      display: block;
+      margin: 7px auto;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger-active {
+      transition: all 0.3s ease-in-out;
+      transition-delay: 0.6s;
+      transform: rotate(45deg);
+    }
+
+    .hamburger-active .line:nth-child(2) {
+      width: 0px;
+    }
+
+    .hamburger-active .line:nth-child(1),
+    .hamburger-active .line:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+
+    .hamburger-active .line:nth-child(1) {
+      transform: translateY(12px);
+    }
+
+    .hamburger-active .line:nth-child(3) {
+      transform: translateY(-5px) rotate(90deg);
+    }
+
+    .menubar {
+      position: absolute;
+      top: 0;
+      left: -60%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 60%;
+      height: 100vh;
+      padding: 20% 0;
+      background: rgba(255, 255, 255);
+      transition: all 0.5s ease-in;
+      z-index: 2;
+    }
+
+    .active {
+      left: 0;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
+    .menubar ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    .menubar ul li {
+      margin-bottom: 32px;
+    }
+
+    .menubar ul li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 95%;
+      font-weight: 400;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .menubar ul li a:hover {
+      background-color: #f5f5f5;
+    }
+
+    @media screen and (max-width: 790px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+      }
+    }
+
+    .btn-login {
+      border: 1px solid #2c64fc;
+      color: #2c64fc !important;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .btn-login:hover {
+      background: #2c64fc;
+      color: #fff !important;
+    }
+
+    .btn-signup {
+      background: linear-gradient(to right, #b927fc, #2c64fc);
+      color: #fff !important;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .btn-signup:hover {
+
+
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="assets/img/logo.png" alt="logo" />
+      <h1>Neelkanth Typing & Steno Classes</h1>
+    </div>
+
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Exam</a></li>
+      <li><a href="/assets/page.html">Typing</a></li>
+      <li><a href="#">Typing Tips</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <!-- Buttons -->
+      <ul>
+        <li><a href="#" class="btn-login" id="openLogin">Login</a></li>
+        <li><a href="#" class="btn-signup" id="openSignup">New User</a></li>
+      </ul>
+
+      <!-- LOGIN MODAL -->
+      <div id="loginModal" class="modal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+        <div style="background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; position:relative;">
+          <span class="close"
+            style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
+          <h2 style="text-align:center; margin-bottom:20px;">Login</h2>
+          <form>
+            <label>Email / Username</label>
+            <input type="text" placeholder="Enter your email or username"
+              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password"
+              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
+            <button type="submit"
+              style="width:100%; padding:10px; margin-top:15px; background:#2c64fc; color:#fff; border:none; border-radius:5px; cursor:pointer;">Login</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- SIGNUP MODAL -->
+      <div id="signupModal" class="modal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+        <div style="background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; position:relative;">
+          <span class="close"
+            style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
+          <h2 style="text-align:center; margin-bottom:20px;">Sign Up</h2>
+          <form>
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your full name"
+              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email"
+              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
+            <label>Password</label>
+            <input type="password" placeholder="Enter password"
+              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
+            <button type="submit"
+              style="width:100%; padding:10px; margin-top:15px; background:#2c64fc; color:#fff; border:none; border-radius:5px; cursor:pointer;">Sign
+              Up</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- JS -->
+      <script>
+        // Get elements
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const openLogin = document.getElementById('openLogin');
+        const openSignup = document.getElementById('openSignup');
+        const closeButtons = document.querySelectorAll('.close');
+
+        // Open modals
+        openLogin.onclick = () => loginModal.style.display = 'flex';
+        openSignup.onclick = () => signupModal.style.display = 'flex';
+
+        // Close modals
+        closeButtons.forEach(btn => {
+          btn.onclick = () => {
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'none';
+          }
+        });
+
+        // Close on outside click
+        window.onclick = (e) => {
+          if (e.target == loginModal) loginModal.style.display = 'none';
+          if (e.target == signupModal) signupModal.style.display = 'none';
+        }
+      </script>
+
+    </ul>
+
+    <div class="hamburger">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+  </nav>
+
+  <div class="menubar">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Exam</a></li>
+      <li><a href="/assets/page.html">Typing</a></li>
+      <li><a href="#">Typing Tips</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#" class="btn-login">Login</a></li>
+      <li><a href="#" class="btn-signup">New User</a></li>
+    </ul>
   </div>
-</nav>
 
-<div class="menubar">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Exam</a></li>
-    <li><a href="/assets/page.html">Typing</a></li>
-    <li><a href="#">Typing Tips</a></li>
-    <li><a href="#">Contact Us</a></li>
-    <li><a href="#"  class="btn-login">Login</a></li>
-    <li><a href="#" class="btn-signup">New User</a></li>
-  </ul>
-</div>
+  <script>
+    const mobileNav = document.querySelector(".hamburger");
+    const navbar = document.querySelector(".menubar");
 
-    <script >
-      const mobileNav = document.querySelector(".hamburger");
-const navbar = document.querySelector(".menubar");
+    const toggleNav = () => {
+      navbar.classList.toggle("active");
+      mobileNav.classList.toggle("hamburger-active");
+    };
+    mobileNav.addEventListener("click", () => toggleNav());
+  </script>
 
-const toggleNav = () => {
-  navbar.classList.toggle("active");
-  mobileNav.classList.toggle("hamburger-active");
-};
-mobileNav.addEventListener("click", () => toggleNav());
+  <!-- FOOTER START -->
+
+  <main style="padding:50px 5%; max-width:1390px; margin:auto;">
+
+    <section style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+
+      <!-- LEFT CONTENT -->
+      <div>
+        <h2 style="font-size:1.8rem; margin-bottom:15px;">
+          Professional Typing Training
+        </h2>
+
+        <p style="color:#555; line-height:1.7;">
+          <strong>Neelkanth Typing & Steno Classes</strong> provides expert
+          training in <strong>Hindi and English Typing</strong>.
+          Our courses are specially designed for government exams,
+          competitive tests, and job-oriented typing skills.
+        </p>
+
+        <ul style="margin-top:15px; color:#444; line-height:1.8;">
+          <li>✔ Hindi Typing</li>
+          <li>✔ English Typing</li>
+          <li>✔ Stenography (Hindi / English)</li>
+          <li>✔ Speed & Accuracy Improvement</li>
+          <li>✔ Exam-Oriented Practice</li>
+        </ul>
+
+
+        </p>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div style="text-align:center;">
+        <img src="assets/img/typing.jpg" alt="Typing Practice"
+          style="width:100%; max-width:500px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
+      </div>
+
+    </section>
+    <section class="exam-cards" style=" padding-top: px; max-width:1200px;   ">
+      <div class="title-style-one text-center" style="justify-items: center; margin:50px;">
+        <!-- Small Title -->
+        <div class="sc-title text-uppercase"
+          style="Font-weight: 500; font-size:0.85rem; color:#71757e; letter-spacing:2px; margin-bottom:10px;">
+          OUR EXAMS
+        </div>
+
+        <!-- Main Title -->
+        <h2 class="main-title fw-500 tx-dark" style="font-size:3rem; font-weight:500; color:#222; margin:0;">
+          Explore all Online Typing Exams
+        </h2>
+      </div>
+
+      <div class="row" style="display:flex; flex-wrap:wrap; gap:20px;">
+
+
+        <!-- CARD 1 -->
+        <div class="card"
+          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
+          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
+            Skill ...</h4>
+          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
+            <div>1800 <span style="font-weight:400;">keys</span></div>
+            <div>10:00 <span style="font-weight:400;">min.</span></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
+              <i class="fa-solid fa-user"></i> 180931
+            </div>
+            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
+              Retyping </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card"
+          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
+          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
+            Skill ...</h4>
+          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
+            <div>1800 <span style="font-weight:400;">keys</span></div>
+            <div>10:00 <span style="font-weight:400;">min.</span></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
+              <i class="fa-solid fa-user"></i> 180931
+            </div>
+            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
+              Retyping </div>
+          </div>
+        </div>
+
+
+        <!-- CARD 3 -->
+        <div class="card"
+          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
+          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
+            Skill ...</h4>
+          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
+            <div>1800 <span style="font-weight:400;">keys</span></div>
+            <div>10:00 <span style="font-weight:400;">min.</span></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
+              <i class="fa-solid fa-user"></i> 180931
+            </div>
+            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
+              Retyping </div>
+          </div>
+        </div>
+
+
+        <!-- CARD 4 -->
+        <div class="card"
+          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
+          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
+            Skill ...</h4>
+          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
+            <div>1800 <span style="font-weight:400;">keys</span></div>
+            <div>10:00 <span style="font-weight:400;">min.</span></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
+              <i class="fa-solid fa-user"></i> 180931
+            </div>
+            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
+              Retyping </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+
+  </main>
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h2 class="footer-logo">Neelkanth Typing & Steno Classes</h2>
+        <p>
+          We provide expert training in Hindi & English Typing, Stenography
+          and exam-oriented practice with accuracy and speed.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Exam</a></li>
+          <li><a href="#">Typing Tips</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Courses</h3>
+        <ul>
+          <li><a href="#">Hindi Typing</a></li>
+          <li><a href="#">English Typing</a></li>
+          <li><a href="#">Steno (Hindi / English)</a></li>
+          <li><a href="#">Practice Tests</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <p>
+          📍 G-21, Ground Floor, Vardhman Central Mall,<br>
+          Nehru Vihar, Delhi – 110054
+        </p>
+
+
+        <p>📞 +91 8851490717</p>
+        <p>
+          <a href="https://wa.me/918851490717?text=Hello,%20Neelkanth%20Typing%20%26%20Steno%20Classes,%0A%0AI%20want%20to%20enquire%20about%20Typing%20and%20Steno%20courses.%20Please%20share%20details%20regarding%20fees,%20timings%20and%20admission.%0A%0AThank%20you."
+            target="_blank"
+            style="text-decoration:none; color:#555;   display:inline-flex; align-items:center; gap:6px;">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20"
+              height="20">
+
+            +91 8851490717
+          </a>
+
+        </p>
+        <p>✉️ info@neelkanthclasses.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © <span id="year"></span> Neelkanth Typing & Steno Classes.
+        All Rights Reserved.
+        <span>| Developed by <br><br>
+          <a href="https://hmwebtech.com" target="_blank" style="text-decoration:none; color:#2c64fc; font-weight:600;">
+            HMWEBTECH
+          </a>
+        </span>
+      </p>
+
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 
-    <!-- FOOTER START -->
+  </footer>
 
-<main style="padding:50px 5%; max-width:1390px; margin:auto;">
+  <style>
+    .footer {
+      background: #f9f9f9;
+      margin-top: 40px;
+      font-family: "Poppins", sans-serif;
+    }
 
-  <section style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 5%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
 
-    <!-- LEFT CONTENT -->
-    <div>
-      <h2 style="font-size:1.8rem; margin-bottom:15px;">
-        Professional Typing Training
-      </h2>
+    .footer-col h2.footer-logo {
+      font-size: 1.2rem;
+      background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-      <p style="color:#555; line-height:1.7;">
-        <strong>Neelkanth Typing & Steno Classes</strong> provides expert
-        training in <strong>Hindi and English Typing</strong>.
-        Our courses are specially designed for government exams,
-        competitive tests, and job-oriented typing skills.
-      </p>
+    .footer-col h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: #222;
+    }
 
-      <ul style="margin-top:15px; color:#444; line-height:1.8;">
-  <li>✔ Hindi Typing</li>
-  <li>✔ English Typing</li>
-  <li>✔ Stenography (Hindi / English)</li>
-  <li>✔ Speed & Accuracy Improvement</li>
-  <li>✔ Exam-Oriented Practice</li>
-</ul>
+    .footer-col p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.6;
+    }
 
-      
-      </p>
-    </div>
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
 
-    <!-- RIGHT IMAGE -->
-    <div style="text-align:center;">
-      <img src="assets/img/typing.jpg"
-           alt="Typing Practice"
-           style="width:100%; max-width:500px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
-    </div>
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
 
-  </section>
-  <section class="exam-cards" style=" padding-top: px; max-width:1200px;   ">
-    <div class="title-style-one text-center" style="justify-items: center; margin:50px;">
-  <!-- Small Title -->
-  <div class="sc-title text-uppercase" style="Font-weight: 500; font-size:0.85rem; color:#71757e; letter-spacing:2px; margin-bottom:10px;">
-    OUR EXAMS
-  </div>
+    .footer-col ul li a {
+      text-decoration: none;
+      color: #555;
+      font-size: 0.9rem;
+    }
 
-  <!-- Main Title -->
-  <h2 class="main-title fw-500 tx-dark" style="font-size:3rem; font-weight:500; color:#222; margin:0;">
-    Explore all Online Typing Exams
-  </h2>
-</div>
+    .footer-col ul li a:hover {
+      color: #2c64fc;
+    }
 
-  <div class="row" style="display:flex; flex-wrap:wrap; gap:20px;">
-    
+    .footer-bottom {
+      text-align: center;
+      padding: 15px 5%;
+      border-top: 1px solid #ddd;
+      font-size: 0.85rem;
+      color: #555;
+    }
 
-    <!-- CARD 1 -->
-    <div class="card" style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-      <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-      <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing Skill ...</h4>
-      <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-        <div>1800 <span style="font-weight:400;">keys</span></div>
-        <div>10:00 <span style="font-weight:400;">min.</span></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-          <i class="fa-solid fa-user"></i> 180931
-        </div>
-        <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;"> Retyping </div>
-      </div>
-    </div>
+    @media (max-width: 900px) {
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-    <!-- CARD 2 -->
-    <div class="card" style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-      <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-      <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing Skill ...</h4>
-      <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-        <div>1800 <span style="font-weight:400;">keys</span></div>
-        <div>10:00 <span style="font-weight:400;">min.</span></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-          <i class="fa-solid fa-user"></i> 180931
-        </div>
-        <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;"> Retyping </div>
-      </div>
-    </div>
+    @media (max-width: 500px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+  <!-- FOOTER END -->
 
+</body>
 
-    <!-- CARD 3 -->
-     <div class="card" style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-      <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-      <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing Skill ...</h4>
-      <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-        <div>1800 <span style="font-weight:400;">keys</span></div>
-        <div>10:00 <span style="font-weight:400;">min.</span></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-          <i class="fa-solid fa-user"></i> 180931
-        </div>
-        <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;"> Retyping </div>
-      </div>
-    </div>
-
-
-    <!-- CARD 4 -->
-     <div class="card" style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-      <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-      <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing Skill ...</h4>
-      <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-        <div>1800 <span style="font-weight:400;">keys</span></div>
-        <div>10:00 <span style="font-weight:400;">min.</span></div>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-          <i class="fa-solid fa-user"></i> 180931
-        </div>
-        <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;"> Retyping </div>
-      </div>
-    </div>
-
-
-  </div>
-</section>
-
-
-</main>
-
- 
-    <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-col">
-      <h2 class="footer-logo">Neelkanth Typing & Steno Classes</h2>
-      <p>
-        We provide expert training in Hindi & English Typing, Stenography
-        and exam-oriented practice with accuracy and speed.
-      </p>
-    </div>
-
-    <div class="footer-col">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Exam</a></li>
-        <li><a href="#">Typing Tips</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h3>Courses</h3>
-      <ul>
-        <li><a href="#">Hindi Typing</a></li>
-        <li><a href="#">English Typing</a></li>
-        <li><a href="#">Steno (Hindi / English)</a></li>
-        <li><a href="#">Practice Tests</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h3>Contact</h3>
-   <p>
-  📍 G-21, Ground Floor, Vardhman Central Mall,<br>
-  Nehru Vihar, Delhi – 110054
-</p>
-
-
-      <p>📞 +91 8851490717</p>
-      <p>
- <a href="https://wa.me/918851490717?text=Hello,%20Neelkanth%20Typing%20%26%20Steno%20Classes,%0A%0AI%20want%20to%20enquire%20about%20Typing%20and%20Steno%20courses.%20Please%20share%20details%20regarding%20fees,%20timings%20and%20admission.%0A%0AThank%20you."
-   target="_blank"
-   style="text-decoration:none; color:#555;   display:inline-flex; align-items:center; gap:6px;">
-  
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-       alt="WhatsApp"
-       width="20"
-       height="20">
-
-  +91 8851490717
-</a>
-
-</p>      <p>✉️ info@neelkanthclasses.com</p>
-    </div>
-  </div>
-
- <div class="footer-bottom">
- <p>
-  © <span id="year"></span> Neelkanth Typing & Steno Classes. 
-  All Rights Reserved.
-  <span>| Developed by <br><br>
-    <a href="https://hmwebtech.com" target="_blank" style="text-decoration:none; color:#2c64fc; font-weight:600;">
-      HMWEBTECH
-    </a>
-  </span>
-</p>
-
-</div>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-</footer>
-
-<style>
-.footer {
-  background: #f9f9f9;
-  margin-top: 40px;
-  font-family: "Poppins", sans-serif;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 40px 5%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-}
-
-.footer-col h2.footer-logo {
-  font-size: 1.2rem;
-  background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.footer-col h3 {
-  font-size: 1rem;
-  margin-bottom: 12px;
-  color: #222;
-}
-
-.footer-col p {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-col ul li {
-  margin-bottom: 8px;
-}
-
-.footer-col ul li a {
-  text-decoration: none;
-  color: #555;
-  font-size: 0.9rem;
-}
-
-.footer-col ul li a:hover {
-  color: #2c64fc;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding: 15px 5%;
-  border-top: 1px solid #ddd;
-  font-size: 0.85rem;
-  color: #555;
-}
-
-@media (max-width: 900px) {
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-}
-</style>
-<!-- FOOTER END -->
-
-  </body>
 </html>

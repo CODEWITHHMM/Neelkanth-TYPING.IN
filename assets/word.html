@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Typing Tutor – Accurate Accuracy</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+        }
+
+        .topbar {
+            background: #e9eef3;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        .controls-top {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .stat {
+            background: #fff;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .stat span {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff9800;
+        }
+
+        .passage {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .editor {
+            background: #ffffff;
+            border: 1px solid #ccc;
+            min-height: 180px;
+            padding: 15px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button,
+        select {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div>Typing Tutor Mode</div>
+        <div>Accurate WPM & Accuracy</div>
+    </div>
+
+    <div class="container">
+
+        <div class="controls-top">
+            <b>Select Time:</b>
+            <select id="timeSelect">
+                <option value="60">1 Minute</option>
+                <option value="180">3 Minutes</option>
+                <option value="300">5 Minutes</option>
+                <option value="600">10 Minutes</option>
+            </select>
+            <button onclick="startTest()">Start</button>
+            <button onclick="resetTest()">Reset</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat">Time Left<span id="time">60</span></div>
+            <div class="stat">WPM<span id="wpm">0</span></div>
+            <div class="stat">Accuracy<span id="accuracy">0%</span></div>
+        </div>
+
+        <div class="passage" id="passage">
+            The quick brown fox jumps over the lazy dog. Typing practice improves speed and accuracy.
+        </div>
+
+        <div class="editor" id="editor" contenteditable="true"></div>
+
+    </div>
+
+    <div class="footer">
+        Typing Tutor – Exam Ready Practice
+    </div>
+
+    <script>
+        let totalTime = 60;
+        let timeLeft = 60;
+        let timer = null;
+        let started = false;
+
+        document.getElementById("timeSelect").addEventListener("change", function () {
+            totalTime = parseInt(this.value);
+            timeLeft = totalTime;
+            document.getElementById("time").innerText = timeLeft;
+        });
+
+        function startTest() {
+            if (started) return;
+            started = true;
+            document.getElementById("editor").innerHTML = "";
+            document.getElementById("editor").contentEditable = "true";
+
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById("time").innerText = timeLeft;
+                calculateWPM();
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("editor").contentEditable = "false";
+                }
+            }, 1000);
+        }
+
+        function resetTest() {
+            clearInterval(timer);
+            started = false;
+            totalTime = parseInt(document.getElementById("timeSelect").value);
+            timeLeft = totalTime;
+            document.getElementById("time").innerText = timeLeft;
+            document.getElementById("wpm").innerText = 0;
+            document.getElementById("accuracy").innerText = "0%";
+            document.getElementById("editor").innerHTML = "";
+        }
+
+        function calculateWPM() {
+            const text = document.getElementById("editor").innerText.trim();
+            const words = text.split(/\s+/).filter(w => w.length > 0).length;
+            const timeSpent = (totalTime - timeLeft) / 60;
+            const wpm = timeSpent > 0 ? Math.round(words / timeSpent) : 0;
+            document.getElementById("wpm").innerText = wpm;
+            calculateAccuracy();
+        }
+
+        function calculateAccuracy() {
+            const typed = document.getElementById("editor").innerText;
+            const original = document.getElementById("passage").innerText;
+
+            let correctChars = 0;
+            let totalTypedChars = typed.length;
+
+            for (let i = 0; i < typed.length; i++) {
+                if (typed[i] === original[i]) {
+                    correctChars++;
+                }
+            }
+
+            let accuracy = totalTypedChars > 0
+                ? Math.round((correctChars / totalTypedChars) * 100)
+                : 0;
+
+            document.getElementById("accuracy").innerText = accuracy + "%";
+        }
+    </script>
+
+</body>
+
+</html>

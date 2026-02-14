@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Soni Typing Tutor – UI Demo</title>
+
     <style>
         body {
             margin: 0;
@@ -105,47 +106,287 @@
             color: #666;
             padding: 10px;
         }
+
+        .header {
+            background: linear-gradient(90deg, #ff9800, #ff5722);
+            color: #fff;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            margin-right: 12px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .contact {
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .contact strong {
+            font-size: 16px;
+        }
+
+        .notice-bar {
+            background: #fff3cd;
+            color: #333;
+            padding: 8px 20px;
+            font-size: 14px;
+            text-align: center;
+            border-bottom: 1px solid #ffd27f;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .contact {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="topbar">
-        <div>✔ Version 5.1.102 (Demo UI)</div>
-        <div>Customer Care: 07424910327</div>
+
+
+    <style>
+        .header {
+            background: #ffffff;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            margin-right: 12px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .logo-text span {
+            font-size: 13px;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .contact {
+            font-size: 14px;
+            color: #444;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .contact strong {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .notice-bar {
+            background: #f8f9fa;
+            color: #555;
+            padding: 8px 20px;
+            font-size: 13px;
+            text-align: center;
+            border-bottom: 0px solid #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .contact {
+                text-align: center;
+            }
+        }
+    </style>
+
+
+    <div class="header">
+        <div class="logo">
+            <img src="./img/logo.png" alt="Neelkanth Typing Logo" />
+            <div class="logo-text">
+                <h1>Neelkanth Typing & Steno Institute</h1>
+                <span>English | Hindi | Stenography Training</span>
+            </div>
+        </div>
+
+        <div class="contact">
+            Version 5.1.102 (Demo UI) <br>
+            📞 Customer Care: <strong>07424910327</strong>
+        </div>
     </div>
 
-    <div class="notice">
-        English & Numeric Typing Free | Hindi Typing Full Version Activation Required
+    <div class="notice-bar">
+        English & Numeric Typing Free | Hindi Typing Activation Required
     </div>
-
     <div class="container">
 
         <div class="left">
 
-            <div class="section">
+            <style>
+                .card {
+                    background: #ffffff;
+                    border-radius: 12px;
+                    padding: 15px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                    margin-bottom: 20px;
+                }
+
+                .card h3 {
+                    margin: 0 0 15px;
+                    font-size: 18px;
+                    color: #333;
+                    border-bottom: 1px solid #eee;
+                    padding-bottom: 8px;
+                }
+
+                .card-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 15px;
+                }
+
+                .typing-card {
+                    border: 1px solid #ff9800;
+                    border-radius: 10px;
+                    padding: 18px 10px;
+                    text-align: center;
+                    cursor: pointer;
+                    background: #fff7ec;
+                    transition: 0.2s;
+                }
+
+                .typing-card:hover {
+                    background: #ffe0b2;
+                    transform: translateY(-3px);
+                }
+
+                .typing-card span {
+                    display: block;
+                    font-size: 26px;
+                    font-weight: bold;
+                    color: #ff9800;
+                    margin-bottom: 6px;
+                }
+
+                .typing-card p {
+                    margin: 0;
+                    font-size: 14px;
+                    color: #333;
+                }
+            </style>
+
+            <div class="card">
                 <h3>English Typing</h3>
-                <div class="boxes">
-                    <div class="box"><span>A B</span>Learn Typing</div>
-                    <div class="box"><span>A B</span>Take Tests</div>
-                    <div class="box"><span>1 2</span>Number Typing</div>
+
+                <div class="card-grid">
+                    <div class="typing-card">
+                        <span>A B</span>
+                        <p>Learn Typing</p>
+                    </div>
+
+                    <div class="typing-card">
+                        <span>A B</span>
+                        <p>Take Tests</p>
+                    </div>
+
+                    <div class="typing-card">
+                        <span>A B</span>
+                        <p>Take Exercise</p>
+                    </div>
+
+                    <div class="typing-card">
+                        <span>1 2</span>
+                        <p>Number Typing</p>
+                    </div>
                 </div>
             </div>
 
             <div class="section">
                 <h3>Hindi Typing – KrutiDev & DevLys</h3>
                 <div class="boxes">
-                    <div class="box"><span>अ ब</span>Learn Typing</div>
-                    <div class="box"><span>अ ब</span>Take Tests</div>
+                    <div class="box">
+                        <span>अ ब</span>
+                        Learn Typing
+                    </div>
+                    <div class="box">
+                        <span>अ ब</span>
+                        Take Tests
+                    </div>
                 </div>
             </div>
 
             <div class="section">
                 <h3>Hindi Typing – Mangal Unicode</h3>
                 <div class="boxes">
-                    <div class="box"><span>अ ब</span>Remington</div>
-                    <div class="box"><span>अ ब</span>Inscript</div>
-                    <div class="box"><span>अ ब</span>CBI Layout</div>
+                    <div class="box">
+                        <span>अ ब</span>
+                        Remington
+                    </div>
+                    <div class="box">
+                        <span>अ ब</span>
+                        Inscript
+                    </div>
+                    <div class="box">
+                        <span>अ ब</span>
+                        CBI Layout
+                    </div>
                 </div>
             </div>
 
@@ -185,9 +426,34 @@
 
     </div>
 
+    <style>
+        .footer {
+            background: #ececec;
+            color: #232323;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .footer strong {
+            color: #ff9800;
+            font-size: 16px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+
     <div class="footer">
-        Demo UI – For Learning Purpose Only
+        <p><strong>Neelkanth Typing & Steno Classes</strong></p>
+        <p>Expert Training for English & Hindi Typing | Stenography</p>
+        <p>SSC | DSSSB | High Court | LDC | Clerk Preparation</p>
+        <p>📞 Contact: +91 8851490717</p>
+        <p>© 2026 Neelkanth Typing. All Rights Reserved.</p>
     </div>
+
 
 </body>
 
