@@ -287,7 +287,7 @@
             goFullScreen();      // F11 jaisa effect
             originalStartTest(); // purana startTest bhi chalega
         }
-                const chapters = {
+        const chapters = {
             1: "ask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhalls ask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhall sask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhalls",
             2: "fish kodak ahead larks quail apples reader flukes fiddlefish kodak ahead larks quail apples reader flukes fiddle dead rails sales agile isles should liquid shower saddle idols jaded sails filed legal folder sledge squall larger grade jails lakes roses rupee squeal fields lulled dislike apple dirks lease equip skill easels dollar poorer require asked forks hedge would grass jokers jailer equals refresh fails usual liked walks peaks orders follow drawls defiles fish kodak ahead larks quail apples reader flukes fiddle dead rails sales agile isles should liquid shower saddle idols jaded sails filed legal folder sledge squall larger grade jails lakes roses rupee squeal fields lulled dislike apple dirks lease equip skill easels dollar poorer require asked forks hedge would grass jokers jailer equals refresh fails usual liked walks peaks orders follow drawls defiles",
             3: "lawyers streaks shipped hillside herewith proposals typewriter shekels forward desired loophole jugglers strapples yesterday hatless figures prepare feathery freehold struggles kirkwall thought thyself treated assessed prepared territory laughter quarter yodlers youthful although supplies guileless waggish freight further ploughes shippers slightly telegraph without dutiful pleased goodwill tortuous property addressed powerfully laughed kettles whiskers thorough repeated flashlight etiquette petrols regular equipped lilliput lawyers streaks shipped hillside herewith proposals typewriter shekels forward desired loophole jugglers strapples yesterday hatless figures prepare feathery freehold struggles kirkwall thought thyself treated assessed prepared territory laughter quarter yodlers youthful although supplies guileless waggish freight further ploughes shippers slightly telegraph without dutiful pleased goodwill tortuous property addressed powerfully laughed kettles whiskers thorough repeated flashlight etiquette petrols regular equipped lilliput",
@@ -300,9 +300,9 @@
             10: "Pack my box with five dozen liquor jugs. A quick brown fox slowly jumped over the lazy dog. Petty quiz badly vexes chuffy worker hungry James. Five prizes were quickly distributed by the judge to examinees. Gay men with extra pluck and zeal would often have quiet jobs. Black market fugitive should be quickly expelled with zeal by any just society. Quiet Parsi fugitives in India extolled justly their most watched book Zend Avesta. May we have Jack Squires fix the big lamps for Andy Ziegler. Ramji worked with zeal and vigor to protect his quietful subjects excellently well. Handy Jack quixotic laziness may grow to be far expensive.",
 
             11: "The French Revolution was in 1789. The partition of India affected more than fifty percent of our people. I gave him a cheque for Rs 100 only. Rice was sold at Rs 325 per bag. Every Indian said that partition is bad. Messrs Raman and Company Limited were great toy makers. Raman got three fourth and Krishna one fourth of their shares. The cost of a good clock is two pounds. Rajan and Kumaran sailed on second February nineteen sixty for England. Have you seen my brother in law Ramachary. Received five sets of typists tables and chairs. Leave two spaces after comma.",
-            12: "",
-            
-            
+            12: "ask fad alas asks shad",
+
+
         };
 
 
@@ -338,23 +338,40 @@
         loadChapter();
 
         function startTest() {
-            if (studentName.value.trim() === "") { alert("कृपया नाम लिखें"); return; }
-            if (!interval) {
+            if (studentName.value.trim() === "") {
+                alert("कृपया नाम लिखें");
+                return;
+            }
+
+            // Agar already running hai to dobara interval mat banao
+            if (interval !== null && !paused) return;
+
+            // Agar pehli baar start ho raha hai
+            if (interval === null) {
                 timeLeft = parseInt(timeSelect.value);
             }
+
             paused = false;
             typingArea.disabled = false;
             typingArea.focus();
-            interval = setInterval(() => {
-                if (!paused) {
-                    timeLeft--;
-                    updateTimer();
-                    if (timeLeft <= 0) endTest();
-                }
-            }, 1000);
+
+            // Sirf ek hi interval chale
+            if (interval === null) {
+                interval = setInterval(() => {
+                    if (!paused) {
+                        timeLeft--;
+                        updateTimer();
+                        if (timeLeft <= 0) endTest();
+                    }
+                }, 1000);
+            }
         }
 
-        function pauseTest() { paused = !paused; }
+        function pauseTest() {
+            if (interval === null) return; // agar start hi nahi hua
+            paused = !paused;
+        }
+
 
         function submitTest() {
             if (!interval) { alert("Test start नहीं हुआ"); return; }
@@ -368,14 +385,24 @@
         }
 
         typingArea.addEventListener("input", () => {
-            const typed = typingArea.value.split(" ");
+
+            const typed = typingArea.value.trim().split(/\s+/);
             const spans = document.querySelectorAll("#paragraph span");
+
             spans.forEach((span, i) => {
-                if (typed[i] == null) span.className = "";
+                if (!typed[i]) span.className = "";
                 else if (typed[i] === paraWords[i]) span.className = "correct";
                 else span.className = "incorrect";
             });
+
+            // 🔥 AUTO SUBMIT WHEN COMPLETED
+            if (typed.length === paraWords.length) {
+                if (typed[typed.length - 1] === paraWords[paraWords.length - 1]) {
+                    endTest();
+                }
+            }
         });
+
 
         function endTest() {
             clearInterval(interval);
@@ -425,6 +452,7 @@
                 e.preventDefault();
             }
         });
+
 
     </script>
 </body>
