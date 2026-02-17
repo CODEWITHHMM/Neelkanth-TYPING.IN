@@ -248,31 +248,19 @@
     </div>
 
     <script>
-
         document.addEventListener("copy", e => e.preventDefault());
         document.addEventListener("cut", e => e.preventDefault());
         document.addEventListener("paste", e => e.preventDefault());
-
         document.addEventListener("contextmenu", e => e.preventDefault());
 
         // ==================== DEVTOOLS / INSPECT DISABLE ====================
         document.addEventListener("keydown", function (e) {
-            // F12
-            if (e.keyCode === 123) {
-                e.preventDefault();
-            }
-            // Ctrl + Shift + I / J / C
-            if (e.ctrlKey && e.shiftKey &&
-                (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
-                e.preventDefault();
-            }
-            // Ctrl + U (view source)
-            if (e.ctrlKey && e.keyCode === 85) {
-                e.preventDefault();
-            }
+            if (e.keyCode === 123) e.preventDefault();
+            if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) e.preventDefault();
+            if (e.ctrlKey && e.keyCode === 85) e.preventDefault();
         });
 
-        // ==================== FULLSCREEN ON START ====================
+        // ==================== FULLSCREEN ====================
         function goFullScreen() {
             let elem = document.documentElement;
             if (elem.requestFullscreen) elem.requestFullscreen();
@@ -281,31 +269,33 @@
             else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
         }
 
-        // 🔥 Start button click pe fullscreen add
         const originalStartTest = startTest;
         startTest = function () {
-            goFullScreen();      // F11 jaisa effect
-            originalStartTest(); // purana startTest bhi chalega
+            goFullScreen();
+            originalStartTest();
         }
+
+        // ==================== CHAPTER DATA ====================
         const chapters = {
-            1: "ask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhalls ask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhall sask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhalls",
-            2: "fish kodak ahead larks quail apples reader flukes fiddlefish kodak ahead larks quail apples reader flukes fiddle dead rails sales agile isles should liquid shower saddle idols jaded sails filed legal folder sledge squall larger grade jails lakes roses rupee squeal fields lulled dislike apple dirks lease equip skill easels dollar poorer require asked forks hedge would grass jokers jailer equals refresh fails usual liked walks peaks orders follow drawls defiles fish kodak ahead larks quail apples reader flukes fiddle dead rails sales agile isles should liquid shower saddle idols jaded sails filed legal folder sledge squall larger grade jails lakes roses rupee squeal fields lulled dislike apple dirks lease equip skill easels dollar poorer require asked forks hedge would grass jokers jailer equals refresh fails usual liked walks peaks orders follow drawls defiles",
-            3: "lawyers streaks shipped hillside herewith proposals typewriter shekels forward desired loophole jugglers strapples yesterday hatless figures prepare feathery freehold struggles kirkwall thought thyself treated assessed prepared territory laughter quarter yodlers youthful although supplies guileless waggish freight further ploughes shippers slightly telegraph without dutiful pleased goodwill tortuous property addressed powerfully laughed kettles whiskers thorough repeated flashlight etiquette petrols regular equipped lilliput lawyers streaks shipped hillside herewith proposals typewriter shekels forward desired loophole jugglers strapples yesterday hatless figures prepare feathery freehold struggles kirkwall thought thyself treated assessed prepared territory laughter quarter yodlers youthful although supplies guileless waggish freight further ploughes shippers slightly telegraph without dutiful pleased goodwill tortuous property addressed powerfully laughed kettles whiskers thorough repeated flashlight etiquette petrols regular equipped lilliput",
-            4: "amazed journal gambols pickling vineyard grizzled except jackets fixture austrian appeared frequent logical student spacing movement joyfully premises sixfold succeed western examined accuracy fortress daybook lecture neither vexation quantity executor kindled general private practice question deduction jingled amulets service produces requires judicious jumbled arrival relative provoked starting materials swivels fizzed possible somewhat cylinder assessment violets regaled becoming gracious thousand appearance amazed journal gambols pickling vineyard grizzled except jackets fixture austrian appeared frequent logical student spacing movement joyfully premises sixfold succeed western examined accuracy fortress daybook lecture neither vexation quantity executor kindled general private practice question deduction jingled amulets service produces requires judicious jumbled arrival relative provoked starting materials swivels fizzed possible somewhat cylinder assessment violets regaled becoming gracious thousand appearanceamazed journal gambols pickling vineyard grizzled except jackets fixture austrian appeared frequent logical student spacing movement joyfully premises sixfold succeed western examined accuracy fortress daybook lecture neither vexation quantity executor kindled general private practice question deduction jingled amulets service produces requires judicious jumbled arrival relative provoked starting materials swivels fizzed possible somewhat cylinder assessment violets regaled becoming gracious thousand appearance",
-            5: "points children clockwork remittance punctuation constitution common frequent requisite attractive distinction arrangements sinful ambition novelties yardsticks environment approximately summer umbrella answering foundation explanation distinguished behalf armature regarding guaranteed association ornamentation exhibit relieved exceeding sufference competition peculiarities thunder citizens abundance atmosphere transmitted specification maximum commonly apparatus partition questionless investigations adopting pamphlets accompany communicate installation circumstances points children clockwork remittance punctuation constitution common frequent requisite attractive distinction arrangements sinful ambition novelties yardsticks environment approximately summer umbrella answering foundation explanation distinguished behalf armature regarding guaranteed association ornamentation exhibit relieved exceeding sufference competition peculiarities thunder citizens abundance atmosphere transmitted specification maximum commonly apparatus partition questionless investigations adopting pamphlets accompany communicate installation circumstances",
-            6: "876 1973 1847 23,846 10,746 1,37,946 424 5567 8563 11,200 11,140 7,13,345 537 2136 2746 23,476 23,450 14,06,786 948 4520 7361 15,409 27,763 18,76,432 473 6286 3950 78,796 86,521 20,54,362 572 9567 925,489 95,362 31,98,453",
-            7: "July Canada Gandhiji Minister Registered Sita Kerala Varghese Delivery Swamimalai Leela Bezawada Strictly Tamilnadu Departure March Janatha Govindan Secretary Concurrent Raman Express Exercise Conferred Notification Guntur Prakash Schedule Government Confidential Kannan October Calcutta Kumbakonam Superintendent",
-            8: "Lost time is never regained. Get up early and do your work. To-day's youth and to-morrow's old. Age is virtue when wisdom is with it. Measure your word before it goes out of you. Children are innocent and should be guided rightly. Our Land had great sages who knew the eternal truth.  ",
-            9: "Men live by deeds and not by years. God helps those who help themselves. Honest work always brings its reward. A man without character should not be trusted. Rude language speaks ill of the man who uses it. Never lose courage when faced with difficulties. It is easier to ask questions than to answer them. Pandit Nehru always devoted himself to public affairs. It is essential to use the touch method. The correct degree of touch is an important factor. The touch should be neither too heavy nor too light. High speed is within the capacity of every typist. Astronomy is the oldest science. Young men have a right to be happy. A petty man refuses to admit defeat. Man is mortal, but his spirit is immortal. Sivaji fought to keep the real spirit of India alive. Tilak was a great Patriot and also a brilliant scholar.",
-            10: "Pack my box with five dozen liquor jugs. A quick brown fox slowly jumped over the lazy dog. Petty quiz badly vexes chuffy worker hungry James. Five prizes were quickly distributed by the judge to examinees. Gay men with extra pluck and zeal would often have quiet jobs. Black market fugitive should be quickly expelled with zeal by any just society. Quiet Parsi fugitives in India extolled justly their most watched book Zend Avesta. May we have Jack Squires fix the big lamps for Andy Ziegler. Ramji worked with zeal and vigor to protect his quietful subjects excellently well. Handy Jack quixotic laziness may grow to be far expensive.",
+                1: "ask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhalls ask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhall sask fad alas asks shad lads flags flask glass jag fag fall hash glad sags galls halls salad jak has jags gaff hall dash flash slash flasks lad sad lash adds gall gash shall lakhs dhalls",
+                2: "fish kodak ahead larks quail apples reader flukes fiddlefish kodak ahead larks quail apples reader flukes fiddle dead rails sales agile isles should liquid shower saddle idols jaded sails filed legal folder sledge squall larger grade jails lakes roses rupee squeal fields lulled dislike apple dirks lease equip skill easels dollar poorer require asked forks hedge would grass jokers jailer equals refresh fails usual liked walks peaks orders follow drawls defiles fish kodak ahead larks quail apples reader flukes fiddle dead rails sales agile isles should liquid shower saddle idols jaded sails filed legal folder sledge squall larger grade jails lakes roses rupee squeal fields lulled dislike apple dirks lease equip skill easels dollar poorer require asked forks hedge would grass jokers jailer equals refresh fails usual liked walks peaks orders follow drawls defiles",
+                3: "lawyers streaks shipped hillside herewith proposals typewriter shekels forward desired loophole jugglers strapples yesterday hatless figures prepare feathery freehold struggles kirkwall thought thyself treated assessed prepared territory laughter quarter yodlers youthful although supplies guileless waggish freight further ploughes shippers slightly telegraph without dutiful pleased goodwill tortuous property addressed powerfully laughed kettles whiskers thorough repeated flashlight etiquette petrols regular equipped lilliput lawyers streaks shipped hillside herewith proposals typewriter shekels forward desired loophole jugglers strapples yesterday hatless figures prepare feathery freehold struggles kirkwall thought thyself treated assessed prepared territory laughter quarter yodlers youthful although supplies guileless waggish freight further ploughes shippers slightly telegraph without dutiful pleased goodwill tortuous property addressed powerfully laughed kettles whiskers thorough repeated flashlight etiquette petrols regular equipped lilliput",
+                4: "amazed journal gambols pickling vineyard grizzled except jackets fixture austrian appeared frequent logical student spacing movement joyfully premises sixfold succeed western examined accuracy fortress daybook lecture neither vexation quantity executor kindled general private practice question deduction jingled amulets service produces requires judicious jumbled arrival relative provoked starting materials swivels fizzed possible somewhat cylinder assessment violets regaled becoming gracious thousand appearance amazed journal gambols pickling vineyard grizzled except jackets fixture austrian appeared frequent logical student spacing movement joyfully premises sixfold succeed western examined accuracy fortress daybook lecture neither vexation quantity executor kindled general private practice question deduction jingled amulets service produces requires judicious jumbled arrival relative provoked starting materials swivels fizzed possible somewhat cylinder assessment violets regaled becoming gracious thousand appearanceamazed journal gambols pickling vineyard grizzled except jackets fixture austrian appeared frequent logical student spacing movement joyfully premises sixfold succeed western examined accuracy fortress daybook lecture neither vexation quantity executor kindled general private practice question deduction jingled amulets service produces requires judicious jumbled arrival relative provoked starting materials swivels fizzed possible somewhat cylinder assessment violets regaled becoming gracious thousand appearance",
+                5: "points children clockwork remittance punctuation constitution common frequent requisite attractive distinction arrangements sinful ambition novelties yardsticks environment approximately summer umbrella answering foundation explanation distinguished behalf armature regarding guaranteed association ornamentation exhibit relieved exceeding sufference competition peculiarities thunder citizens abundance atmosphere transmitted specification maximum commonly apparatus partition questionless investigations adopting pamphlets accompany communicate installation circumstances points children clockwork remittance punctuation constitution common frequent requisite attractive distinction arrangements sinful ambition novelties yardsticks environment approximately summer umbrella answering foundation explanation distinguished behalf armature regarding guaranteed association ornamentation exhibit relieved exceeding sufference competition peculiarities thunder citizens abundance atmosphere transmitted specification maximum commonly apparatus partition questionless investigations adopting pamphlets accompany communicate installation circumstances",
+                6: "876 1973 1847 23,846 10,746 1,37,946 424 5567 8563 11,200 11,140 7,13,345 537 2136 2746 23,476 23,450 14,06,786 948 4520 7361 15,409 27,763 18,76,432 473 6286 3950 78,796 86,521 20,54,362 572 9567 925,489 95,362 31,98,453",
+                7: "July Canada Gandhiji Minister Registered Sita Kerala Varghese Delivery Swamimalai Leela Bezawada Strictly Tamilnadu Departure March Janatha Govindan Secretary Concurrent Raman Express Exercise Conferred Notification Guntur Prakash Schedule Government Confidential Kannan October Calcutta Kumbakonam Superintendent",
+                8: "Lost time is never regained. Get up early and do your work. To-day's youth and to-morrow's old. Age is virtue when wisdom is with it. Measure your word before it goes out of you. Children are innocent and should be guided rightly. Our Land had great sages who knew the eternal truth.  ",
+                9: "Men live by deeds and not by years. God helps those who help themselves. Honest work always brings its reward. A man without character should not be trusted. Rude language speaks ill of the man who uses it. Never lose courage when faced with difficulties. It is easier to ask questions than to answer them. Pandit Nehru always devoted himself to public affairs. It is essential to use the touch method. The correct degree of touch is an important factor. The touch should be neither too heavy nor too light. High speed is within the capacity of every typist. Astronomy is the oldest science. Young men have a right to be happy. A petty man refuses to admit defeat. Man is mortal, but his spirit is immortal. Sivaji fought to keep the real spirit of India alive. Tilak was a great Patriot and also a brilliant scholar.",
+                10: "Pack my box with five dozen liquor jugs. A quick brown fox slowly jumped over the lazy dog. Petty quiz badly vexes chuffy worker hungry James. Five prizes were quickly distributed by the judge to examinees. Gay men with extra pluck and zeal would often have quiet jobs. Black market fugitive should be quickly expelled with zeal by any just society. Quiet Parsi fugitives in India extolled justly their most watched book Zend Avesta. May we have Jack Squires fix the big lamps for Andy Ziegler. Ramji worked with zeal and vigor to protect his quietful subjects excellently well. Handy Jack quixotic laziness may grow to be far expensive.",
 
-            11: "The French Revolution was in 1789. The partition of India affected more than fifty percent of our people. I gave him a cheque for Rs 100 only. Rice was sold at Rs 325 per bag. Every Indian said that partition is bad. Messrs Raman and Company Limited were great toy makers. Raman got three fourth and Krishna one fourth of their shares. The cost of a good clock is two pounds. Rajan and Kumaran sailed on second February nineteen sixty for England. Have you seen my brother in law Ramachary. Received five sets of typists tables and chairs. Leave two spaces after comma.",
-            12: "ask fad alas asks shad",
-
-
-        };
+                11: "The French Revolution was in 1789. The partition of India affected more than fifty percent of our people. I gave him a cheque for Rs 100 only. Rice was sold at Rs 325 per bag. Every Indian said that partition is bad. Messrs Raman and Company Limited were great toy makers. Raman got three fourth and Krishna one fourth of their shares. The cost of a good clock is two pounds. Rajan and Kumaran sailed on second February nineteen sixty for England. Have you seen my brother in law Ramachary. Received five sets of typists tables and chairs. Leave two spaces after comma.",
+                12: "ask fad alas asks shad",
+                13: "asdf jkl; asdf ;lkjas dj fk sl ad fj sadf jkl; fdsa ;lkj ask dad fall lad flask sad all dad asjk df;l asdf jkl; a s d f j k l ; fdsa jkl; asdf ;lkj lad sad flask dad asdf asjk jkl; fdsa fall ask dad sad asdj fl;k sadf jkl; dad fall ask lad jkl; asdf lkj; fdsa ask fall sad dad asdf jkl; sadf ;lkj asdf jkl; asdf ;lkjas dj fk sl ad fj sadf jkl; fdsa ;lkj ask dad fall lad flask sad all dad asjk df;l asdf jkl; a s d f j k l ; fdsa jkl; asdf ;lkj lad sad flask dad asdf asjk jkl; fdsa fall ask dad sad asdj fl;k sadf jkl; dad fall ask lad jkl; asdf lkj; fdsa ask fall sad dad asdf jkl; sadf ;lkj",
 
 
+            };
+
+        // ==================== ELEMENTS ====================
         const chapterSelect = document.getElementById("chapterSelect");
         const paragraph = document.getElementById("paragraph");
         const typingArea = document.getElementById("typingArea");
@@ -317,10 +307,11 @@
         const rWpm = document.getElementById("rWpm");
         const rErrors = document.getElementById("rErrors");
         const rAccuracy = document.getElementById("rAccuracy");
+        const finalGrade = document.getElementById("finalGrade");
 
         let text = "", paraWords = [], timeLeft = 0, interval = null, paused = false;
 
-        // Dynamically populate chapter select
+        // ==================== CHAPTER DROPDOWN ====================
         for (let key in chapters) {
             let opt = document.createElement("option");
             opt.value = key;
@@ -328,34 +319,53 @@
             chapterSelect.appendChild(opt);
         }
 
+        // ==================== LOAD CHAPTER (RESET LOGIC ADDED) ====================
         function loadChapter() {
+            if (interval !== null) {
+                clearInterval(interval);
+                interval = null;
+            }
+
+            paused = false;
+            timeLeft = parseInt(timeSelect.value);
+            updateTimer();
+
+            result.style.display = "none";
+            rName.innerText = "";
+            rWpm.innerText = "0";
+            rErrors.innerText = "0";
+            rAccuracy.innerText = "0";
+            finalGrade.innerText = "";
+
             text = chapters[chapterSelect.value];
             paraWords = text.split(" ");
             paragraph.innerHTML = paraWords.map(w => `<span>${w} </span>`).join("");
+
             typingArea.value = "";
+            typingArea.disabled = true;
         }
+
         chapterSelect.addEventListener("change", loadChapter);
         loadChapter();
 
+        // ==================== START TEST ====================
         function startTest() {
             if (studentName.value.trim() === "") {
                 alert("कृपया नाम लिखें");
                 return;
             }
 
-            // Agar already running hai to dobara interval mat banao
             if (interval !== null && !paused) return;
 
-            // Agar pehli baar start ho raha hai
             if (interval === null) {
                 timeLeft = parseInt(timeSelect.value);
+                updateTimer();
             }
 
             paused = false;
             typingArea.disabled = false;
             typingArea.focus();
 
-            // Sirf ek hi interval chale
             if (interval === null) {
                 interval = setInterval(() => {
                     if (!paused) {
@@ -368,14 +378,13 @@
         }
 
         function pauseTest() {
-            if (interval === null) return; // agar start hi nahi hua
+            if (interval === null) return;
             paused = !paused;
         }
 
-
         function submitTest() {
             if (!interval) { alert("Test start नहीं हुआ"); return; }
-            endTest(); finalGrade.innerText = getGrade(acc);
+            endTest();
         }
 
         function updateTimer() {
@@ -384,8 +393,8 @@
             timer.innerText = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }
 
+        // ==================== TYPING LOGIC ====================
         typingArea.addEventListener("input", () => {
-
             const typed = typingArea.value.trim().split(/\s+/);
             const spans = document.querySelectorAll("#paragraph span");
 
@@ -395,15 +404,12 @@
                 else span.className = "incorrect";
             });
 
-            // 🔥 AUTO SUBMIT WHEN COMPLETED
-            if (typed.length === paraWords.length) {
-                if (typed[typed.length - 1] === paraWords[paraWords.length - 1]) {
-                    endTest();
-                }
+            if (typed.length === paraWords.length && typed[typed.length - 1] === paraWords[paraWords.length - 1]) {
+                endTest();
             }
         });
 
-
+        // ==================== END TEST ====================
         function endTest() {
             clearInterval(interval);
             interval = null;
@@ -422,12 +428,11 @@
             rWpm.innerText = wpm;
             rErrors.innerText = errors;
             rAccuracy.innerText = acc;
+            finalGrade.innerText = getGrade(acc);
             result.style.display = "block";
         }
 
-        const finalGrade = document.getElementById("finalGrade");
-
-        // Grade logic
+        // ==================== GRADE ====================
         function getGrade(acc) {
             if (acc >= 95) return "A+";
             if (acc >= 90) return "A";
@@ -435,26 +440,23 @@
             if (acc >= 70) return "C";
             return "Needs Practice";
         }
+
+        // ==================== BACKSPACE CONTROL ====================
         let backspaceDisabled = true;
         const backspaceBtn = document.getElementById("backspaceBtn");
 
-        // Button toggle
         function toggleBackspace() {
             backspaceDisabled = !backspaceDisabled;
-            backspaceBtn.innerText = backspaceDisabled
-                ? "Backspace: OFF"
-                : "Backspace: ON";
+            backspaceBtn.innerText = backspaceDisabled ? "Backspace: OFF" : "Backspace: ON";
         }
 
-        // Actual backspace block
         typingArea.addEventListener("keydown", function (e) {
             if (backspaceDisabled && e.key === "Backspace") {
                 e.preventDefault();
             }
         });
-
-
     </script>
+
 </body>
 
 </html>
