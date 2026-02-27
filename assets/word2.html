@@ -142,7 +142,9 @@
                 <option value="15">15 Minute</option>
             </select>
 
+           
             <button onclick="startTimer()">Start</button>
+            <button onclick="submitTest()">Submit</button>
             <button onclick="resetAll()">Reset</button>
         </div>
 
@@ -228,6 +230,31 @@
             updateTimerDisplay();
             wpmDisplay.textContent = 0;
         }
+        function submitTest() {
+                if (timer === null) {
+                    alert("Test start nahi hua hai!");
+                    return;
+                }
+
+                clearInterval(timer);
+                timer = null;
+
+                calculateWPM();
+
+                typingArea.disabled = true;
+
+                let finalWPM = wpmDisplay.textContent;
+                let typedText = typingArea.value.trim();
+                let wordCount = typedText === "" ? 0 : typedText.split(/\s+/).length;
+                let timeUsed = ((totalTime - timeLeft) / 60).toFixed(2);
+
+                alert(
+                    "✅ Test Submitted!\n\n" +
+                    "📝 Total Words: " + wordCount +
+                    "\n⏱ Time Used: " + timeUsed + " min" +
+                    "\n⚡ Final WPM: " + finalWPM
+                );
+            }
     </script>
 
 </body>
