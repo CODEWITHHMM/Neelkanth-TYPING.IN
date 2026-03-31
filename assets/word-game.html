@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Typing Game Pro+</title>
+
+    <!-- ✅ Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        .word {
+            font-size: 40px;
+            letter-spacing: 3px;
+        }
+
+        .correct {
+            color: #22c55e;
+        }
+
+        .wrong {
+            color: #ef4444;
+        }
+
+        .result {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="card bg-dark text-white shadow-lg p-4 mx-auto" style="max-width: 600px;">
+
+            <h2 class="text-center mb-4">⌨️ Typing Game Pro+</h2>
+
+            <!-- Setup -->
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <input type="text" id="name" class="form-control" placeholder="Enter Name">
+                </div>
+
+                <div class="col-md-6">
+                    <select id="chapter" class="form-select">
+                        <option value="">Select Chapter</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="coding">Coding</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12">
+                    <select id="setTime" class="form-select">
+                        <option value="">Select Time</option>
+                        <option value="1">1 Minute</option>
+                        <option value="2">2 Minute</option>
+                        <option value="5">5 Minute</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="text-center mt-3">
+                <button class="btn btn-success me-2" onclick="startGame()">Start</button>
+                <button class="btn btn-warning me-2" id="backspaceToggle">Backspace: ON</button>
+                <button class="btn btn-danger" onclick="submitGame()">Submit</button>
+            </div>
+
+            <!-- Word -->
+            <div class="text-center my-4">
+                <div id="word" class="word">Ready?</div>
+                <input type="text" id="input" class="form-control mt-3 text-center" placeholder="Start typing..."
+                    disabled>
+            </div>
+
+            <!-- Info -->
+            <div class="d-flex justify-content-between">
+                <div>⏱ Time: <span id="time">0</span></div>
+                <div>🎯 Score: <span id="score">0</span></div>
+            </div>
+
+            <!-- Result -->
+            <div class="result mt-4 p-3 bg-secondary rounded" id="result">
+                <h4 class="text-center">🏆 Result</h4>
+
+                <p>Name: <span id="rName"></span></p>
+                <p>Chapter: <span id="rChapter"></span></p>
+                <p>Score: <span id="rScore"></span></p>
+                <p>WPM: <span id="rWpm"></span></p>
+                <p>Accuracy: <span id="rAcc"></span>%</p>
+                <p>Errors: <span id="rErrors"></span></p>
+                <p>Wrong Words: <span id="rWrongWords"></span></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const wordSets = {
+            easy: ["cat", "dog", "pen", "sun", "book", "tree", "milk", "ball"],
+            medium: ["apple", "banana", "chair", "table", "window", "school"],
+            hard: ["javascript", "developer", "keyboard", "application", "performance"],
+            coding: ["function", "variable", "array", "object", "react", "nodejs", "database"]
+        };
+
+        let words = [];
+        let currentWord = "";
+        let score = 0;
+        let timeLeft = 0;
+        let totalTime = 0;
+        let timer;
+
+        let totalWords = 0;
+        let correctWords = 0;
+        let errors = 0;
+        let wrongWords = [];
+        let backspaceAllowed = true;
+
+        const wordEl = document.getElementById("word");
+        const inputEl = document.getElementById("input");
+        const scoreEl = document.getElementById("score");
+        const timeEl = document.getElementById("time");
+        const backBtn = document.getElementById("backspaceToggle");
+
+        function randomWord() {
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
+        function startGame() {
+            const name = document.getElementById("name").value;
+            const chapter = document.getElementById("chapter").value;
+            const minutes = document.getElementById("setTime").value;
+
+            if (!name || !chapter || !minutes) {
+                alert("Sab select karo!");
+                return;
+            }
+
+            words = wordSets[chapter];
+
+            totalTime = minutes * 60;
+            timeLeft = totalTime;
+
+            score = 0;
+            totalWords = 0;
+            correctWords = 0;
+            errors = 0;
+            wrongWords = [];
+
+            inputEl.disabled = false;
+            inputEl.focus();
+            inputEl.value = "";
+
+            scoreEl.innerText = score;
+            timeEl.innerText = timeLeft;
+
+            document.getElementById("result").style.display = "none";
+
+            nextWord();
+
+            clearInterval(timer);
+            timer = setInterval(() => {
+                timeLeft--;
+                timeEl.innerText = timeLeft;
+
+                if (timeLeft <= 0) submitGame();
+            }, 1000);
+        }
+
+        function nextWord() {
+            currentWord = randomWord();
+            wordEl.innerText = currentWord;
+        }
+
+        // ✅ Backspace Toggle
+        backBtn.addEventListener("click", () => {
+            backspaceAllowed = !backspaceAllowed;
+            backBtn.innerText = "Backspace: " + (backspaceAllowed ? "ON" : "OFF");
+
+            backBtn.classList.toggle("btn-success", backspaceAllowed);
+            backBtn.classList.toggle("btn-danger", !backspaceAllowed);
+        });
+
+        // ✅ Typing Logic
+        inputEl.addEventListener("keydown", (e) => {
+
+            // ❌ Backspace block
+            if (e.key === "Backspace" && !backspaceAllowed) {
+                e.preventDefault();
+                return;
+            }
+
+            // ✅ Space press = submit word
+            if (e.key === " ") {
+                e.preventDefault();
+
+                let typedWord = inputEl.value.trim();
+                totalWords++;
+
+                if (typedWord === currentWord) {
+                    correctWords++;
+                    score++;
+                    wordEl.className = "word correct";
+                } else {
+                    errors++;
+                    wrongWords.push(typedWord + " ❌ (" + currentWord + ")");
+                    wordEl.className = "word wrong";
+                }
+
+                setTimeout(() => {
+                    wordEl.className = "word text-white";
+                }, 300);
+
+                scoreEl.innerText = score;
+                inputEl.value = "";
+                nextWord();
+            }
+        });
+
+        // live typing highlight
+        inputEl.addEventListener("input", () => {
+            if (currentWord.startsWith(inputEl.value)) {
+                wordEl.className = "word text-white";
+            } else {
+                wordEl.className = "word wrong";
+            }
+        });
+
+        // ✅ Submit
+        function submitGame() {
+            clearInterval(timer);
+            inputEl.disabled = true;
+
+            const name = document.getElementById("name").value;
+            const chapter = document.getElementById("chapter").value;
+
+            let accuracy = totalWords === 0 ? 0 :
+                Math.round((correctWords / totalWords) * 100);
+
+            let minutesUsed = (totalTime - timeLeft) / 60;
+            let wpm = minutesUsed === 0 ? 0 :
+                Math.round(score / minutesUsed);
+
+            document.getElementById("rName").innerText = name;
+            document.getElementById("rChapter").innerText = chapter;
+            document.getElementById("rScore").innerText = score;
+            document.getElementById("rWpm").innerText = wpm;
+            document.getElementById("rAcc").innerText = accuracy;
+            document.getElementById("rErrors").innerText = errors;
+            document.getElementById("rWrongWords").innerText =
+                wrongWords.length ? wrongWords.join(", ") : "None";
+
+            document.getElementById("result").style.display = "block";
+            wordEl.innerText = "Finished!";
+        }
+    </script>
+
+</body>
+
+</html>
