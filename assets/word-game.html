@@ -52,9 +52,9 @@
                     <select id="Row" class="form-select">
                         <option value="">Select Row</option>
                         <option value="Home">Home</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                        <option value="coding">Coding</option>
+                        <option value="Upper">Upper</option>
+                        <option value="Lower">Lower</option>
+                        <option value="Number">Number</option>
                     </select>
                 </div>
 
@@ -126,9 +126,34 @@
                 "falls", "asks", "flasks", "salads", "flash", "dallas", "shall", "allay", "all", "lass",
                 "fall", "sal", "ask", "ads", "add", "sad", "dad", "fad", "lad", "all",
                 "ask", "lass", "fall", "flask", "dash", "shall", "glass", "salad", "alfalfa", "falls"],
-            medium: ["apple", "banana", "chair", "table", "window", "school"],
-            hard: ["javascript", "developer", "keyboard", "application", "performance"],
-            coding: ["function", "variable", "array", "object", "react", "nodejs", "database"]
+            Upper: ["type", "write", "power", "water", "tower", "quiet", "outer", "route", "wider", "wired",
+                "tried", "tired", "write", "quite", "quote", "equip", "input", "output", "upper", "lower",
+                "party", "earth", "heart", "their", "other", "there", "three", "where", "white", "write",
+                "world", "would", "under", "round", "sound", "found", "bound", "pound", "court", "short",
+                "sport", "report", "support", "import", "export", "port", "sort", "word", "row", "tow",
+                "two", "tie", "toe", "top", "pot", "pit", "put", "pet", "part", "trap",
+                "wrap", "warp", "pair", "pear", "rear", "wear", "tear", "year", "your", "tour",
+                "pour", "four", "hour", "our", "rope", "ropey", "wipe", "wire", "tire", "tier",
+                "pier", "peer", "rope", "ripe", "rioter", "writer", "twire", "powder", "toward", "reward",
+                "upward", "down", "owner", "powerful", "towering", "writing", "typing", "output", "input", "equip"],
+            Lower: ["zany", "zest", "zonal", "zone", "zoom", "zebra", "zero", "zestful", "zinger", "zonal",
+                "axis", "exam", "exact", "excel", "extra", "exist", "exit", "exile", "exalt", "exams",
+                "cabin", "cable", "cache", "camel", "cameo", "canal", "candy", "canny", "canoe", "caste",
+                "value", "valve", "valid", "vapor", "vivid", "vital", "voice", "vocal", "vowel", "venue",
+                "basic", "basis", "basin", "basil", "batch", "bacon", "badge", "baker", "baler", "basil",
+                "naval", "navel", "nasty", "natal", "native", "navy", "needy", "nerve", "never", "noble",
+                "magic", "mango", "maple", "maker", "mason", "maxim", "medal", "media", "mercy", "metal",
+                "sand", "land", "hand", "band", "bend", "send", "tend", "lend", "mend", "candy",
+                "vanish", "banish", "finish", "punish", "van", "man", "can", "fan", "pan", "ran"],
+            Number: ["a1", "s2", "d3", "f4", "j5", "k6", "l7", "a8", "s9", "d0",
+                "as1", "df2", "jk3", "la4", "sa5", "da6", "fa7", "ja8", "ka9", "la0",
+                "ad1", "sf2", "dj3", "fk4", "jl5", "ak6", "sl7", "df8", "jk9", "la0",
+                "sa1d", "fa2s", "da3f", "ja4k", "ka5l", "la6a", "as7d", "df8s", "jk9a", "la0s",
+                "1as", "2df", "3jk", "4la", "5sa", "6da", "7fa", "8ja", "9ka", "0la",
+                "a1s", "d2f", "j3k", "l4a", "s5a", "d6a", "f7a", "j8a", "k9a", "l0a",
+                "as12", "df23", "jk34", "la45", "sa56", "da67", "fa78", "ja89", "ka90", "la01",
+                "1asd", "2dfg", "3jkl", "4las", "5sad", "6dfa", "7fja", "8jka", "9kal", "0las",
+                "a12s", "d23f", "j34k", "l45a", "s56a", "d67a", "f78a", "j89a", "k90a", "l01a"]
         };
 
         let words = [];
