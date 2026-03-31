@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Neelkanth Typing & Steno Classes</title>
+    <title>Neelkanth Typing</title>
     <link rel="icon" type="image/png" href="./img/logo.ico">
 
     <style>
@@ -272,7 +272,7 @@
                 <h1 style="font-size: 1.2rem;
       background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;">Neelkanth Typing & Steno Institute</h1>
+      -webkit-text-fill-color: transparent;">Neelkanth Typing</h1>
                 <span>English | Hindi | Stenography Training</span>
             </div>
         </div>
@@ -340,6 +340,61 @@
                     margin: 0;
                     font-size: 14px;
                     color: #333;
+                }
+
+                .exam {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 12px;
+                }
+
+                .card-link {
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .exam-card {
+                    width: 110px;
+                    padding: 12px;
+                    border-radius: 10px;
+                    background: #ffffff;
+                    border: 1px solid #e5e7eb;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: 0.25s;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                }
+
+                .exam-card:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+                }
+
+                /* Top label (EN, KD, MG) */
+                .code {
+                    display: block;
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+
+                /* Color variants */
+                .en {
+                    color: #2563eb;
+                }
+
+                .kd {
+                    color: #16a34a;
+                }
+
+                .mg {
+                    color: #f59e0b;
+                }
+
+                /* Text */
+                .exam-card p {
+                    margin:5px;
+                    font-size: 15px;
                 }
             </style>
 
@@ -418,42 +473,78 @@
 
             <div class="section">
                 <h3>Hindi Typing – KrutiDev & DevLys</h3>
-                <div class="boxes">
-                    <div class="box">
-                        <span>अ ब</span>
-                        Learn Typing
-                    </div>
-                    <div class="box">
-                        <span>अ ब</span>
-                        Take Tests
-                    </div>
+                <div class="card-grid">
+                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
+                        <div class="typing-card">
+                            <span>अ ब</span>
+                            <p>Learn Typing</p>
+                        </div>
+                    </a>
+                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
+                        <div class="typing-card">
+                            <span>अ ब</span>
+                            <p>Take Tests</p>
+                        </div>
+                    </a>
+                    
                 </div>
             </div>
 
             <div class="section">
                 <h3>Hindi Typing – Mangal Unicode</h3>
-                <div class="boxes">
-                    <div class="box">
-                        <span>अ ब</span>
-                        Remington
-                    </div>
-                    <div class="box">
-                        <span>अ ब</span>
-                        Inscript
-                    </div>
-                    <div class="box">
-                        <span>अ ब</span>
-                        CBI Layout
-                    </div>
+                <div class="card-grid">
+                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
+                        <div class="typing-card">
+                            <span>अ ब</span>
+                            Remington
+                        </div>
+                    </a>
+                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
+                        <div class="typing-card">
+                            <span>अ ब</span>
+                            Inscript
+                        </div>
+                    </a>
+                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
+                        <div class="typing-card">
+                            <span>अ ब</span>
+                            CBI Layout
+                        </div>
+                    </a>
+                
                 </div>
+              
             </div>
             <div class="card">
                 <h3>Typing Tools</h3>
                 <div class="card-grid">
-                    <a href="./word2.html" style="text-decoration: none; color: inherit;">
+                    <a href="./practice.html" style="text-decoration: none; color: inherit;">
                         <div class="typing-card">
-                            <span>A B</span>
-                            <p>Practice Pad</p>
+                    
+                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png"
+                                style="width:45px; height:45px; display:block; margin:auto;" />
+                    
+                            <p style="margin-top:8px;">Practice Pad</p>
+                        </div>
+                    </a>
+                    <a href="./word-game.html" style="text-decoration: none; color: inherit;">
+                        <div class="typing-card">
+                    
+                            <img src="https://cdn-icons-png.flaticon.com/512/686/686589.png"
+                                style="width:45px; height:45px; display:block; margin:auto;" />
+                    
+                            <p style="margin-top:8px;">Words Game</p>
+                        </div>
+                    </a>
+                    
+                    
+                    <a href="./letter-game.html" style="text-decoration: none; color: inherit;">
+                        <div class="typing-card">
+                    
+                            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
+                                style="width:45px; height:45px; display:block; margin:auto;" />
+                    
+                            <p style="margin-top:8px;">Letter Game</p>
                         </div>
                     </a>
                 </div>
@@ -463,10 +554,30 @@
 
             <div class="section">
                 <h3>Common Exam Pattern</h3>
+
                 <div class="exam">
-                    <div>English Test</div>
-                    <div>Hindi – KrutiDev</div>
-                    <div>Hindi – Mangal</div>
+
+                    <a href="#" class="card-link">
+                        <div class="exam-card">
+                            <span class="code en">EN</span>
+                            <p>English Test</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-link">
+                        <div class="exam-card">
+                            <span class="code kd">KD</span>
+                            <p>Hindi – KrutiDev</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="card-link">
+                        <div class="exam-card">
+                            <span class="code mg">MG</span>
+                            <p>Hindi – Mangal</p>
+                        </div>
+                    </a>
+
                 </div>
             </div>
             <br>
@@ -474,101 +585,264 @@
                 <h3>All India Level Exams</h3>
                 <div class="section">
                     <h4>SSC CGL/CHSL</h4>
+                
                     <div class="exam">
-                        <div>SSC English</div>
-                        <div>SSC Hindi</div>
-                        <div>NTPC English</div>
-                        <div>NTPC Hindi</div>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code en">EN</span>
+                                <p>SSC English</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code kd">HI</span>
+                                <p>SSC Hindi</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code en">EN</span>
+                                <p>NTPC English</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code kd">HI</span>
+                                <p>NTPC Hindi</p>
+                            </div>
+                        </a>
+                
                     </div>
                 </div>
                 <br>
                 <br><br>
                 <div class="section">
                     <h3>Rajasthan Exams</h3>
+                
                     <div class="exam">
-                        <div>High Court-SA/LDC(JJA)</div>
-                        <div>High Court-Steno</div>
-                        <div>RSSBL DC 2024 Pattern</div>
-                        <div>RSSBL IA 2024 Pattern</div>
-
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code en">HC</span>
+                                <p>High Court-SA/LDC(JJA)</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code en">HC</span>
+                                <p>High Court-Steno</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code kd">DC</span>
+                                <p>RSSBL DC 2024 Pattern</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code mg">IA</span>
+                                <p>RSSBL IA 2024 Pattern</p>
+                            </div>
+                        </a>
+                
                     </div>
                 </div>
                 <br>
                 <br><br>
                 <div class="section">
                     <h3>Utter Pradesh Exams</h3>
+                
+                    <!-- Common -->
                     <div class="exam">
-                        <div>English Test</div>
-                        <div>Hindi - KrutiDev</div>
-                        <div>Hindi - Mangal</div>
-
-
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code en">EN</span>
+                                <p>English Test</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code kd">KD</span>
+                                <p>Hindi - KrutiDev</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code mg">MG</span>
+                                <p>Hindi - Mangal</p>
+                            </div>
+                        </a>
+                
                     </div>
+                
                     <br>
+                
+                    <!-- UP Police -->
                     <div class="section">
                         <h4>UP Police ASI/SI Comp. Operator</h4>
+                
                         <div class="exam">
-
-                            <div>English Test</div>
-                            <div>Hindi Test</div>
-
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code en">EN</span>
+                                    <p>English Test</p>
+                                </div>
+                            </a>
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code kd">HI</span>
+                                    <p>Hindi Test</p>
+                                </div>
+                            </a>
+                
                         </div>
                     </div>
+                
                     <br>
+                
+                    <!-- UPPCL -->
                     <div class="section">
                         <h4>UPPCL</h4>
+                
                         <div class="exam">
-
-                            <div>English Test</div>
-                            <div>Hindi Test</div>
-
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code en">EN</span>
+                                    <p>English Test</p>
+                                </div>
+                            </a>
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code kd">HI</span>
+                                    <p>Hindi Test</p>
+                                </div>
+                            </a>
+                
                         </div>
                     </div>
+                
                     <br>
+                
+                    <!-- Allahabad HC -->
                     <div class="section">
                         <h4>Allahabad High Court Group-C ARO/RO</h4>
+                
                         <div class="exam">
-
-                            <div>English Test</div>
-                            <div>Hindi Test</div>
-
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code en">EN</span>
+                                    <p>English Test</p>
+                                </div>
+                            </a>
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code kd">HI</span>
+                                    <p>Hindi Test</p>
+                                </div>
+                            </a>
+                
                         </div>
                     </div>
-
-                </div><br>
+                
+                </div>
+                <br>
                 <br><br>
                 <div class="section">
                     <h3>Madhya Pradesh Exams</h3>
+                
+                    <!-- Common -->
                     <div class="exam">
-                        <div>English Test</div>
-                        <div>Hindi - KrutiDev</div>
-                        <div>Hindi - Mangal</div>
-
-
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code en">EN</span>
+                                <p>English Test</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code kd">KD</span>
+                                <p>Hindi - KrutiDev</p>
+                            </div>
+                        </a>
+                
+                        <a href="#" class="card-link">
+                            <div class="exam-card">
+                                <span class="code mg">MG</span>
+                                <p>Hindi - Mangal</p>
+                            </div>
+                        </a>
+                
                     </div>
+                
                     <br>
+                
+                    <!-- MP Police -->
                     <div class="section">
                         <h4>MP Police</h4>
+                
                         <div class="exam">
-
-                            <div>English Test</div>
-                            <div>Hindi Test</div>
-
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code en">EN</span>
+                                    <p>English Test</p>
+                                </div>
+                            </a>
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code kd">HI</span>
+                                    <p>Hindi Test</p>
+                                </div>
+                            </a>
+                
                         </div>
                     </div>
+                
                     <br>
-
+                
+                    <!-- MP High Court -->
                     <div class="section">
                         <h4>MP High Court Exams</h4>
+                
                         <div class="exam">
-
-                            <div>MP High Court English</div>
-                            <div>MP High Court Hindi</div>
-
-
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code en">EN</span>
+                                    <p>MP High Court English</p>
+                                </div>
+                            </a>
+                
+                            <a href="#" class="card-link">
+                                <div class="exam-card">
+                                    <span class="code kd">HI</span>
+                                    <p>MP High Court Hindi</p>
+                                </div>
+                            </a>
+                
                         </div>
                     </div>
-
+                
                 </div>
             </div>
 
@@ -597,13 +871,14 @@
         }
     </style>
 
-    <div class="footer">
-        <p><strong>Neelkanth Typing & Steno Classes</strong></p>
-        <p>Expert Training for English & Hindi Typing | Stenography</p>
-        <p>SSC | DSSSB | High Court | LDC | Clerk Preparation</p>
-        <p>📞 Contact: +91 8851490717</p>
-        <p>© 2026 Neelkanth Typing. All Rights Reserved.</p>
-    </div>
+        <div class="footer">
+            <p><strong>Neelkanth Typing</strong></p>
+            <p>Expert Training for English & Hindi Typing | Stenography</p>
+            <p>SSC | DSSSB | High Court | LDC | Clerk Preparation</p>
+            <p>📞 Contact: +91 8851490717</p>
+            <p>© 2026 Neelkanth Typing. All Rights Reserved.</p>
+            
+        </div>
 
 
 </body>
