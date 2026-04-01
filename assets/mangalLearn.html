@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Neelkanth Typing – Hindi Mangal Typing Exercise</title>
+    <link rel="icon" type="image/png" href="./img/logo.ico">
+    <style>
+        body {
+            font-family: Mangal, Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            justify-items: center;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        input,
+        select,
+        button {
+            font-family: Mangal;
+            font-size: 16px;
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        #timer {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        #paragraph {
+            font-size: 3vh;
+            width: 98%;
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 10px;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        #typingArea {
+            width: 98%;
+            height: 200px;
+            padding: 10px;
+            font-size: 3vh;
+            font-family: Mangal;
+            margin-top: 40px;
+        }
+
+        #result {
+            width: 90%;
+            display: none;
+            margin-top: 15px;
+            background: #ecfdf5;
+            border: 1px solid #2ecc71;
+            padding: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            margin-top: 10px;
+        }
+
+
+        /* ===== RESULT UI DESIGN ===== */
+        #result {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: none;
+            background: linear-gradient(135deg, #e8f8ff, #f9fffc);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        #result h2 {
+            text-align: center;
+            margin: 0 0 15px;
+            color: #2c3e50;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .result-box {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-box span {
+            display: block;
+            font-size: 22px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .result-box label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .result-footer {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .result-footer button {
+            padding: 8px 20px;
+            font-size: 16px;
+            border-radius: 20px;
+            background: #27ae60;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Neelkanth Typing <br> Hindi Mangal Typing Exercise </h1>
+
+        <div class="controls">
+            <div>Name: <input id="studentName"></div>
+
+            <div>
+                Chapter:
+                <select id="chapterSelect"></select>
+            </div>
+
+            <div>
+                Time:
+                <select id="timeSelect">
+                    <option value="60">1 Minutes</option>
+                    <option value="300">5 Minutes</option>
+                    <option value="600">10 Minutes</option>
+                    <option value="900">15 Minutes</option>
+                </select>
+            </div>
+
+            <div>⏱️ <span id="timer">00:00</span></div>
+            <button style=" background:#e74c3c;" id="backspaceBtn" onclick="toggleBackspace()">Backspace: OFF</button>
+
+        </div>
+
+        <div style="margin-bottom:10px;">
+            <button onclick="startTest()">Start</button>
+            <button onclick="pauseTest()">Pause</button>
+            <button onclick="submitTest()">Submit</button>
+        </div>
+
+
+        <div id="paragraph"></div>
+        <textarea id="typingArea" disabled placeholder="Type Here..."></textarea>
+
+        <div id="result">
+            <h2>📊 Test Result</h2>
+
+            <div style="text-align:center;margin-bottom:10px;">
+                <b id="rName"></b>
+            </div>
+
+            <div class="result-grid">
+                <div class="result-box">
+                    <span id="rWpm">0</span>
+                    <label>WPM</label>
+                </div>
+
+                <div class="result-box">
+                    <span id="rErrors">0</span>
+                    <label>Errors</label>
+                </div>
+
+                <div class="result-box">
+                    <span id="rAccuracy">0%</span>
+                    <label>Accuracy</label>
+                </div>
+
+                <div class="result-box">
+                    <span id="finalGrade">-</span>
+                    <label>Grade</label>
+                </div>
+            </div>
+
+            <div class="result-footer">
+                <button onclick="window.print()">🖨️ Print Result</button>
+            </div>
+        </div>
+
+
+        <div class="footer">© Neelkanth Typing</div>
+    </div>
+
+    <script>
+        document.addEventListener("copy", e => e.preventDefault());
+        document.addEventListener("cut", e => e.preventDefault());
+        document.addEventListener("paste", e => e.preventDefault());
+        document.addEventListener("contextmenu", e => e.preventDefault());
+
+        // ==================== DEVTOOLS / INSPECT DISABLE ====================
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 123) e.preventDefault();
+            if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) e.preventDefault();
+            if (e.ctrlKey && e.keyCode === 85) e.preventDefault();
+        });
+
+        // ==================== FULLSCREEN ====================
+        function goFullScreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) elem.requestFullscreen();
+            else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
+            else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+            else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
+        }
+
+        const originalStartTest = startTest;
+        startTest = function () {
+            goFullScreen();
+            originalStartTest();
+        }
+
+        // ==================== CHAPTER DATA ====================
+        const chapters = {
+            1: "पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक",
+            2: "पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कुर तुर चुर पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर कुर तुर चुर पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर कुर तुर चुर पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक",
+            3: "पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो कोट रोक चोर पोत पिरो किर तिको चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो कोट रोक चोर पोत पिरो किर तिको चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर",
+            4: "पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पर कर तक पट टक चट कप पच रट टप पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर चितर पुटक कुरत चुपे रुकट पिरत पिटकर",
+            5: "पिरोकर कर्तको चित्तरक पर्चोकर करतेकरते टकरोकर चुरोकर रुककर पिटकर कुरते टकरोकर पिरोकर करतेकरते चुरोकर रुककर पिटकर कर्तको चित्तरक पर्चोकर करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो रेट पेट कोट रोक चोर टोक पर्चो कुरतो चितो किरो  चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक",
+            6: "पिरोकरते कर्तककर चित्तरकर पर्चोकरते करतेकरते टकरोकरते चुरोकरते रुककरते पिटकरते कुरतेकर करतेकरते पिरोकरते टकरोकरते चुरोकरते रुककरते पिटकर टकरोकर पिरोकर करतेकरते चुरोकर रुककर पिटकर कर्तको चित्तरक पर्चोकर पिरोकर कर्तको चित्तरक पर्चोकर करतेकरते टकरोकर चुरोकर रुककर पिटकर कुरते करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत रेट पेट कोट रोक चोर टोक पर्चो कुरतो चितो किरो पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत करते पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो",
+            7: "पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप",
+
+            8: "कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर पट टक चट कप पच रट टप",
+
+            9: "पर तक कर पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक",
+
+            10: "कर तक पर पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप", 16: "पर की कर ती पट री टक ची चट टी कप पी पच की रट ती टप री",
+            17: "परत कीरत करति पटरि टकरि चटरी कपरी पचरी रटरी टपरी",
+            18: "करते पीरत चिरत पटकर टकरि चटरि कपटरि पचटरि रटरि टपरि",
+            19: "करतेकर पीरतेकर चिरतेकर पटकर टकर चटर कपटर पचटर रटर टपर",
+            20: "परतेकर करतेकर पीरतेकर चिरतेकर पटकर टकर चटर कपटर पचटर रटर टपर", 21: "न म व ल स न म व ल स न म व ल स",
+            22: "नम वल सन मन वन लस नम वल सन मन वन लस",
+            23: "नमल वनस सलम मनव लसन नमल वनस सलम मनव लसन",
+            24: "नमवल सनमल वलसन मनवल सनमल वलसन",
+            25: "नमवलसन मनवलसन नमवलसन मनवलसन नमवलसन मनवलसन", 26: "पर की नम कर ती वल पट री सन टक ची नम चट टी वल कप पी सन पच की नम रट ती वल टप री सन",
+            27: "परत कीरत नम करति वल पटरि सन टकरि नम चटरी वल कपरी सन पचरी नम रटरी वल टपरी सन",
+            28: "करते नम पीरत वल चिरत सन पटकर नम टकरि वल चटरि सन कपटरि नम पचटरि वल रटरि सन टपरि",
+            29: "करतेकर नम पीरतेकर वल चिरतेकर सन पटकर नम टकर वल चटर कपटर नम पचटर वल रटर टपर",
+            30: "परतेकर नम करतेकर वल पीरतेकर सन चिरतेकर नम पटकर वल टकर चटर नम कपटर वल पचटर रटर टपर",
+            31: "पर नम की कर ती वल पट सन री टक नम ची चट वल टी कप नम पी पच सन की रट नम ती वल टप री सन",
+            32: "परत नम कीरत वल करति सन पटरि नम टकरि वल चटरी सन कपरी नम पचरी वल रटरी सन टपरी",
+            33: "करते नम पीरत वल चिरत सन पटकर नम टकरि वल चटरि सन कपटरि नम पचटरि वल रटरि सन टपरि",
+            34: "करतेकर नम पीरतेकर वल चिरतेकर सन पटकर नम टकर वल चटर कपटर नम पचटर वल रटर टपर",
+            35: "परतेकर नम करतेकर वल पीरतेकर सन चिरतेकर नम पटकर वल टकर चटर नम कपटर वल पचटर रटर टपर",
+        };
+
+        // ==================== ELEMENTS ====================
+        const chapterSelect = document.getElementById("chapterSelect");
+        const paragraph = document.getElementById("paragraph");
+        const typingArea = document.getElementById("typingArea");
+        const studentName = document.getElementById("studentName");
+        const timeSelect = document.getElementById("timeSelect");
+        const timer = document.getElementById("timer");
+        const result = document.getElementById("result");
+        const rName = document.getElementById("rName");
+        const rWpm = document.getElementById("rWpm");
+        const rErrors = document.getElementById("rErrors");
+        const rAccuracy = document.getElementById("rAccuracy");
+        const finalGrade = document.getElementById("finalGrade");
+
+        let text = "", paraWords = [], timeLeft = 0, interval = null, paused = false;
+
+        // ==================== CHAPTER DROPDOWN ====================
+        for (let key in chapters) {
+            let opt = document.createElement("option");
+            opt.value = key;
+            opt.innerText = `Chapter ${key}`;
+            chapterSelect.appendChild(opt);
+        }
+
+        // ==================== LOAD CHAPTER (RESET LOGIC ADDED) ====================
+        function loadChapter() {
+            if (interval !== null) {
+                clearInterval(interval);
+                interval = null;
+            }
+
+            paused = false;
+            timeLeft = parseInt(timeSelect.value);
+            updateTimer();
+
+            result.style.display = "none";
+            rName.innerText = "";
+            rWpm.innerText = "0";
+            rErrors.innerText = "0";
+            rAccuracy.innerText = "0";
+            finalGrade.innerText = "";
+
+            text = chapters[chapterSelect.value];
+            paraWords = text.split(" ");
+            paragraph.innerHTML = paraWords.map(w => `<span>${w} </span>`).join("");
+
+            typingArea.value = "";
+            typingArea.disabled = true;
+        }
+
+        chapterSelect.addEventListener("change", loadChapter);
+        loadChapter();
+
+        // ==================== START TEST ====================
+        function startTest() {
+            if (studentName.value.trim() === "") {
+                alert("Please write a name");
+                return;
+            }
+
+            if (interval !== null && !paused) return;
+
+            if (interval === null) {
+                timeLeft = parseInt(timeSelect.value);
+                updateTimer();
+            }
+
+            paused = false;
+            typingArea.disabled = false;
+            typingArea.focus();
+
+            if (interval === null) {
+                interval = setInterval(() => {
+                    if (!paused) {
+                        timeLeft--;
+                        updateTimer();
+                        if (timeLeft <= 0) endTest();
+                    }
+                }, 1000);
+            }
+        }
+
+        function pauseTest() {
+            if (interval === null) return;
+            paused = !paused;
+        }
+
+        function submitTest() {
+            if (!interval) { alert("Test start नहीं हुआ"); return; }
+            endTest();
+        }
+
+        function updateTimer() {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            timer.innerText = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }
+
+        // ==================== TYPING LOGIC ====================
+        typingArea.addEventListener("input", () => {
+            const typed = typingArea.value.trim().split(/\s+/);
+            const spans = document.querySelectorAll("#paragraph span");
+
+            spans.forEach((span, i) => {
+                if (!typed[i]) span.className = "";
+                else if (typed[i] === paraWords[i]) span.className = "correct";
+                else span.className = "incorrect";
+            });
+
+            if (typed.length === paraWords.length && typed[typed.length - 1] === paraWords[paraWords.length - 1]) {
+                endTest();
+            }
+        });
+
+        // ==================== END TEST ====================
+        function endTest() {
+            clearInterval(interval);
+            interval = null;
+            typingArea.disabled = true;
+
+            const typed = typingArea.value.trim().split(" ");
+            let errors = 0;
+            typed.forEach((w, i) => { if (w !== paraWords[i]) errors++; });
+
+            let totalTime = parseInt(timeSelect.value) - timeLeft;
+            let minutes = totalTime / 60 || 1;
+            let wpm = Math.round(typed.length / minutes);
+            let acc = typed.length ? Math.round(((typed.length - errors) / typed.length) * 100) : 0;
+
+            rName.innerText = studentName.value;
+            rWpm.innerText = wpm;
+            rErrors.innerText = errors;
+            rAccuracy.innerText = acc;
+            finalGrade.innerText = getGrade(acc);
+            result.style.display = "block";
+        }
+
+        // ==================== GRADE ====================
+        function getGrade(acc) {
+            if (acc >= 95) return "A+";
+            if (acc >= 90) return "A";
+            if (acc >= 80) return "B";
+            if (acc >= 70) return "C";
+            return "Needs Practice";
+        }
+
+        // ==================== BACKSPACE CONTROL ====================
+        let backspaceDisabled = true;
+        const backspaceBtn = document.getElementById("backspaceBtn");
+
+        function toggleBackspace() {
+            backspaceDisabled = !backspaceDisabled;
+            backspaceBtn.innerText = backspaceDisabled ? "Backspace: OFF" : "Backspace: ON";
+        }
+
+        typingArea.addEventListener("keydown", function (e) {
+            if (backspaceDisabled && e.key === "Backspace") {
+                e.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
