@@ -13,18 +13,67 @@ const chapters = {
     11: "The French Revolution was in 1789. The partition of India affected more than fifty percent of our people. I gave him a cheque for Rs 100 only. Rice was sold at Rs 325 per bag. Every Indian said that partition is bad. Messrs Raman and Company Limited were great toy makers. Raman got three fourth and Krishna one fourth of their shares. The cost of a good clock is two pounds. Rajan and Kumaran sailed on second February nineteen sixty for England. Have you seen my brother in law Ramachary. Received five sets of typists tables and chairs. Leave two spaces after comma.",
     12: "ask fad alas asks shad",
     13: "asdf jkl; asdf ;lkjas dj fk sl ad fj sadf jkl; fdsa ;lkj ask dad fall lad flask sad all dad asjk df;l asdf jkl; a s d f j k l ; fdsa jkl; asdf ;lkj lad sad flask dad asdf asjk jkl; fdsa fall ask dad sad asdj fl;k sadf jkl; dad fall ask lad jkl; asdf lkj; fdsa ask fall sad dad asdf jkl; sadf ;lkj asdf jkl; asdf ;lkjas dj fk sl ad fj sadf jkl; fdsa ;lkj ask dad fall lad flask sad all dad asjk df;l asdf jkl; a s d f j k l ; fdsa jkl; asdf ;lkj lad sad flask dad asdf asjk jkl; fdsa fall ask dad sad asdj fl;k sadf jkl; dad fall ask lad jkl; asdf lkj; fdsa ask fall sad dad asdf jkl; sadf ;lkj",
-1: "पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक",
-2: "पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कुर तुर चुर पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर कुर तुर चुर पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर कुर तुर चुर पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक",
-3: "पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो कोट रोक चोर पोत पिरो किर तिको चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो कोट रोक चोर पोत पिरो किर तिको चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर",
-4: "पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पर कर तक पट टक चट कप पच रट टप पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर चितर पुटक कुरत चुपे रुकट पिरत पिटकर",
-5: "पिरोकर कर्तको चित्तरक पर्चोकर करतेकरते टकरोकर चुरोकर रुककर पिटकर कुरते टकरोकर पिरोकर करतेकरते चुरोकर रुककर पिटकर कर्तको चित्तरक पर्चोकर करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो रेट पेट कोट रोक चोर टोक पर्चो कुरतो चितो किरो  चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक",
-6: "पिरोकरते कर्तककर चित्तरकर पर्चोकरते करतेकरते टकरोकरते चुरोकरते रुककरते पिटकरते कुरतेकर करतेकरते पिरोकरते टकरोकरते चुरोकरते रुककरते पिटकर टकरोकर पिरोकर करतेकरते चुरोकर रुककर पिटकर कर्तको चित्तरक पर्चोकर पिरोकर कर्तको चित्तरक पर्चोकर करतेकरते टकरोकर चुरोकर रुककर पिटकर कुरते करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत रेट पेट कोट रोक चोर टोक पर्चो कुरतो चितो किरो पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत करते पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो",
-7: "",
-8: "",
-9: "",
-10:"",
-11:"",
-12:"",
+    1: "पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक पर कर तक पट टक चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक",
+    2: "पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कुर तुर चुर पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर कुर तुर चुर पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर कुर तुर चुर पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक",
+    3: "पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो कोट रोक चोर पोत पिरो किर तिको चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो कोट रोक चोर पोत पिरो किर तिको चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर चितर पुटक कुरत चुपे रुकट पिरत पिटकर रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर",
+    4: "पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पर कर तक पट टक चट कप पच रट टप पिर किर तिर चित चिप टिप तिक पिट चिर पुर कुर तुर चुर टुक पुट कुट तुक चुक रुक पुट कुट तुक चुक रुक पुर पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो रुककर चुपकर कुर्ते पिरोकर चितरकर टकरकर चितर पुटक कुरत चुपे रुकट पिरत पिटकर",
+    5: "पिरोकर कर्तको चित्तरक पर्चोकर करतेकरते टकरोकर चुरोकर रुककर पिटकर कुरते टकरोकर पिरोकर करतेकरते चुरोकर रुककर पिटकर कर्तको चित्तरक पर्चोकर करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो रेट पेट कोट रोक चोर टोक पर्चो कुरतो चितो किरो  चट कप पच रट टप पर कर तक पट टक चट कप पच रट टप कर पट टक चट कप पच रट टप पर तक कर पट टक चट कप पच रट टप पर तक",
+    6: "पिरोकरते कर्तककर चित्तरकर पर्चोकरते करतेकरते टकरोकरते चुरोकरते रुककरते पिटकरते कुरतेकर करतेकरते पिरोकरते टकरोकरते चुरोकरते रुककरते पिटकर टकरोकर पिरोकर करतेकरते चुरोकर रुककर पिटकर कर्तको चित्तरक पर्चोकर पिरोकर कर्तको चित्तरक पर्चोकर करतेकरते टकरोकर चुरोकर रुककर पिटकर कुरते करते पिरोत टकरो चुरोत रुकत पिटत कर्तक चित्तर पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत रेट पेट कोट रोक चोर टोक पर्चो कुरतो चितो किरो पेट रेट कोर्ट चोर टोक रोक कुर्तो पर्चो किरो चितो पिरोत कर्तक चित्तर पर्चे करते टकरो चुरोत रुकत पिटत करते पे के ते रे चे टे पेच केत रेत चेत पो को तो रो चो टो रोक कोट चोर पोत पो तो को रो चो टो",
+
+
+
+
+
+    1: `The rapid integration of technology into the Indian legal system has brought about a
+significant transformation in how research is conducted and how judgments are prepared.
+While the use of digital tools like the e-Courts mission and virtual hearings has increased
+efficiency, the recent emergence of generative artificial intelligence (AI) has presented a
+unique challenge to the sanctity of the legal process. A trending concern across various High
+Courts is the phenomenon known as "AI Hallucination," where automated tools provide
+references to non-existent judgments or "fake" case laws. This issue came to light recently
+when several trial courts noticed that citations provided in the arguments of advocates could
+not be found in any official law journal or digital database. The Hon'ble High Court of
+Andhra Pradesh, in a significant observation, cautioned that while AI can be a helpful
+assistant, it can never replace the human intellect and the moral reasoning of a judge. The
+Court noted that legal research is not merely about finding a matching keyword; it is about
+understanding the context, the ratio decidendi, and the evolution of legal principles over time.
+AI systems, which work on probability and data patterns, often "hallucinate" information that
+appears persuasive and authoritative but is factually incorrect. Relying on such non-existent
+authorities violates the basic principles of "due process" and could lead to a serious
+miscarriage of justice. It is the duty of every legal practitioner to verify each citation before
+presenting it in the court of law. Furthermore, the debate around the "Digital Lawyer" and
+"Digital Judiciary" suggests that the use of technology must be regulated by a strict "Ethical
+Framework." Many law tribunals have started issuing guidelines for the use of AI in drafting
+petitions and written submissions. The primary concern is that a lawyer might unknowingly
+submit a document that contains errors generated by a machine, thereby misleading the court.
+The "Bar Council of India" and other regulatory bodies are currently discussing the necessity
+of a certification process for AI tools used in the legal field. The objective is to ensure that
+the tools are "trained" on verified Indian statutes and actual judgments from the Supreme
+Court and various High Courts, rather than unverified data from the internet. In a recent case,
+a trial judge admitted to using an AI tool for the first time to assist in drafting a routine order.
+Unfortunately, the tool provided four citations that were completely fictional. Although the
+final decision was correct on its legal merits, the High Court had to step in to clarify that the
+"actual intelligence" of the presiding officer must always prevail over "artificial intelligence." The Court emphasized that a judgment must be a "reasoned document" that reflects the
+judicial mind. A machine lacks the capacity to appreciate human emotions, the nuances of a
+witness's testimony, or the social impact of a particular verdict. The transition toward a
+"Paperless Court" and "AI-assisted Research" is inevitable, but it must be accompanied by
+"Digital Literacy" among advocates and judicial officers.`,
+    2: ``,
+    3: ``,
+    4: ``,
+    5: ``,
+    6: ``,
+    7: ``,
+    8: ``,
+    9: ``,
+    10: ``,
+    11: ``,
+    12: ``,
+    13: ``,
+
+
+
+
 
 };
 

@@ -1,306 +1,733 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-full">
 
 <head>
     <meta charset="UTF-8">
-    <title>Neelkanth Typing Game Pro+</title>
-    <link rel="icon" type="image/png" href="./img/logo.ico">
-
-    <!-- ✅ Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neelkanth Typing Game</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
     <style>
+        html,
         body {
-            background: #0f172a;
-            color: white;
+            height: 100%;
+            margin: 0;
+            overflow: auto;
         }
 
-        /* 🔥 Navbar Branding */
-        .navbar {
-            background: #020617;
+        * {
+            font-family: 'Outfit', 'Mangal', Arial, sans-serif;
         }
 
-        .brand {
-            font-weight: bold;
-            font-size: 20px;
-            color: #38bdf8 !important;
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        .word {
-            font-size: 40px;
-            letter-spacing: 3px;
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .correct {
-            color: #22c55e;
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+            }
         }
 
-        .wrong {
-            color: #ef4444;
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-6px);
+            }
+
+            75% {
+                transform: translateX(6px);
+            }
         }
 
-        .result {
-            display: none;
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
-        /* 🔥 Card glow */
-        .card {
-            border-radius: 15px;
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* 🔥 Footer */
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #94a3b8;
+        @keyframes countPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+                color: #f59e0b;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .shake {
+            animation: shake 0.3s ease;
+        }
+
+        .pop {
+            animation: pop 0.3s ease;
+        }
+
+        .slide-down {
+            animation: slideDown 0.4s ease forwards;
+        }
+
+        .count-pulse {
+            animation: countPulse 0.5s ease;
+        }
+
+        .glow-ring {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .word-display {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .word-display.correct {
+            border-color: #22c55e;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05));
+        }
+
+        .word-display.wrong {
+            border-color: #ef4444;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .input-field {
+            background: rgba(30, 41, 59, 0.6);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            outline: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(51, 65, 85, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(71, 85, 105, 0.6);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .timer-ring {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .timer-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .timer-ring circle {
+            fill: none;
+            stroke-width: 4;
+        }
+
+        .timer-ring .bg {
+            stroke: rgba(99, 102, 241, 0.15);
+        }
+
+        .timer-ring .fg {
+            stroke: #6366f1;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+        }
+
+        .level-btn {
+            transition: all 0.2s ease;
+        }
+
+        .level-btn.active {
+            background: rgba(99, 102, 241, 0.3);
+            border-color: #6366f1;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: rgba(99, 102, 241, 0.15);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .hindi-word {
+            font-family: 'Mangal', 'Noto Sans Devanagari', sans-serif;
+        }
+
+        .lang-toggle {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .lang-toggle .knob {
+            position: absolute;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            transition: left 0.3s ease;
         }
     </style>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 </head>
 
-<body>
-
-    <!-- 🔥 NAVBAR -->
-    <nav class="navbar navbar-dark px-3">
-        <span class="brand">Neelkanth Typing Pro</span>
-    </nav>
-
-    <div class="container py-5">
-        <div class="card bg-dark text-white shadow-lg p-4 mx-auto" style="max-width: 600px;">
-
-            <h2 class="text-center mb-3">
-                🚀 Typing Game Pro+
-            </h2>
-            <p class="text-center text-info mb-4">
-                Improve Speed • Accuracy • Confidence
-            </p>
-
-            <!-- Setup -->
-            <div class="row g-2">
-                <div class="col-md-6">
-                    <input type="text" id="name" class="form-control" placeholder="Enter Name">
+<body class="h-full" style="background: #0f172a;">
+    <div id="app" class="h-full w-full overflow-auto"
+        style="background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);"><!-- Header -->
+        <header class="text-center pt-6 pb-4 px-4 fade-up">
+            <div class="flex items-center justify-center gap-2 mb-1">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+                    style="background: linear-gradient(135deg, #6366f1, #8b5cf6);"><i data-lucide="keyboard"
+                        style="width:18px;height:18px;color:white;"></i>
                 </div>
-
-                <div class="col-md-6">
-                    <select id="chapter" class="form-select">
-                        <option value="">Select Chapter</option>
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                        <option value="coding">Coding</option>
-                    </select>
+                <h1 id="brandTitle" class="text-xl md:text-2xl font-bold text-white tracking-tight">Neelkanth Typing
+                    &amp; Steno Classes</h1>
+            </div>
+            <p id="subtitleText" class="text-indigo-300/70 text-sm">Improve Your Typing Speed &amp; Accuracy</p>
+        </header><!-- Main Content -->
+        <main class="max-w-2xl mx-auto px-4 pb-8"><!-- Controls Bar -->
+            <div id="controlsBar" class="flex flex-wrap items-center justify-between gap-3 mb-5 fade-up"
+                style="animation-delay:0.1s;"><!-- Level Selector -->
+                <div class="flex gap-2"><button
+                        class="level-btn active text-xs font-medium px-3 py-1.5 rounded-lg text-indigo-300 border border-indigo-500/30"
+                        data-level="easy" onclick="setLevel('easy')">Easy</button> <button
+                        class="level-btn text-xs font-medium px-3 py-1.5 rounded-lg text-indigo-300 border border-indigo-500/20"
+                        data-level="medium" onclick="setLevel('medium')">Medium</button> <button
+                        class="level-btn text-xs font-medium px-3 py-1.5 rounded-lg text-indigo-300 border border-indigo-500/20"
+                        data-level="hard" onclick="setLevel('hard')">Hard</button>
+                </div><!-- Language Toggle -->
+                <div class="flex items-center gap-2"><span class="text-xs text-indigo-300/60">EN</span>
+                    <div id="langToggle" class="lang-toggle" style="background: rgba(99,102,241,0.2);"
+                        onclick="toggleLang()">
+                        <div class="knob" style="left: 2px;"></div>
+                    </div><span class="text-xs text-indigo-300/60">हिं</span>
                 </div>
-
-                <div class="col-md-12">
-                    <select id="setTime" class="form-select">
-                        <option value="">Select Time</option>
-                        <option value="1">1 Minute</option>
-                        <option value="2">2 Minute</option>
-                        <option value="5">5 Minute</option>
-                    </select>
+            </div><!-- Timer + Stats -->
+            <div id="statsRow" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5 fade-up"
+                style="animation-delay:0.15s;">
+                <div class="stat-card rounded-xl p-3 text-center">
+                    <div class="timer-ring mx-auto mb-1">
+                        <svg width="80" height="80" viewbox="0 0 80 80">
+                            <circle class="bg" cx="40" cy="40" r="36"></circle>
+                            <circle id="timerCircle" class="fg" cx="40" cy="40" r="36" stroke-dasharray="226.2"
+                                stroke-dashoffset="0"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center"><span id="timerText"
+                                class="mono text-lg font-bold text-white">60</span>
+                        </div>
+                    </div>
+                    <div class="text-[10px] text-indigo-300/50 uppercase tracking-wider">
+                        Time
+                    </div>
+                </div>
+                <div class="stat-card rounded-xl p-3 text-center flex flex-col justify-center">
+                    <div id="wpmDisplay" class="mono text-2xl font-bold text-white">
+                        0
+                    </div>
+                    <div class="text-[10px] text-indigo-300/50 uppercase tracking-wider">
+                        WPM
+                    </div>
+                </div>
+                <div class="stat-card rounded-xl p-3 text-center flex flex-col justify-center">
+                    <div id="accuracyDisplay" class="mono text-2xl font-bold text-emerald-400">
+                        100%
+                    </div>
+                    <div class="text-[10px] text-indigo-300/50 uppercase tracking-wider">
+                        Accuracy
+                    </div>
+                </div>
+                <div class="stat-card rounded-xl p-3 text-center flex flex-col justify-center">
+                    <div class="flex justify-center gap-3">
+                        <div><span id="correctDisplay" class="mono text-lg font-bold text-emerald-400">0</span>
+                            <div class="text-[10px] text-emerald-400/50">
+                                ✓
+                            </div>
+                        </div>
+                        <div class="w-px bg-indigo-500/20"></div>
+                        <div><span id="wrongDisplay" class="mono text-lg font-bold text-red-400">0</span>
+                            <div class="text-[10px] text-red-400/50">
+                                ✗
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-[10px] text-indigo-300/50 uppercase tracking-wider mt-1">
+                        Words
+                    </div>
+                </div>
+            </div><!-- Word Progress -->
+            <div class="progress-bar mb-4 fade-up" style="animation-delay:0.2s;">
+                <div id="progressFill" class="progress-fill" style="width:0%"></div>
+            </div><!-- Word Display -->
+            <div id="wordBox" class="word-display rounded-2xl p-6 md:p-8 text-center mb-4 fade-up"
+                style="animation-delay:0.25s;">
+                <div id="wordCounter" class="text-[10px] text-indigo-300/40 uppercase tracking-widest mb-2 mono">
+                    Word 0 / 0
+                </div>
+                <div id="currentWord" class="text-3xl md:text-5xl font-bold text-white tracking-wide select-none"
+                    style="min-height:3.5rem;">
+                    —
+                </div>
+            </div><!-- Input -->
+            <div class="fade-up" style="animation-delay:0.3s;"><input id="typingInput" type="text"
+                    class="input-field w-full rounded-xl px-5 py-3.5 text-white text-lg mono text-center"
+                    placeholder="Type here..." disabled autocomplete="off" autocorrect="off" autocapitalize="off"
+                    spellcheck="false">
+            </div><!-- Buttons -->
+            <div class="flex justify-center gap-3 mt-5 fade-up" style="animation-delay:0.35s;"><button id="startBtn"
+                    class="btn-primary px-6 py-2.5 rounded-xl text-white font-semibold text-sm flex items-center gap-2"
+                    onclick="startGame()"> <i data-lucide="play" style="width:16px;height:16px;"></i> Start </button>
+                <button id="restartBtn"
+                    class="btn-secondary px-6 py-2.5 rounded-xl text-indigo-300 font-medium text-sm flex items-center gap-2"
+                    onclick="restartGame()" style="display:none;"> <i data-lucide="rotate-ccw"
+                        style="width:16px;height:16px;"></i> Restart </button>
+            </div><!-- Results Overlay -->
+            <div id="resultOverlay" class="fixed inset-0 flex items-center justify-center p-4 z-50"
+                style="display:none; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);">
+                <div class="result-card rounded-2xl p-6 md:p-8 max-w-md w-full slide-down">
+                    <div class="text-center mb-6">
+                        <div id="resultEmoji" class="text-5xl mb-2">
+                            🏆
+                        </div>
+                        <h2 id="resultTitle" class="text-2xl font-bold text-white mb-1">Great Job!</h2>
+                        <p id="resultMsg" class="text-indigo-300/70 text-sm"></p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-6">
+                        <div class="stat-card rounded-xl p-4 text-center">
+                            <div id="resWpm" class="mono text-3xl font-bold text-white">
+                                0
+                            </div>
+                            <div class="text-xs text-indigo-300/50 mt-1">
+                                WPM
+                            </div>
+                        </div>
+                        <div class="stat-card rounded-xl p-4 text-center">
+                            <div id="resAccuracy" class="mono text-3xl font-bold text-emerald-400">
+                                0%
+                            </div>
+                            <div class="text-xs text-indigo-300/50 mt-1">
+                                Accuracy
+                            </div>
+                        </div>
+                        <div class="stat-card rounded-xl p-4 text-center">
+                            <div id="resCorrect" class="mono text-3xl font-bold text-emerald-400">
+                                0
+                            </div>
+                            <div class="text-xs text-indigo-300/50 mt-1">
+                                Correct
+                            </div>
+                        </div>
+                        <div class="stat-card rounded-xl p-4 text-center">
+                            <div id="resWrong" class="mono text-3xl font-bold text-red-400">
+                                0
+                            </div>
+                            <div class="text-xs text-indigo-300/50 mt-1">
+                                Wrong
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center"><button
+                            class="btn-primary px-8 py-2.5 rounded-xl text-white font-semibold text-sm flex items-center gap-2"
+                            onclick="restartGame()"> <i data-lucide="rotate-ccw" style="width:16px;height:16px;"></i>
+                            Play Again </button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Buttons -->
-            <div class="text-center mt-3">
-                <button class="btn btn-success me-2" onclick="startGame()">Start</button>
-                <button class="btn btn-warning me-2" id="backspaceToggle">Backspace: ON</button>
-                <button class="btn btn-danger" onclick="submitGame()">Submit</button>
-            </div>
-
-            <!-- Word -->
-            <div class="text-center my-4">
-                <div id="word" class="word">Ready?</div>
-                <input type="text" id="input" class="form-control mt-3 text-center" placeholder="Start typing..."
-                    disabled>
-            </div>
-
-            <!-- Info -->
-            <div class="d-flex justify-content-between">
-                <div>⏱ Time: <span id="time">0</span></div>
-                <div>🎯 Score: <span id="score">0</span></div>
-            </div>
-
-            <!-- Result -->
-            <div class="result mt-4 p-3 bg-secondary rounded" id="result">
-                <h4 class="text-center">🏆 Result</h4>
-
-                <p>Name: <span id="rName"></span></p>
-                <p>Chapter: <span id="rChapter"></span></p>
-                <p>Score: <span id="rScore"></span></p>
-                <p>WPM: <span id="rWpm"></span></p>
-                <p>Accuracy: <span id="rAcc"></span>%</p>
-                <p>Errors: <span id="rErrors"></span></p>
-                <p>Wrong Words: <span id="rWrongWords"></span></p>
-            </div>
-
-        </div>
-
-        <!-- 🔥 FOOTER -->
-        <div class="footer">
-            <p><strong>Neelkanth Typing & Steno Classes</strong></p>
-            <p>Expert Training for English & Hindi Typing | Stenography</p>
-            <p>SSC | DSSSB | High Court | LDC | Clerk Preparation</p>
-            <p>📞 Contact: +91 8851490717</p>
-            <p>© 2026 | Developed by <strong>hmwebtech</strong></p>
-        </div>
-
+        </main>
     </div>
-
     <script>
-        const wordSets = {
-            easy: ["cat", "dog", "pen", "sun", "book", "tree", "milk", "ball"],
-            medium: ["apple", "banana", "chair", "table", "window", "school"],
-            hard: ["javascript", "developer", "keyboard", "application", "performance"],
-            coding: ["function", "variable", "array", "object", "react", "nodejs", "database"]
+        // ── Word Banks ──
+        const WORDS = {
+            easy: ["the", "and", "for", "are", "but", "not", "you", "all", "can", "had", "her", "was", "one", "our", "out", "day", "get", "has", "him", "his", "how", "its", "may", "new", "now", "old", "see", "way", "who", "boy", "did", "let", "put", "say", "she", "too", "use", "dad", "mom", "set", "run", "try", "ask", "own", "big", "end", "far", "hand", "high", "keep", "last", "long", "make", "much", "name", "only", "over", "play", "read", "seem", "show", "side", "take", "tell", "turn", "want", "work", "call", "come", "each", "find", "first", "give", "good", "know", "life", "live", "look", "move", "need", "part", "same", "some", "such", "also", "back", "been", "city", "down", "even", "from", "grow", "have", "head", "help", "here", "home", "idea", "just", "kind", "land", "left", "like", "line", "list", "many", "mean", "most", "must", "next", "open", "plan", "real", "right", "room", "said", "still", "stop", "sure", "talk", "them", "then", "thing", "time", "turn", "very", "walk", "well", "went", "when", "will", "with", "word", "year", "your", "game", "best", "done", "feel", "food", "four", "full", "gave", "goes", "hard", "hold", "hope", "jump", "late", "less", "love", "mind", "miss", "near", "once", "pick", "rest", "road", "save", "send", "sing", "soon", "stay", "team", "tree", "true", "upon", "wait", "week", "wide", "able", "area", "army", "away", "baby", "body", "book", "born", "both", "call", "came", "care", "case", "cold", "cost", "dark", "dead", "dear", "deep", "door", "down", "draw", "drop", "each", "earn", "east", "edge", "else", "ever", "face", "fact", "fall", "fear", "fill", "fish", "five", "flew", "foot", "free", "girl", "gone", "half", "hang", "hang", "heat", "hour", "huge", "iron", "join", "kept", "king", "knew", "lake", "lead", "leaf", "legs", "lift", "line", "link", "lock", "lord", "lose", "luck", "mark", "meal", "meet", "mile", "milk", "moon", "neck", "nice", "nine", "note", "pair", "park", "pass", "past", "path", "pick", "pine", "plus", "poem", "pool", "poor", "pull", "push", "rain", "rang", "rate", "rich", "ring", "rise", "rock", "roll", "roof", "rose", "rule", "rush", "safe", "sail", "salt", "sand", "seat", "self", "sell", "ship", "shop", "shot", "shut", "sign", "site", "size", "skin", "slow", "snow", "soft", "soil", "sold", "song", "sort", "soul", "spot", "star", "step", "suit", "tall", "task", "tent", "test", "thin", "thus", "till", "tiny", "tone", "tool", "tops", "town", "trip", "unit", "vast", "view", "vote", "wage", "wake", "warm", "warn", "wash", "wave", "weak", "wear", "week", "west", "wide", "wild", "wine", "wing", "wire", "wise", "wish", "wood", "wore", "yard", "zero", "zone"],
+            medium: ["about", "above", "added", "after", "again", "agree", "ahead", "along", "begin", "being", "below", "bring", "build", "carry", "catch", "cause", "chain", "chair", "check", "chief", "child", "claim", "class", "clean", "clear", "climb", "close", "cloud", "coach", "coast", "color", "could", "count", "court", "cover", "cross", "crowd", "dance", "death", "depth", "doubt", "dozen", "draft", "drain", "drama", "drawn", "dream", "dress", "drink", "drive", "drove", "dwell", "eager", "early", "earth", "eight", "elect", "empty", "enemy", "enjoy", "enter", "equal", "error", "event", "every", "exact", "exist", "extra", "faith", "false", "fault", "feast", "field", "fifth", "fifty", "fight", "final", "first", "fixed", "flame", "flash", "flesh", "fleet", "float", "flood", "floor", "focus", "force", "forth", "found", "frame", "frank", "fresh", "front", "fruit", "giant", "given", "glass", "globe", "going", "grace", "grade", "grain", "grand", "grant", "grass", "grave", "great", "green", "gross", "group", "grown", "guard", "guess", "guide", "habit", "happy", "heart", "heavy", "hence", "honey", "horse", "hotel", "house", "human", "humor", "hurry", "ideal", "image", "imply", "index", "inner", "input", "issue", "ivory", "joint", "judge", "juice", "knife", "knock", "known", "label", "large", "later", "laugh", "layer", "learn", "least", "leave", "legal", "level", "light", "limit", "linen", "liver", "loose", "lover", "lower", "lucky", "lunch", "magic", "major", "maker", "march", "match", "mayor", "meant", "media", "mercy", "metal", "midst", "might", "minor", "minus", "model", "money", "month", "moral", "motor", "mount", "mouse", "mouth", "moved", "movie", "music", "nerve", "never", "newly", "night", "noble", "noise", "north", "novel", "nurse", "occur", "ocean", "offer", "often", "onset", "opera", "orbit", "order", "other", "ought", "outer", "owned", "owner", "paint", "panel", "panic", "patch", "pause", "peace", "pearl", "phase", "phone", "photo", "piano", "piece", "pilot", "pitch", "place", "plain", "plane", "plant", "plate", "plaza", "plead", "point", "posed", "pound", "power", "press", "price", "pride", "prime", "print", "prior", "prize", "proof", "proud", "prove", "queen", "quest", "quick", "quiet", "quite", "quote", "radio", "raise", "range", "rapid", "ratio", "reach", "realm", "reign", "relax", "reply", "right", "river", "robot", "roman", "rough", "round", "royal", "ruler", "rural", "saint", "saint", "salad", "sauce", "scale", "scene", "scope", "score", "sense", "serve", "seven", "shade", "shake", "shall", "shame", "shape", "share", "sharp", "sheet", "shelf", "shell", "shift", "shine", "shirt", "shock", "shore", "short", "shout", "sight", "since", "sixth", "sixty", "skill", "slave", "sleep", "slice", "slide", "slope", "smart", "smell", "smile", "smoke", "solar", "solid", "solve", "sorry", "sound", "south", "space", "spare", "speak", "speed", "spend", "spent", "spite", "split", "spoke", "sport", "spray", "squad", "stack", "staff", "stage", "stake", "stall", "stand", "stare", "start", "state", "steal", "steam", "steel", "steep", "steer", "stick", "still", "stock", "stone", "stood", "store", "storm", "story", "stove", "strip", "stuff", "style", "sugar", "suite", "sunny", "super", "surge", "swear", "sweep", "sweet", "swift", "swing", "sword", "table", "taste", "teach", "teeth", "thank", "theme", "there", "thick", "thing", "think", "third", "those", "three", "threw", "throw", "thumb", "tight", "tired", "title", "today", "token", "total", "touch", "tough", "tower", "trace", "track", "trade", "trail", "train", "trait", "trash", "treat", "trend", "trial", "tribe", "trick", "tried", "troop", "truck", "truly", "trust", "truth", "twice", "twist", "ultra", "uncle", "under", "union", "unite", "unity", "until", "upper", "upset", "urban", "usage", "usual", "using", "valid", "value", "video", "vigor", "virus", "visit", "vital", "vivid", "vocal", "voice", "voter", "waste", "watch", "water", "weave", "weigh", "wheel", "where", "which", "while", "white", "whole", "whose", "woman", "works", "world", "worry", "worse", "worst", "worth", "would", "wound", "write", "wrote", "yield", "young", "youth"],
+            hard: ["abandon", "ability", "absence", "absolute", "abstract", "academic", "accepted", "accident", "accurate", "achieved", "acoustic", "activity", "actually", "addition", "adequate", "adjusted", "advanced", "advocate", "affected", "afforded", "agencies", "agreeing", "airplane", "alliance", "allowing", "although", "aluminum", "ambition", "analytic", "ancestor", "announce", "annually", "antibody", "anything", "anywhere", "apparent", "appetite", "applause", "approach", "approval", "arguably", "argument", "assuming", "athletic", "attached", "attacker", "attended", "attitude", "audience", "autonomy", "aviation", "balanced", "bankrupt", "bargains", "behavior", "believed", "belongin", "betrayal", "birthday", "blooming", "boarding", "borrowed", "boundary", "brackets", "branches", "breeding", "bringing", "brothers", "browsing", "bruising", "building", "bulletin", "business", "calendar", "campaign", "capacity", "captured", "cardinal", "carrying", "casualty", "catching", "category", "cautious", "ceremony", "chairman", "chambers", "champion", "changing", "chapters", "charging", "chemical", "children", "choosing", "circular", "citation", "civilian", "claiming", "climbing", "clinical", "clothing", "coaching", "collapse", "colonial", "colorado", "combined", "comeback", "comedian", "commerce", "commonly", "communal", "commuter", "compared", "competes", "compiled", "compiler", "complain", "complete", "composed", "compound", "comprise", "computer", "concepts", "conclude", "concrete", "condemns", "conflict", "congress", "connects", "conquest", "consider", "consists", "conspire", "constant", "consumed", "consumer", "contacts", "contains", "contempt", "contents", "contests", "continue", "contract", "contrast", "controls", "convince", "coronary", "corridor", "coverage", "covering", "creative", "criminal", "critical", "crossing", "cultural", "currency", "customer", "database", "daughter", "deadline", "dealings", "december", "deceived", "decision", "declared", "declined", "decrease", "defected", "defender", "defining", "definite", "delicate", "delivery", "demanded", "democrat", "denounce", "deprived", "describe", "designer", "despised", "detailed", "detected", "detector", "develop", "diabetes", "dialogue", "diamonds", "dictator", "diminish", "dinosaur", "directed", "directly", "director", "disabled", "disagree", "disaster", "disclose", "discount", "discover", "discrete", "disorder", "dispatch", "disposal", "disposed", "dissolve", "distance", "distinct", "district", "dividend", "division", "doctrine", "document", "domestic", "dominant", "dominate", "doubtful", "download", "downtown", "dramatic", "drawings", "dropping", "duration", "dynamics", "earnings", "economic", "editable", "editions", "educated", "educator", "effected", "eighteen", "election", "elevated", "elevator", "eligible", "emanated", "embedded", "emerging", "emission", "emotions", "emphasis", "employed", "employee", "employer", "emulates", "enabling", "enclosed", "encoding", "endorsed", "engaging", "engineer", "enormous", "enrolled", "entering", "entirely", "entitled", "entrance", "envelope", "envision", "epidemic", "equality", "equation", "equipped", "escalate", "espresso", "essentia", "estimate", "evaluate", "eventual", "everyone", "evidence", "evolving", "examined", "examiner", "exceeded", "exchange", "exciting", "excluded", "excludes", "executed", "exercise", "exhibits", "expanded", "expected", "expedite", "expenses", "explains", "explicit", "explorer", "exported", "exposure", "extended", "external", "extracts", "extremes", "facebook", "facility", "factored", "faithful", "familiar", "families", "farewell", "fashions", "fataliti", "fattened", "favorite", "features", "february", "feedback", "feelings", "festival", "fetching", "fictions", "fighters", "fighting", "filename", "filmlike", "filtered", "finalize", "finances", "findings", "finished", "firearms", "firmware", "flooding", "Florence", "flourish", "focusing", "followed", "follower", "footwear", "forecast", "foremost", "forgiven", "formally", "formerly", "forwards", "fostered", "founders", "fraction", "fragment", "framewor", "franklin", "freehold", "freezing", "frequent", "friendly", "frontier", "frostbit", "fruitful", "fullback", "fullness", "function", "furthest", "gambling", "garments", "gathered", "generate", "genetics", "genocide", "geometry", "ghoulish", "gigabyte", "gladiato", "glimpses", "globally", "gorgeous", "governed", "governor", "graceful", "gradient", "graduate", "graphene", "graphics", "grateful", "gripping", "grooming", "grounded", "guardian", "guidance", "handsome", "happened", "hardened", "hardware", "harmless", "harmonic", "harshest", "hastened", "haunting", "headline", "helpless", "heritage", "heroines", "highland", "highways", "hijacked", "historic", "homework", "honestly", "horizons", "horrible", "hospital", "hosting", "hostages", "household", "hundreds", "hydrogen", "identify", "identity", "ignoring", "illusion", "imagined", "imitated", "imminent", "immunity", "impacted", "imperial", "implicit", "imported", "improved", "inactive", "incident", "included", "incoming", "increase", "indicate", "indirect", "industry", "infantry", "infected", "inferred", "infinite", "inflated", "informal", "informed", "infrared", "inherent", "initiate", "injected", "innocent", "innovate", "inspired", "instance", "instinct", "integral", "intended", "interact", "interest", "interior", "internal", "internet", "interval", "intimacy", "intimate", "invasion", "invented", "inventor", "invested", "investor", "invoking", "involved", "isolated", "keyboard", "kingdoms", "labeling", "landmark", "language", "launched", "lawmaker", "layering", "learning", "lectures", "leftover", "legality", "lemonade", "leverage", "librarie", "licensed", "lifelong", "lifetime", "lighting", "likewise", "limiting", "linearly", "lingered", "literary", "literacy", "literals", "livelier", "livelies", "loadable", "location", "lockdown", "logistic", "longterm", "longtime", "luminous", "magnetic", "maintain", "majority", "managing", "manifest", "manifold", "manually", "marathon", "marginal", "markedly", "marriage", "massacre", "material", "matrices", "maximize", "measured", "mechanic", "medicine", "medieval", "membrane", "memorial", "memories", "merchant", "metaphor", "midnight", "military", "millions", "minimize", "minister", "ministry", "minority", "miracles", "mismatch", "mobility", "modeling", "moderate", "modified", "momentum", "monetary", "monopoly", "monsoons", "moreover", "mortgage", "mounting", "movement", "multiply", "murderer", "mutation", "mutually", "mystical", "nanotech", "narrowed", "national", "navigate", "negative", "neighbor", "nervousl", "networks", "newcomer", "nineteen", "nitrogen", "nobility", "nominate", "nonsense", "normally", "northern", "notebook", "notified", "november", "numerous", "obtained", "occasion", "occupied", "occurred", "offering", "official", "offshore", "openings", "operated", "operator", "opponent", "opposing", "opposite", "optimism", "optional", "ordering", "ordinary", "organism", "organize", "oriented", "original", "orphaned", "outbreak", "outgoing", "outlined", "outlying", "overcome", "overhead", "overlook", "overturn", "overview", "packages", "painting", "panorama", "parallel", "parental", "partners", "passions", "passport", "patience", "patterne", "peaceful", "peculiar", "pedagogy", "pendulum", "pentagon", "perceive", "periodic", "permeate", "persists", "personal", "persuade", "petition", "phenomen", "physical", "pillaged", "pipeline", "planting", "platform", "pleasant", "pleasure", "plunging", "pointing", "polished", "politely", "politics", "polluted", "populace", "populari", "populati", "portable", "portrait", "position", "positive", "possible", "postpone", "potentia", "powerful", "practice", "precious", "predator", "predicts", "pregnant", "premiere", "premises", "prepared", "presence", "preserve", "pressing", "pressure", "presumed", "pretense", "previous", "princess", "principa", "priority", "prisoner", "probably", "problems", "proceeds", "produced", "producer", "products", "profiles", "profound", "programs", "progress", "prohibit", "projects", "promised", "promoted", "promptly", "properly", "property", "proposal", "proposed", "prospect", "protected", "protests", "protocol", "provider", "province", "provoked", "prudence", "publicly", "punished", "purchase", "pursuing", "puzzling", "quantity", "quarrels", "quarters", "question", "rational", "reaching", "reaction", "readable", "realised", "realized", "received", "recently", "reckoned", "reckoner", "recogniz", "recorder", "recovery", "redesign", "reducing", "referral", "referred", "reflects", "reformed", "refugees", "regional", "register", "regulate", "rejected", "relating", "relation", "relative", "released", "relevant", "reliable", "religion", "remained", "remember", "reminded", "remotely", "removing", "rendered", "renowned", "repeated", "replaced", "reported", "reporter", "republic", "required", "research", "reserves", "resigned", "resolved", "resource", "responds", "response", "restless", "restored", "restrict", "resulted", "retained", "retiring", "retrieve", "returned", "revealed", "revenues", "reviewed", "reviewer", "revision", "revolved", "rhetoric", "rigorous", "roasting", "robotics", "romantic", "rotation", "roughest", "routines", "sabotage", "sacredat", "safeguard", "sampling", "sanction", "sandwich", "saturday", "scanning", "scenario", "schedule", "scholars", "sciences", "scrutiny", "seasonal", "secluded", "secretly", "security", "segments", "seizures", "selected", "semester", "senators", "sensible", "sentence", "separate", "sequence", "sergeant", "sessions", "settlers", "settling", "seventee", "severely", "shifting", "shipping", "shortage", "shoulder", "shouting", "shutdown", "siblings", "sideways", "signaled", "silence", "simulate", "singular", "situated", "skeleton", "sleeping", "slightly", "slipping", "smallest", "smoothly", "snapshot", "snooping", "socalled", "software", "solution", "somebody", "sometime", "somewhat", "southern", "spanning", "speaking", "specific", "spectrum", "spelling", "spending", "spinning", "sporting", "spotless", "sprinkle", "squander", "squeezed", "stability", "stacking", "staffing", "standard", "standing", "starving", "stealing", "stepping", "stimulus", "stirring", "stocking", "stopping", "straight", "stranger", "strategy", "strength", "stressed", "strictly", "striking", "strongly", "struggle", "students", "studying", "stunning", "subjects", "suburban", "succeeds", "suddenly", "suffered", "sufferin", "suggests", "suitable", "suitcase", "summoned", "superior", "supplied", "supplier", "supposed", "suppress", "surgical", "surprise", "surrouds", "survival", "survived", "survivor", "suspense", "sustaine", "sweeping", "symbolic", "sympathy", "symptoms", "syndrome", "tackling", "tactical", "tailored", "talented", "tangible", "targeted", "teaching", "teamwork", "technolo", "teenager", "temporal", "tendency", "terminal", "terribly", "terrific", "territor", "tertiary", "textbook", "thankful", "theaters", "thinking", "thorough", "thousand", "threaten", "thriller", "thriving", "throwing", "thursday", "tolerant", "tonguing", "tortured", "totaling", "touching", "toughest", "tracking", "trailing", "training", "transfer", "transmit", "traveled", "treasure", "treating", "tremendo", "tribunal", "trillion", "troubled", "truthful", "tungsten", "turmoils", "tutoring", "twenties", "twisting", "ultimate", "umbrella", "unbiased", "uncommon", "undercut", "underdog", "underfed", "underway", "unearned", "unending", "unfairly", "unifying", "uniquely", "universe", "unlikely", "unlocked", "unmarked", "unmasked", "unsigned", "unstable", "untitled", "upcoming", "updating", "upgraded", "upheaval", "uplifted", "uprising", "upstream", "urbanize", "urgently", "utensils", "utilized", "vacation", "validate", "valuable", "variable", "velocity", "ventures", "verified", "vertical", "veterans", "violated", "violence", "virginia", "virology", "virtuall", "vitamins", "volatile", "voltages", "volumes", "voluntar", "withdraw", "withheld", "wiretapp", "witnesse", "wondered", "woodland", "workshop", "worships", "worthwhi", "writings", "yearbook", "yielding", "youthful", "zeppelin"]
         };
 
-        let words = [];
-        let currentWord = "";
-        let score = 0;
-        let timeLeft = 0;
-        let totalTime = 0;
-        let timer;
+        const HINDI_WORDS = {
+            easy: ["कम", "और", "यह", "वह", "पर", "को", "से", "में", "का", "की", "के", "है", "था", "जो", "तो", "भी", "हम", "आप", "मन", "जन", "दो", "अब", "सब", "नया", "घर", "पत्र", "दिन", "रात", "काम", "नाम", "जल", "फल", "मत", "हर", "बस", "कल", "आज", "मग", "दर", "सर", "गम", "तन", "धन", "वन", "रस", "दस", "चल", "बल", "मल", "तल", "पल"],
+            medium: ["अच्छा", "बहुत", "लेकिन", "उसका", "इसका", "हमारा", "तुम्हारा", "पहले", "बाद", "सबसे", "कहना", "सुनना", "देखना", "जाना", "आना", "खाना", "पीना", "सोचना", "समझना", "पढ़ना", "लिखना", "बोलना", "चलना", "रुकना", "हँसना", "रोना", "गाना", "खेलना", "सीखना", "भूलना", "याद", "दोस्त", "परिवार", "स्कूल", "किताब", "बगीचा", "मौसम", "इंसान", "दुनिया", "ज़रूरी", "खुशी", "उम्मीद", "तरीका", "हिस्सा", "बदलाव"],
+            hard: ["अनुभव", "प्रयोग", "विश्वास", "अध्ययन", "सरकार", "व्यवस्था", "अभिव्यक्ति", "प्रतिस्पर्धा", "स्वतंत्रता", "विकास", "संस्कृति", "प्रौद्योगिकी", "पर्यावरण", "अर्थव्यवस्था", "लोकतंत्र", "संविधान", "प्रशासन", "उपलब्धि", "सहयोग", "प्रतिनिधि", "कार्यक्रम", "निर्णय", "व्यापार", "शिक्षा", "संचार"]
+        };
 
-        let totalWords = 0;
-        let correctWords = 0;
-        let errors = 0;
-        let wrongWords = [];
-        let backspaceAllowed = true;
+        // ── Audio via Web Audio API ──
+        let audioCtx;
+        function playCorrectSound() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+            o.connect(g); g.connect(audioCtx.destination);
+            o.type = 'sine'; o.frequency.setValueAtTime(880, audioCtx.currentTime);
+            o.frequency.exponentialRampToValueAtTime(1320, audioCtx.currentTime + 0.08);
+            g.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+            o.start(); o.stop(audioCtx.currentTime + 0.15);
+        }
+        function playWrongSound() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+            o.connect(g); g.connect(audioCtx.destination);
+            o.type = 'square'; o.frequency.setValueAtTime(200, audioCtx.currentTime);
+            g.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+            o.start(); o.stop(audioCtx.currentTime + 0.2);
+        }
 
-        const wordEl = document.getElementById("word");
-        const inputEl = document.getElementById("input");
-        const scoreEl = document.getElementById("score");
-        const timeEl = document.getElementById("time");
-        const backBtn = document.getElementById("backspaceToggle");
+        // ── Game State ──
+        let level = 'easy', lang = 'en', gameWords = [], wordIndex = 0;
+        let correct = 0, wrong = 0, timer = null, timeLeft = 60, gameActive = false;
+        const CIRC = 2 * Math.PI * 36; // ~226.2
 
-        function randomWord() {
-            return words[Math.floor(Math.random() * words.length)];
+        function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
+        function setLevel(l) {
+            level = l;
+            document.querySelectorAll('.level-btn').forEach(b => b.classList.toggle('active', b.dataset.level === l));
+            if (!gameActive) prepareWords();
+        }
+
+        function toggleLang() {
+            lang = lang === 'en' ? 'hi' : 'en';
+            const knob = document.querySelector('#langToggle .knob');
+            const toggle = document.getElementById('langToggle');
+            if (lang === 'hi') { knob.style.left = '22px'; toggle.style.background = 'rgba(168,85,247,0.4)'; }
+            else { knob.style.left = '2px'; toggle.style.background = 'rgba(99,102,241,0.2)'; }
+            if (!gameActive) prepareWords();
+        }
+
+        function prepareWords() {
+            const bank = lang === 'hi' ? HINDI_WORDS[level] : WORDS[level];
+            gameWords = shuffle([...bank]);
+            wordIndex = 0; correct = 0; wrong = 0;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const el = document.getElementById('currentWord');
+            if (gameWords.length === 0) { el.textContent = '—'; return; }
+            el.textContent = gameWords[wordIndex] || '—';
+            el.className = lang === 'hi'
+                ? 'hindi-word text-3xl md:text-5xl font-bold text-white tracking-wide select-none'
+                : 'text-3xl md:text-5xl font-bold text-white tracking-wide select-none';
+            el.style.minHeight = '3.5rem';
+            document.getElementById('wordCounter').textContent = `Word ${wordIndex + 1} / ${gameWords.length}`;
+            document.getElementById('correctDisplay').textContent = correct;
+            document.getElementById('wrongDisplay').textContent = wrong;
+            const total = correct + wrong;
+            document.getElementById('accuracyDisplay').textContent = total === 0 ? '100%' : Math.round((correct / total) * 100) + '%';
+            const elapsed = 60 - timeLeft;
+            document.getElementById('wpmDisplay').textContent = elapsed > 0 ? Math.round((correct / elapsed) * 60) : 0;
+            document.getElementById('progressFill').style.width = (wordIndex / gameWords.length * 100) + '%';
+        }
+
+        function updateTimer() {
+            document.getElementById('timerText').textContent = timeLeft;
+            const offset = CIRC * (1 - timeLeft / 60);
+            const circle = document.getElementById('timerCircle');
+            circle.style.strokeDashoffset = offset;
+            if (timeLeft <= 10) { circle.style.stroke = '#ef4444'; document.getElementById('timerText').classList.add('count-pulse'); }
+            else { circle.style.stroke = '#6366f1'; document.getElementById('timerText').classList.remove('count-pulse'); }
         }
 
         function startGame() {
-            const name = document.getElementById("name").value;
-            const chapter = document.getElementById("chapter").value;
-            const minutes = document.getElementById("setTime").value;
-
-            if (!name || !chapter || !minutes) {
-                alert("Sab select karo!");
-                return;
-            }
-
-            words = wordSets[chapter];
-
-            totalTime = minutes * 60;
-            timeLeft = totalTime;
-
-            score = 0;
-            totalWords = 0;
-            correctWords = 0;
-            errors = 0;
-            wrongWords = [];
-
-            inputEl.disabled = false;
-            inputEl.focus();
-            inputEl.value = "";
-
-            scoreEl.innerText = score;
-            timeEl.innerText = timeLeft;
-
-            document.getElementById("result").style.display = "none";
-
-            nextWord();
-
-            clearInterval(timer);
+            prepareWords();
+            gameActive = true;
+            timeLeft = 300;
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('restartBtn').style.display = 'flex';
+            document.getElementById('typingInput').disabled = false;
+            document.getElementById('typingInput').value = '';
+            document.getElementById('typingInput').focus();
+            document.getElementById('controlsBar').style.pointerEvents = 'none';
+            document.getElementById('controlsBar').style.opacity = '0.5';
+            updateTimer();
+            updateDisplay();
             timer = setInterval(() => {
                 timeLeft--;
-                timeEl.innerText = timeLeft;
-
-                if (timeLeft <= 0) submitGame();
+                updateTimer();
+                updateDisplay();
+                if (timeLeft <= 0) endGame();
             }, 1000);
         }
 
-        function nextWord() {
-            currentWord = randomWord();
-            wordEl.innerText = currentWord;
-        }
-
-        backBtn.addEventListener("click", () => {
-            backspaceAllowed = !backspaceAllowed;
-            backBtn.innerText = "Backspace: " + (backspaceAllowed ? "ON" : "OFF");
-
-            backBtn.classList.toggle("btn-success", backspaceAllowed);
-            backBtn.classList.toggle("btn-danger", !backspaceAllowed);
-        });
-
-        inputEl.addEventListener("keydown", (e) => {
-
-            if (e.key === "Backspace" && !backspaceAllowed) {
-                e.preventDefault();
-                return;
-            }
-
-            if (e.key === " ") {
-                e.preventDefault();
-
-                let typedWord = inputEl.value.trim();
-                totalWords++;
-
-                if (typedWord === currentWord) {
-                    correctWords++;
-                    score++;
-                    wordEl.className = "word correct";
-                } else {
-                    errors++;
-                    wrongWords.push(typedWord + " ❌ (" + currentWord + ")");
-                    wordEl.className = "word wrong";
-                }
-
-                setTimeout(() => {
-                    wordEl.className = "word text-white";
-                }, 300);
-
-                scoreEl.innerText = score;
-                inputEl.value = "";
-                nextWord();
-            }
-        });
-
-        inputEl.addEventListener("input", () => {
-            if (currentWord.startsWith(inputEl.value)) {
-                wordEl.className = "word text-white";
-            } else {
-                wordEl.className = "word wrong";
-            }
-        });
-
-        function submitGame() {
+        function endGame() {
             clearInterval(timer);
-            inputEl.disabled = true;
-
-            const name = document.getElementById("name").value;
-            const chapter = document.getElementById("chapter").value;
-
-            let accuracy = totalWords === 0 ? 0 :
-                Math.round((correctWords / totalWords) * 100);
-
-            let minutesUsed = (totalTime - timeLeft) / 60;
-            let wpm = minutesUsed === 0 ? 0 :
-                Math.round(score / minutesUsed);
-
-            document.getElementById("rName").innerText = name;
-            document.getElementById("rChapter").innerText = chapter;
-            document.getElementById("rScore").innerText = score;
-            document.getElementById("rWpm").innerText = wpm;
-            document.getElementById("rAcc").innerText = accuracy;
-            document.getElementById("rErrors").innerText = errors;
-            document.getElementById("rWrongWords").innerText =
-                wrongWords.length ? wrongWords.join(", ") : "None";
-
-            document.getElementById("result").style.display = "block";
-            wordEl.innerText = "Finished!";
+            gameActive = false;
+            document.getElementById('typingInput').disabled = true;
+            document.getElementById('controlsBar').style.pointerEvents = '';
+            document.getElementById('controlsBar').style.opacity = '';
+            showResults();
         }
-    </script>
 
+        function restartGame() {
+            clearInterval(timer);
+            gameActive = false;
+            document.getElementById('resultOverlay').style.display = 'none';
+            document.getElementById('typingInput').disabled = true;
+            document.getElementById('typingInput').value = '';
+            document.getElementById('startBtn').style.display = 'flex';
+            document.getElementById('restartBtn').style.display = 'none';
+            document.getElementById('controlsBar').style.pointerEvents = '';
+            document.getElementById('controlsBar').style.opacity = '';
+            timeLeft = 60;
+            correct = 0; wrong = 0; wordIndex = 0;
+            updateTimer();
+            document.getElementById('timerCircle').style.strokeDashoffset = 0;
+            document.getElementById('wordBox').className = 'word-display rounded-2xl p-6 md:p-8 text-center mb-4';
+            prepareWords();
+        }
+
+        function showResults() {
+            const total = correct + wrong;
+            const acc = total === 0 ? 100 : Math.round((correct / total) * 100);
+            const wpm = Math.round((correct / 60) * 60);
+            document.getElementById('resWpm').textContent = wpm;
+            document.getElementById('resAccuracy').textContent = acc + '%';
+            document.getElementById('resCorrect').textContent = correct;
+            document.getElementById('resWrong').textContent = wrong;
+
+            let emoji, title, msg;
+            if (wpm >= 60 && acc >= 90) { emoji = '🏆'; title = 'Excellent!'; msg = 'Outstanding speed and accuracy! You\'re a typing master.'; }
+            else if (wpm >= 40 && acc >= 80) { emoji = '🌟'; title = 'Great Job!'; msg = 'Very impressive performance! Keep pushing your limits.'; }
+            else if (wpm >= 25 && acc >= 70) { emoji = '👍'; title = 'Good Work!'; msg = 'Solid performance! Practice regularly to improve further.'; }
+            else { emoji = '💪'; title = 'Keep Practicing!'; msg = 'Every session makes you better. Don\'t give up!'; }
+
+            document.getElementById('resultEmoji').textContent = emoji;
+            document.getElementById('resultTitle').textContent = title;
+            document.getElementById('resultMsg').textContent = msg;
+            document.getElementById('resultOverlay').style.display = 'flex';
+        }
+
+        // ── Input handler ──
+        document.getElementById('typingInput').addEventListener('input', function (e) {
+            if (!gameActive || wordIndex >= gameWords.length) return;
+            const val = this.value.trim();
+            const target = gameWords[wordIndex];
+            const box = document.getElementById('wordBox');
+
+            if (val === target) {
+                correct++;
+                playCorrectSound();
+                box.className = 'word-display correct rounded-2xl p-6 md:p-8 text-center mb-4';
+                document.getElementById('currentWord').classList.add('pop');
+                wordIndex++;
+                this.value = '';
+                setTimeout(() => {
+                    box.className = 'word-display rounded-2xl p-6 md:p-8 text-center mb-4';
+                    document.getElementById('currentWord').classList.remove('pop');
+                }, 300);
+                if (wordIndex >= gameWords.length) { endGame(); return; }
+                updateDisplay();
+            } else if (val.length >= target.length && val !== target) {
+                wrong++;
+                playWrongSound();
+                box.className = 'word-display wrong rounded-2xl p-6 md:p-8 text-center mb-4';
+                this.classList.add('shake');
+                wordIndex++;
+                this.value = '';
+                setTimeout(() => {
+                    box.className = 'word-display rounded-2xl p-6 md:p-8 text-center mb-4';
+                    this.classList.remove('shake');
+                }, 300);
+                if (wordIndex >= gameWords.length) { endGame(); return; }
+                updateDisplay();
+            }
+        });
+
+        // Also handle space for wrong word early submission
+        document.getElementById('typingInput').addEventListener('keydown', function (e) {
+            if (e.key === ' ' && gameActive && wordIndex < gameWords.length) {
+                e.preventDefault();
+                const val = this.value.trim();
+                if (!val) return;
+                const target = gameWords[wordIndex];
+                const box = document.getElementById('wordBox');
+                if (val === target) {
+                    correct++;
+                    playCorrectSound();
+                    box.className = 'word-display correct rounded-2xl p-6 md:p-8 text-center mb-4';
+                } else {
+                    wrong++;
+                    playWrongSound();
+                    box.className = 'word-display wrong rounded-2xl p-6 md:p-8 text-center mb-4';
+                    this.classList.add('shake');
+                }
+                wordIndex++;
+                this.value = '';
+                setTimeout(() => {
+                    box.className = 'word-display rounded-2xl p-6 md:p-8 text-center mb-4';
+                    this.classList.remove('shake');
+                }, 300);
+                if (wordIndex >= gameWords.length) { endGame(); return; }
+                updateDisplay();
+            }
+        });
+
+        // ── Element SDK ──
+        const defaultConfig = {
+            brand_title: 'Neelkanth Typing & Steno Classes',
+            subtitle_text: 'Improve Your Typing Speed & Accuracy',
+            background_color: '#0f172a',
+            surface_color: '#1e293b',
+            text_color: '#e2e8f0',
+            primary_action_color: '#6366f1',
+            secondary_action_color: '#8b5cf6',
+            font_family: 'Outfit',
+            font_size: 16
+        };
+
+        function applyConfig(config) {
+            const c = { ...defaultConfig, ...config };
+            document.getElementById('brandTitle').textContent = c.brand_title;
+            document.getElementById('subtitleText').textContent = c.subtitle_text;
+
+            // Colors
+            document.getElementById('app').style.background = `linear-gradient(180deg, ${c.background_color} 0%, ${c.surface_color} 50%, ${c.background_color} 100%)`;
+            document.querySelectorAll('.stat-card, .result-card').forEach(el => { el.style.borderColor = c.primary_action_color + '33'; });
+
+            // Font
+            const font = c.font_family || defaultConfig.font_family;
+            const baseStack = 'Arial, sans-serif';
+            document.getElementById('brandTitle').style.fontFamily = `${font}, ${baseStack}`;
+            document.getElementById('subtitleText').style.fontFamily = `${font}, ${baseStack}`;
+
+            // Font size
+            const sz = c.font_size || defaultConfig.font_size;
+            document.getElementById('brandTitle').style.fontSize = `${sz * 1.5}px`;
+            document.getElementById('subtitleText').style.fontSize = `${sz * 0.875}px`;
+        }
+
+        window.elementSdk.init({
+            defaultConfig,
+            onConfigChange: async (config) => applyConfig(config),
+            mapToCapabilities: (config) => ({
+                recolorables: [
+                    { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+                    { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+                    { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+                    { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+                    { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+                ],
+                borderables: [],
+                fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+                fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+            }),
+            mapToEditPanelValues: (config) => new Map([
+                ['brand_title', config.brand_title || defaultConfig.brand_title],
+                ['subtitle_text', config.subtitle_text || defaultConfig.subtitle_text]
+            ])
+        });
+
+        prepareWords();
+        lucide.createIcons();
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9e5fd91b81a48ae8',t:'MTc3NTEzMzA2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
 </body>
 
 </html>
