@@ -1,234 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Neelkanth Typing Pro - Premium Plans</title>
-    <link rel="icon" type="image/png" href="./img/logo.ico">
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
+  <title>Neelkanth Typing Pro – Premium Plans</title>
+  <link rel="icon" type="image/png" href="./img/logo.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+    body{font-family:"Poppins",sans-serif;min-height:100vh;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);display:flex;flex-direction:column;align-items:center}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    /* NAVBAR */
+    .navbar{width:100%;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;color:#fff;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.08)}
+    .nav-logo{font-size:20px;font-weight:700;background:linear-gradient(45deg,#00f5d4,#00bbf9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .tagline{font-size:13px;color:rgba(255,255,255,0.7)}
+    .nav-right{display:flex;align-items:center;gap:12px}
+    .nav-right a{font-size:13px;color:rgba(255,255,255,0.8);text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,255,0.3);border-radius:20px;transition:all 0.2s}
+    .nav-right a:hover{background:rgba(255,255,255,0.1)}
+    .nav-user-badge{font-size:12px;padding:3px 10px;border-radius:12px;background:linear-gradient(to right,#00f5d4,#00bbf9);color:#0f2027;font-weight:700}
+    @media(max-width:600px){.navbar{flex-direction:column;gap:10px;padding:14px 20px}.tagline{display:none}}
 
-    /* NAVBAR / BRAND */
-    .navbar {
-      width: 100%;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #fff;
-    }
+    /* CONTAINER */
+    .container{text-align:center;width:92%;max-width:1100px;margin-top:50px}
+    .container h1{color:#fff;font-size:2.4rem;font-weight:700;margin-bottom:10px}
+    .container .sub{color:rgba(255,255,255,0.65);font-size:14px;margin-bottom:14px}
 
-    .logo {
-      font-size: 22px;
-      font-weight: 700;
-      background: linear-gradient(45deg, #00f5d4, #00bbf9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .tagline {
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    /* MAIN */
-    .container {
-      text-align: center;
-      width: 90%;
-      max-width: 1200px;
-      margin-top: 40px;
-    }
-
-    h1 {
-      color: #fff;
-      margin-bottom: 10px;
-      font-size: 2.6rem;
-    }
-
-    .sub {
-      color: #ccc;
-      margin-bottom: 40px;
-      font-size: 14px;
-    }
+    /* CURRENT PLAN BANNER */
+    .current-plan-banner{background:rgba(255,255,255,0.08);border:1px solid rgba(0,245,212,0.3);border-radius:14px;padding:14px 24px;margin-bottom:34px;color:#fff;display:none;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .current-plan-banner.show{display:flex}
+    .cpb-left strong{font-size:1rem;color:#00f5d4}
+    .cpb-left span{display:block;font-size:13px;color:rgba(255,255,255,0.7);margin-top:3px}
+    .cpb-right{font-size:12px;color:rgba(255,255,255,0.6)}
 
     /* PLANS */
-    .plans {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .plans{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-bottom:50px}
 
-    /* CARD */
-    .card {
-      width: 300px;
-      padding: 35px 25px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      color: #fff;
-      transition: 0.4s;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    /* PLAN CARD */
+    .card{width:290px;padding:32px 24px;border-radius:20px;background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);color:#fff;transition:transform 0.35s,box-shadow 0.35s;border:1px solid rgba(255,255,255,0.1);position:relative}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+    .card.popular{border:2px solid #00f5d4;transform:scale(1.05)}
+    .card.popular:hover{transform:scale(1.05) translateY(-8px)}
+    .tag-popular{background:#00f5d4;color:#0f2027;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:12px}
+    .card h2{font-size:22px;font-weight:600;margin-bottom:4px}
+    .card .duration{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:14px}
+    .card .price{font-size:42px;font-weight:700;color:#00f5d4;margin:14px 0}
+    .card .price span{font-size:18px;font-weight:400;color:rgba(255,255,255,0.7)}
+    .features{list-style:none;margin-bottom:24px;text-align:left}
+    .features li{font-size:13px;color:rgba(255,255,255,0.85);padding:5px 0;display:flex;align-items:center;gap:8px}
+    .features li::before{content:'✓';width:18px;height:18px;background:rgba(0,245,212,0.2);color:#00f5d4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+    .btn{width:100%;padding:13px;border-radius:25px;font-family:"Poppins",sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.25s;border:none}
+    .btn-buy{background:linear-gradient(to right,#00f5d4,#00bbf9);color:#0f2027}
+    .btn-buy:hover{opacity:0.9;transform:scale(1.03)}
+    .btn-buy:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+    .btn-login-required{background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3)}
+    .btn-login-required:hover{background:rgba(255,255,255,0.25)}
+    .btn-current{background:rgba(0,245,212,0.15);color:#00f5d4;border:1.5px solid #00f5d4;cursor:default}
+    .btn-loading{position:relative;color:transparent!important}
+    .btn-loading::after{content:'';position:absolute;width:18px;height:18px;top:50%;left:50%;transform:translate(-50%,-50%);border:2.5px solid rgba(255,255,255,0.3);border-top-color:#0f2027;border-radius:50%;animation:spin 0.7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-    .card:hover {
-      transform: translateY(-12px) scale(1.04);
-    }
+    /* FREE CARD */
+    .free-card{background:rgba(255,255,255,0.05);border:1px dashed rgba(255,255,255,0.2);border-radius:14px;padding:16px 24px;margin-bottom:34px;color:rgba(255,255,255,0.7);font-size:13px;text-align:center}
+    .free-card strong{color:#fff}
 
-    /* POPULAR */
-    .popular {
-      border: 2px solid #00f5d4;
-      transform: scale(1.07);
-    }
+    /* TOAST */
+    #nt-toast-stack{position:fixed;top:18px;right:18px;z-index:99999;display:flex;flex-direction:column;gap:8px;width:310px;pointer-events:none}
+    .nt-toast{pointer-events:all;background:#1e293b;border-radius:10px;border:1px solid rgba(255,255,255,0.1);padding:12px 34px 12px 44px;position:relative;box-shadow:0 8px 28px rgba(0,0,0,0.3);animation:ntIn 0.3s cubic-bezier(.22,.68,0,1.2);font-family:"Poppins",sans-serif;font-size:12px}
+    .nt-toast.nt-out{animation:ntOut 0.25s ease forwards}
+    @keyframes ntIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes ntOut{to{opacity:0;transform:translateX(40px)}}
+    .nt-toast-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+    .nt-toast.success .nt-toast-icon{background:#dcfce7;color:#16a34a}
+    .nt-toast.error .nt-toast-icon{background:#fee2e2;color:#dc2626}
+    .nt-toast.warning .nt-toast-icon{background:#fef3c7;color:#d97706}
+    .nt-toast.info .nt-toast-icon{background:#dbeafe;color:#2563eb}
+    .nt-toast.loading .nt-toast-icon{background:#f3e8ff}
+    .nt-toast-title{font-weight:600;color:#f1f5f9;margin-bottom:1px}
+    .nt-toast-msg{color:#94a3b8}
+    .nt-toast-close{position:absolute;top:4px;right:8px;font-size:15px;color:#64748b;cursor:pointer;background:none;border:none}
+    .nt-spin{width:12px;height:12px;border:2px solid #e9d5ff;border-top-color:#9333ea;border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block}
 
-    .tag {
-      background: #00f5d4;
-      color: #000;
-      font-size: 12px;
-      padding: 5px 12px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    /* TEXT */
-    .card h2 {
-      font-size: 24px;
-    }
-
-    .price {
-      font-size: 40px;
-      margin: 15px 0;
-      font-weight: 700;
-      color: #00f5d4;
-    }
-
-    .features {
-      list-style: none;
-      margin-bottom: 25px;
-    }
-
-    .features li {
-      margin: 10px 0;
-      font-size: 14px;
-    }
-
-    /* BUTTON */
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: #fff;
-      background: rgba(255, 0, 0, 0.742);
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: scale(1.1);
-    }
+    /* PAYMENT MODAL */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:500}
+    .modal-overlay.open{display:flex}
+    .modal-box{background:#1e293b;border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:20px;width:90%;max-width:400px;color:#fff;animation:mIn 0.3s cubic-bezier(.22,.68,0,1.15)}
+    @keyframes mIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+    .modal-close{position:absolute;top:12px;right:16px;font-size:22px;cursor:pointer;color:#64748b;background:none;border:none;position:relative;float:right;margin-bottom:10px}
+    .modal-title{font-size:1.2rem;font-weight:600;color:#00f5d4;margin-bottom:6px}
+    .modal-subtitle{font-size:13px;color:#94a3b8;margin-bottom:22px}
+    .m-field{margin-bottom:13px}
+    .m-field label{display:block;font-size:12px;font-weight:500;color:#94a3b8;margin-bottom:4px}
+    .m-field input{width:100%;padding:10px 12px;font-size:13px;font-family:"Poppins",sans-serif;border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;background:rgba(255,255,255,0.05);color:#fff;transition:border 0.2s}
+    .m-field input:focus{outline:none;border-color:#00f5d4;background:rgba(255,255,255,0.08)}
+    .m-field input::placeholder{color:#475569}
+    .m-btn{width:100%;padding:12px;font-size:14px;font-weight:600;font-family:"Poppins",sans-serif;border:none;border-radius:10px;cursor:pointer;background:linear-gradient(to right,#00f5d4,#00bbf9);color:#0f2027;margin-top:8px;transition:opacity 0.2s}
+    .m-btn:hover{opacity:0.88}
+    .m-btn:disabled{opacity:0.5;cursor:not-allowed}
+    .m-btn.loading-state{position:relative;color:transparent!important}
+    .m-btn.loading-state::after{content:'';position:absolute;width:18px;height:18px;top:50%;left:50%;transform:translate(-50%,-50%);border:2.5px solid rgba(0,0,0,0.2);border-top-color:#0f2027;border-radius:50%;animation:spin 0.7s linear infinite}
+    .order-summary{background:rgba(0,245,212,0.05);border:1px solid rgba(0,245,212,0.2);border-radius:10px;padding:14px;margin-bottom:18px;font-size:13px}
+    .order-summary .plan-name{font-size:16px;font-weight:600;color:#00f5d4;margin-bottom:4px}
+    .order-summary .plan-price{font-size:24px;font-weight:700;color:#fff}
+    .order-summary .plan-price span{font-size:13px;color:#94a3b8}
 
     /* FOOTER */
-    .footer {
-      margin-top: 40px;
-      color: #aaa;
-      font-size: 13px;
-      padding: 20px;
-    }
-
-    /* MOBILE */
-    @media(max-width:768px) {
-      .navbar {
-        flex-direction: column;
-        gap: 5px;
-      }
-    }
+    .footer{color:rgba(255,255,255,0.4);font-size:12px;padding:20px;text-align:center;margin-top:auto}
+    .footer a{color:rgba(0,245,212,0.7);text-decoration:none}
   </style>
-
 </head>
-
 <body>
 
-  <!-- BRAND HEADER -->
-  <div class="navbar">
-    <div class="logo">Neelkanth Typing Pro</div>
-    <div class="tagline">Upgrade Your Typing Skills Like a Pro 💼</div>
-  </div>
+<div id="nt-toast-stack"></div>
 
-  <!-- MAIN -->
-  <div class="container">
-
-    <h1>Choose Your Plan</h1>
-    <div class="sub">Start your professional typing journey today</div>
-
-    <div class="plans">
-
-      <!-- 1 Month -->
-      <div class="card">
-        <h2>1 Month</h2>
-        <div class="price">₹159</div>
-        <ul class="features">
-          <li>✔ Basic Access</li>
-          <li>✔ Practice Tests</li>
-          <li>✔ Limited Features</li>
-        </ul>
-        <a href="#" class="btn">Get Started</a>
-      </div>
-
-      <!-- 3 Month -->
-      <div class="card popular">
-        <div class="tag">MOST POPULAR</div>
-        <h2>3 Months</h2>
-        <div class="price">₹449</div>
-        <ul class="features">
-          <li>✔ Full Access</li>
-          <li>✔ Unlimited Tests</li>
-          <li>✔ Progress Tracking</li>
-        </ul>
-        <a href="#" class="btn">Buy Now</a>
-      </div>
-
-      <!-- 6 Month -->
-      <div class="card">
-        <h2>6 Months</h2>
-        <div class="price">₹899</div>
-        <ul class="features">
-          <li>✔ Premium Access</li>
-          <li>✔ All Features</li>
-          <li>✔ All Test </li>
-          <li>✓ Advanced Analytics </li>
-        </ul>
-        <a href="#" class="btn">Go Premium</a>
-      </div>
-
+<!-- NAVBAR -->
+<div class="navbar">
+  <a href="../index.html" class="nav-logo">Neelkanth Typing</a>
+  <span class="tagline">Upgrade Your Typing Skills Like a Pro 💼</span>
+  <div class="nav-right">
+    <div id="nav-user-area" style="display:none;align-items:center;gap:8px">
+      <span id="nav-user-name" style="font-size:13px;color:rgba(255,255,255,0.85)"></span>
+      <span class="nav-user-badge" id="nav-plan-badge"></span>
+      <a href="#" onclick="doLogout()">Logout</a>
     </div>
+    <a href="../index.html" id="nav-login-link">Login / Register</a>
+    <a href="home-page.html">Practice</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+  <h1>Choose Your Plan</h1>
+  <div class="sub">Unlock unlimited typing practice, all exam patterns &amp; detailed analytics</div>
+
+  <!-- CURRENT PLAN BANNER -->
+  <div class="current-plan-banner" id="current-plan-banner">
+    <div class="cpb-left">
+      <strong id="cpb-plan-name">Loading...</strong>
+      <span id="cpb-plan-desc">Fetching your plan details...</span>
+    </div>
+    <div class="cpb-right" id="cpb-plan-right"></div>
   </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    © 2026 Neelkanth Typing Pro | All Rights Reserved
+  <!-- FREE PLAN INFO -->
+  <div class="free-card">
+    <strong>FREE Plan (48 hours)</strong> — Available on registration. Includes English &amp; Numeric Typing + 3 tests/day. Hindi Typing requires an active paid plan.
   </div>
 
+  <!-- PLAN CARDS -->
+  <div class="plans" id="plans-container">
+    <!-- Will be rendered by JS or fallback -->
+    <div id="plans-loading" style="color:rgba(255,255,255,0.6);padding:30px">Loading plans...</div>
+  </div>
+
+  <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:50px">
+    🔒 Payments secured by Razorpay &nbsp;|&nbsp; All prices inclusive of taxes &nbsp;|&nbsp; Instant activation after payment
+  </div>
+</div>
+
+<!-- PAYMENT MODAL (Login required) -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+      <div class="modal-title">Login to Purchase</div>
+      <button class="modal-close" onclick="closeModal('loginModal')" style="position:static;float:none;background:none;border:none;color:#64748b;font-size:22px;cursor:pointer;margin-left:auto">&times;</button>
+    </div>
+    <div class="modal-subtitle">Please login first to buy a plan</div>
+    <div style="background:rgba(0,245,212,0.05);border:1px solid rgba(0,245,212,0.2);border-radius:10px;padding:14px;margin-bottom:18px;font-size:13px;color:rgba(255,255,255,0.8)">
+      You need to be logged in to purchase a subscription. Please go to the home page and login or register.
+    </div>
+    <a href="../index.html" style="display:block;width:100%;padding:12px;background:linear-gradient(to right,#00f5d4,#00bbf9);color:#0f2027;border-radius:10px;text-align:center;font-weight:600;text-decoration:none;font-size:14px">Go to Home &amp; Login</a>
+    <button onclick="closeModal('loginModal')" style="width:100%;padding:10px;background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);border-radius:10px;font-family:'Poppins',sans-serif;font-size:13px;cursor:pointer;margin-top:10px">Cancel</button>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© <span id="year"></span> Neelkanth Typing Pro | All Rights Reserved | <a href="../index.html">Home</a> | <a href="home-page.html">Practice</a></p>
+  <p style="margin-top:6px">📞 +91 8851490717 &nbsp;|&nbsp; G-21, Vardhman Central Mall, Nehru Vihar, Delhi</p>
+</div>
+
+<script>
+const BASE_URL='https://backend-typingwebapp.onrender.com';
+
+/* ─── TOAST ─── */
+const T_ICONS={success:'✓',error:'✕',warning:'!',info:'i',loading:''};
+const T_DUR={success:4500,error:6000,warning:5000,info:4000,loading:0};
+function showToast(type,title,msg,dur){
+  const stack=document.getElementById('nt-toast-stack');
+  const t=document.createElement('div');t.className='nt-toast '+type;
+  const d=dur!==undefined?dur:T_DUR[type];
+  t.innerHTML=`<div class="nt-toast-icon">${type==='loading'?'<div class="nt-spin"></div>':T_ICONS[type]}</div>
+    <button class="nt-toast-close" onclick="removeToast(this.parentNode)">&times;</button>
+    <div class="nt-toast-title">${title}</div><div class="nt-toast-msg">${msg}</div>`;
+  stack.appendChild(t);
+  if(d>0)setTimeout(()=>removeToast(t),d);
+  return t;
+}
+function removeToast(t){if(!t||!t.parentNode)return;t.classList.add('nt-out');setTimeout(()=>{if(t.parentNode)t.parentNode.removeChild(t);},280);}
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+
+/* ─── SESSION ─── */
+function getSession(){return{token:localStorage.getItem('nt_token'),user:JSON.parse(localStorage.getItem('nt_user')||'null')};}
+function clearSession(){localStorage.removeItem('nt_token');localStorage.removeItem('nt_user');}
+function saveSession(token,user){localStorage.setItem('nt_token',token);localStorage.setItem('nt_user',JSON.stringify(user));}
+function doLogout(){clearSession();showToast('info','Logged Out','Redirecting...');setTimeout(()=>window.location.href='../index.html',1200);}
+
+/* ─── UPDATE NAV ─── */
+function updateNav(user,plan){
+  const li=!!user;
+  document.getElementById('nav-user-area').style.display=li?'flex':'none';
+  document.getElementById('nav-login-link').style.display=li?'none':'';
+  if(li){
+    document.getElementById('nav-user-name').textContent=user.fullName||user.email;
+    document.getElementById('nav-plan-badge').textContent=(plan||'free').toUpperCase();
+  }
+}
+
+/* ─── PLANS DATA ─── */
+const PLANS_FALLBACK=[
+  {key:'basic',name:'1 Month',price:159,duration:'30 days',popular:false,features:['Basic Access','Practice Tests','English & Hindi Typing','3 Tests Per Day','Speed Tracking']},
+  {key:'pro',name:'3 Months',price:449,duration:'90 days',popular:true,features:['Full Access','Unlimited Tests','All Exam Patterns','Progress Tracking','Leaderboard Access','Priority Support']},
+  {key:'pro6',name:'6 Months',price:899,duration:'180 days',popular:false,features:['Premium Access','All Features Included','All Exam Patterns','Advanced Analytics','Leaderboard Access','Priority Support','Best Value']}
+];
+
+let currentPlanKey=null;
+
+/* ─── RENDER PLANS ─── */
+async function loadAndRenderPlans(){
+  let plans=PLANS_FALLBACK;
+  try{
+    const res=await fetch(BASE_URL+'/api/payment/plans');
+    const data=await res.json();
+    if(data.success&&data.plans){
+      plans=Object.entries(data.plans)
+        .filter(([k])=>k!=='free')
+        .map(([k,v])=>{
+          const fb=PLANS_FALLBACK.find(p=>p.key===k)||{};
+          return{key:k,name:fb.name||v.name||k,price:v.price,duration:v.duration||'30 days',popular:fb.popular||false,features:fb.features||['Full Access','Unlimited Tests','Progress Tracking']};
+        });
+    }
+  }catch(e){}
+
+  const {user}=getSession();
+  const userPlan=user?.subscription?.plan;
+  currentPlanKey=userPlan;
+
+  document.getElementById('plans-loading').style.display='none';
+  document.getElementById('plans-container').innerHTML=plans.map(p=>renderPlanCard(p,userPlan)).join('');
+}
+
+function renderPlanCard(plan,userPlan){
+  const isCurrent=userPlan&&(userPlan===plan.key||(plan.key==='pro6'&&userPlan==='pro'));
+  const {token}=getSession();
+  let btnHTML='';
+  if(isCurrent){
+    btnHTML=`<button class="btn btn-current">✓ Current Plan</button>`;
+  }else if(!token){
+    btnHTML=`<button class="btn btn-login-required" onclick="openModal('loginModal')">Login to Buy</button>`;
+  }else{
+    btnHTML=`<button class="btn btn-buy" id="btn-${plan.key}" onclick="initiatePurchase('${plan.key}','${plan.name}',${plan.price})">Buy Now – ₹${plan.price}</button>`;
+  }
+  return `
+    <div class="card${plan.popular?' popular':''}">
+      ${plan.popular?'<div class="tag-popular">MOST POPULAR</div>':''}
+      <h2>${plan.name}</h2>
+      <div class="duration">${plan.duration}</div>
+      <div class="price">₹${plan.price}<span>/plan</span></div>
+      <ul class="features">
+        ${plan.features.map(f=>`<li>${f}</li>`).join('')}
+      </ul>
+      ${btnHTML}
+    </div>
+  `;
+}
+
+/* ─── INITIATE PURCHASE ─── */
+async function initiatePurchase(planKey,planName,amount){
+  const {token,user}=getSession();
+  if(!token){openModal('loginModal');return;}
+  const btn=document.getElementById('btn-'+planKey);
+  if(btn){btn.disabled=true;btn.classList.add('btn-loading');}
+  const lt=showToast('loading','Creating Order...','Connecting to payment gateway...');
+  try{
+    const res=await fetch(BASE_URL+'/api/payment/create-order',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+      body:JSON.stringify({planName:planKey})
+    });
+    removeToast(lt);
+    const data=await res.json();
+    if(!data.success){showToast('error','Order Failed',data.message||'Could not create order. Try again.');if(btn){btn.disabled=false;btn.classList.remove('btn-loading');}return;}
+    openRazorpay(data.order,data.razorpayKeyId,user,planKey,planName);
+  }catch(e){
+    removeToast(lt);
+    showToast('error','Connection Error','Cannot reach server. Is backend running?');
+    if(btn){btn.disabled=false;btn.classList.remove('btn-loading');}
+  }
+}
+
+/* ─── RAZORPAY ─── */
+function openRazorpay(order,keyId,user,planKey,planName){
+  const btn=document.getElementById('btn-'+planKey);
+  const options={
+    key:"rzp_live_SYHFraGzPAmfeC",
+    amount:order.amount,
+    currency:order.currency||'INR',
+    name:'Neelkanth Typing',
+    description:planName+' Plan',
+    order_id:order.id,
+    prefill:{name:user?.fullName||'',email:user?.email||'',contact:user?.phone||''},
+    theme:{color:'#00f5d4'},
+    handler:async function(response){
+      if(btn){btn.classList.add('btn-loading');}
+      const lt=showToast('loading','Verifying Payment...','Please wait...');
+      try{
+        const {token}=getSession();
+        const res=await fetch(BASE_URL+'/api/payment/verify',{
+          method:'POST',
+          headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+          body:JSON.stringify({
+            razorpay_order_id:response.razorpay_order_id,
+            razorpay_payment_id:response.razorpay_payment_id,
+            razorpay_signature:response.razorpay_signature
+          })
+        });
+        removeToast(lt);
+        const data=await res.json();
+        if(data.success){
+          showToast('success','Payment Successful! 🎉',planName+' plan is now active!',6000);
+          const curUser=JSON.parse(localStorage.getItem('nt_user')||'null');
+          if(curUser&&data.subscription){
+            curUser.subscription=data.subscription;
+            saveSession(localStorage.getItem('nt_token'),curUser);
+            updateNav(curUser,data.subscription.plan);
+            showCurrentPlanBanner(curUser,data.subscription);
+          }
+          setTimeout(()=>loadAndRenderPlans(),1500);
+        }else{
+          showToast('error','Verification Failed',data.message||'Payment could not be verified. Contact support.',7000);
+        }
+      }catch(e){
+        removeToast(lt);
+        showToast('error','Verification Error','Could not verify payment. Please contact support with your payment ID: '+response.razorpay_payment_id,0);
+      }
+      if(btn){btn.disabled=false;btn.classList.remove('btn-loading');}
+    },
+    modal:{ondismiss:function(){if(btn){btn.disabled=false;btn.classList.remove('btn-loading');}showToast('warning','Payment Cancelled','You can try again anytime.');}}
+  };
+  const rzp=new Razorpay(options);
+  rzp.on('payment.failed',function(r){showToast('error','Payment Failed',r.error.description||'Payment failed. Try again.',6000);if(btn){btn.disabled=false;btn.classList.remove('btn-loading');}});
+  rzp.open();
+}
+
+/* ─── CURRENT PLAN BANNER ─── */
+function showCurrentPlanBanner(user,sub){
+  const banner=document.getElementById('current-plan-banner');
+  if(!sub||!sub.isActive){banner.classList.remove('show');return;}
+  banner.classList.add('show');
+  document.getElementById('cpb-plan-name').textContent=(sub.plan||'free').toUpperCase()+' Plan Active';
+  document.getElementById('cpb-plan-desc').textContent='Valid until: '+(new Date(sub.expiresAt).toLocaleDateString('en-IN')||'N/A');
+  document.getElementById('cpb-plan-right').textContent='Time remaining: '+(sub.remainingTime?.formatted||'N/A');
+}
+
+/* ─── INIT ─── */
+window.addEventListener('DOMContentLoaded',()=>{
+  const {token,user}=getSession();
+  if(token&&user){
+    updateNav(user,user.subscription?.plan);
+    if(user.subscription)showCurrentPlanBanner(user,user.subscription);
+  }
+  loadAndRenderPlans();
+  document.getElementById('year').textContent=new Date().getFullYear();
+  document.querySelectorAll('.modal-overlay').forEach(el=>{
+    el.addEventListener('click',e=>{if(e.target===el)el.classList.remove('open');});
+  });
+});
+</script>
 </body>
-
 </html>

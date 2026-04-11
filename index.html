@@ -1,650 +1,719 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
   <title>Neelkanth Typing | Hindi & English Typing Institute in India</title>
   <link rel="icon" type="image/png" href="./assets/img/logo.ico">
-
-
-  <meta name="description"
-    content="Neelkanth Typing & Steno Classes offers professional Hindi and English typing training, stenography coaching, SSC, DSSSB and court typing exam preparation. Improve speed and accuracy with expert guidance at neelkanthtyping.in." />
-
-  <meta name="keywords"
-    content="Neelkanth Typing, neelkanthtyping.in, Hindi Typing Classes, English Typing Institute, Steno Coaching, SSC Typing Preparation, DSSSB Steno Classes, Court Typing Practice, Typing Speed Test, Best Typing Institute" />
-
-  <meta name="author" content="Neelkanth Typing & Steno Classes" />
-  <meta name="robots" content="index, follow" />
-
+  <meta name="description" content="Neelkanth Typing & Steno Classes offers professional Hindi and English typing training, stenography coaching, SSC, DSSSB and court typing exam preparation." />
   <link rel="canonical" href="https://neelkanthtyping.in/" />
-
-  <!-- Open Graph for Facebook & WhatsApp -->
-  <meta property="og:title" content="Neelkanth Typing & Steno Classes | Typing & Steno Institute" />
-  <meta property="og:description"
-    content="Join Neelkanth Typing & Steno Classes for Hindi & English typing, stenography training and government exam preparation." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://neelkanthtyping.in/" />
-  <meta property="og:site_name" content="Neelkanth Typing & Steno Classes" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Neelkanth Typing & Steno Classes" />
-  <meta name="twitter:description" content="Best Hindi & English Typing and Stenography Coaching Institute." />
-
-  <link rel="stylesheet" type="text/css" href="style.css" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+    *{box-sizing:border-box;-webkit-font-smoothing:antialiased;margin:0;padding:0}
+    body{font-family:"Poppins",sans-serif;background:#fff;color:#222}
 
-    * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    /* NAV */
+    nav{padding:8px 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.08);position:sticky;top:0;background:#fff;z-index:100}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo img{height:40px;width:auto}
+    .logo h1{font-size:1.25rem;background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+    nav ul{list-style:none;display:flex;align-items:center;gap:6px}
+    nav ul li a{text-decoration:none;color:#333;font-size:0.88rem;font-weight:400;padding:5px 10px;border-radius:6px;transition:all 0.2s}
+    nav ul li a:hover{background:#f0f4ff;color:#2c64fc}
+    .btn-login{border:1.5px solid #2c64fc;color:#2c64fc!important;padding:6px 16px!important;border-radius:20px!important;font-weight:500!important}
+    .btn-login:hover{background:#2c64fc!important;color:#fff!important}
+    .btn-signup{background:linear-gradient(to right,#b927fc,#2c64fc);color:#fff!important;padding:6px 16px!important;border-radius:20px!important;font-weight:500!important}
+    .btn-signup:hover{opacity:0.88!important;background:linear-gradient(to right,#b927fc,#2c64fc)!important}
 
-    @media (max-width: 768px) {
-      main section {
-        grid-template-columns: 1fr !important;
-        text-align: center;
-      }
-    }
+    /* HAMBURGER */
+    .hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px}
+    .hamburger span{width:24px;height:2px;background:#333;border-radius:2px;transition:0.3s}
+    @media(max-width:790px){.hamburger{display:flex}nav ul{display:none}}
 
+    /* MOBILE MENU */
+    .menubar{position:fixed;top:0;left:-65%;width:65%;height:100vh;background:#fff;z-index:200;padding:80px 30px 30px;transition:0.4s;box-shadow:4px 0 20px rgba(0,0,0,0.1)}
+    .menubar.active{left:0}
+    .menubar ul{list-style:none;display:flex;flex-direction:column;gap:20px}
+    .menubar ul li a{text-decoration:none;color:#333;font-size:1rem;font-weight:500;padding:8px 12px;border-radius:8px;display:block}
+    .menubar ul li a:hover{background:#f0f4ff;color:#2c64fc}
+    .menu-close{position:absolute;top:20px;right:20px;font-size:24px;cursor:pointer;color:#555;background:none;border:none}
 
-    body {
-      padding: 0;
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-    }
+    /* NAV USER */
+    .nav-user-info{display:flex;align-items:center;gap:8px}
+    .nav-user-name{font-size:0.85rem;font-weight:500;color:#333}
+    .nav-plan-badge{font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:20px;background:linear-gradient(to right,#b927fc,#2c64fc);color:#fff}
+    .btn-logout{font-size:0.8rem;color:#dc2626!important;border:1.5px solid #dc2626!important;padding:5px 12px!important;border-radius:20px!important;cursor:pointer;background:none!important}
+    .btn-logout:hover{background:#fef2f2!important}
 
-    nav {
-      padding: 5px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-      z-index: 1;
-    }
+    /* MOBILE USER INFO */
+    .mobile-user-info{display:none;flex-direction:column;gap:6px;padding:8px 12px;background:#f8f0ff;border-radius:10px;margin-bottom:4px}
+    .mobile-user-info .mu-name{font-size:0.9rem;font-weight:600;color:#333}
+    .mobile-user-info .mu-plan{font-size:0.75rem;font-weight:600;padding:2px 10px;border-radius:20px;background:linear-gradient(to right,#b927fc,#2c64fc);color:#fff;display:inline-block;width:fit-content}
+    .mobile-user-info .mu-logout{font-size:0.82rem;color:#dc2626;border:1.5px solid #dc2626;padding:5px 14px;border-radius:20px;background:none;cursor:pointer;font-family:"Poppins",sans-serif;margin-top:4px;text-align:center}
 
-    nav .logo {
-      display: flex;
-      align-items: center;
-    }
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;padding:70px 5%;max-width:1300px;margin:auto}
+    .hero-text h1{font-size:2.4rem;font-weight:700;color:#111;line-height:1.3;margin-bottom:16px}
+    .hero-text h1 span{background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-text p{color:#666;line-height:1.8;font-size:0.95rem;margin-bottom:20px}
+    .hero-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+    .hero-list li{font-size:0.9rem;color:#444;display:flex;align-items:center;gap:8px}
+    .hero-list li::before{content:'✓';width:20px;height:20px;background:linear-gradient(135deg,#b927fc,#2c64fc);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-primary{padding:12px 26px;background:linear-gradient(to right,#b927fc,#2c64fc);color:#fff;border:none;border-radius:25px;font-family:"Poppins",sans-serif;font-size:0.92rem;font-weight:600;cursor:pointer;transition:opacity 0.2s,transform 0.1s;text-decoration:none;display:inline-block}
+    .btn-primary:hover{opacity:0.88;transform:translateY(-1px)}
+    .btn-secondary{padding:12px 26px;border:2px solid #2c64fc;color:#2c64fc;background:none;border-radius:25px;font-family:"Poppins",sans-serif;font-size:0.92rem;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block}
+    .btn-secondary:hover{background:#2c64fc;color:#fff}
+    .hero-img img{width:100%;border-radius:16px;box-shadow:0 20px 50px rgba(44,100,252,0.15)}
+    @media(max-width:768px){.hero{grid-template-columns:1fr;text-align:center;padding:40px 5%}.hero-list li{justify-content:center}.hero-btns{justify-content:center}.hero-img{display:none}.hero-text h1{font-size:1.8rem}}
 
-    nav .logo img {
-      height: 40px;
-      width: auto;
-      margin-right: 10px;
-    }
+    /* STATS */
+    .stats{background:linear-gradient(135deg,#f8f0ff,#eef3ff);padding:40px 5%}
+    .stats-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+    .stat-card{background:#fff;padding:24px 16px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,0.06)}
+    .stat-card .num{font-size:2rem;font-weight:700;background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .stat-card .lbl{font-size:0.82rem;color:#777;margin-top:4px}
+    @media(max-width:600px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
 
-    nav .logo h1 {
-      font-size: 1.3rem;
-      background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    /* SECTION HEADING */
+    .section-head{text-align:center;padding:60px 5% 30px}
+    .section-head .tag{font-size:0.78rem;font-weight:600;color:#7c5fc8;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+    .section-head h2{font-size:2.2rem;font-weight:600;color:#111}
+    .section-head p{color:#777;margin-top:10px;font-size:0.93rem}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-    }
+    /* EXAM CARDS */
+    .exam-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:0 5% 60px;max-width:1300px;margin:auto}
+    .exam-card{background:#fff;border:1px solid #eee;border-radius:14px;padding:22px;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:transform 0.2s,box-shadow 0.2s;cursor:pointer}
+    .exam-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(44,100,252,0.12)}
+    .exam-card .date{font-size:0.78rem;color:#aaa;margin-bottom:8px}
+    .exam-card h4{font-size:0.92rem;color:#222;font-weight:600;margin-bottom:14px;line-height:1.4}
+    .exam-card .meta{display:flex;justify-content:space-between;margin-bottom:14px}
+    .exam-card .meta span{font-size:0.82rem;color:#555}
+    .exam-card .meta strong{color:#222;font-weight:600}
+    .exam-card .footer-row{display:flex;justify-content:space-between;align-items:center}
+    .exam-card .id-badge{background:#111;color:#fff;padding:4px 10px;border-radius:6px;font-size:0.78rem;font-family:monospace}
+    .exam-card .type-badge{padding:4px 10px;border-radius:6px;font-size:0.78rem;font-weight:500}
+    .badge-yellow{background:#fff3cc;color:#b45309}
+    .badge-blue{background:#dbeafe;color:#1d4ed8}
+    .badge-green{background:#dcfce7;color:#15803d}
+    .exam-cards-loading{text-align:center;padding:40px;color:#888;font-size:0.9rem}
+    @media(max-width:900px){.exam-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:500px){.exam-grid{grid-template-columns:1fr}}
 
-    nav ul li {
-      margin-left: 1.3rem;
-    }
+    /* FEATURES */
+    .features{background:#f9fafe;padding:60px 5%}
+    .features-inner{max-width:1200px;margin:auto}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+    .feature-card{background:#fff;padding:28px;border-radius:14px;border:1px solid #eef2ff;transition:box-shadow 0.2s}
+    .feature-card:hover{box-shadow:0 8px 25px rgba(44,100,252,0.1)}
+    .feature-icon{width:48px;height:48px;background:linear-gradient(135deg,#f0e6ff,#dce9ff);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+    .feature-card h3{font-size:1rem;font-weight:600;color:#222;margin-bottom:8px}
+    .feature-card p{font-size:0.85rem;color:#777;line-height:1.7}
+    @media(max-width:768px){.features-grid{grid-template-columns:1fr}}
 
-    nav ul li a {
-      text-decoration: none;
-      color: #000;
-      font-size: 95%;
-      font-weight: 400;
-      padding: 4px 8px;
-      border-radius: 5px;
-    }
+    /* TOAST */
+    #nt-toast-stack{position:fixed;top:20px;right:20px;z-index:99999;display:flex;flex-direction:column;gap:10px;width:320px;pointer-events:none}
+    .nt-toast{pointer-events:all;background:#fff;border-radius:12px;border:1px solid #e8e8e8;padding:13px 36px 13px 48px;position:relative;box-shadow:0 8px 30px rgba(0,0,0,0.1);animation:ntIn 0.35s cubic-bezier(.22,.68,0,1.2) forwards;font-family:"Poppins",sans-serif}
+    .nt-toast.nt-out{animation:ntOut 0.28s ease forwards}
+    @keyframes ntIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes ntOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(50px)}}
+    .nt-toast-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+    .nt-toast.success .nt-toast-icon{background:#dcfce7;color:#16a34a}
+    .nt-toast.error .nt-toast-icon{background:#fee2e2;color:#dc2626}
+    .nt-toast.warning .nt-toast-icon{background:#fef9c3;color:#ca8a04}
+    .nt-toast.info .nt-toast-icon{background:#dbeafe;color:#2563eb}
+    .nt-toast.loading .nt-toast-icon{background:#f3e8ff}
+    .nt-toast-title{font-size:13px;font-weight:600;color:#111;margin-bottom:2px}
+    .nt-toast-msg{font-size:12px;color:#666;line-height:1.5}
+    .nt-toast-close{position:absolute;top:6px;right:8px;font-size:16px;color:#aaa;cursor:pointer;background:none;border:none;padding:2px 4px}
+    .nt-toast-bar{position:absolute;bottom:0;left:0;height:3px;border-radius:0 0 12px 12px;animation:ntBar linear forwards}
+    .nt-toast.success .nt-toast-bar{background:#16a34a}
+    .nt-toast.error .nt-toast-bar{background:#dc2626}
+    .nt-toast.warning .nt-toast-bar{background:#ca8a04}
+    .nt-toast.info .nt-toast-bar{background:#2563eb}
+    .nt-toast.loading .nt-toast-bar{background:linear-gradient(90deg,#b927fc,#2c64fc);animation:none;width:100%;opacity:0.4}
+    @keyframes ntBar{from{width:100%}to{width:0%}}
+    .nt-spin{width:14px;height:14px;border:2.5px solid #e9d5ff;border-top-color:#9333ea;border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-    nav ul li a:hover {
-      background-color: #085fe29d;
-      color: #ffffff;
+    /* MODAL */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:1000}
+    .modal-overlay.open{display:flex}
+    .modal-box{background:#fff;padding:32px;border-radius:20px;width:90%;max-width:430px;position:relative;max-height:90vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.15);animation:modalIn 0.3s cubic-bezier(.22,.68,0,1.15)}
+    @keyframes modalIn{from{opacity:0;transform:scale(0.93) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    .modal-close{position:absolute;top:12px;right:16px;font-size:22px;cursor:pointer;color:#aaa;background:none;border:none;transition:color 0.15s}
+    .modal-close:hover{color:#222}
+    .modal-title{text-align:center;font-size:1.3rem;font-weight:600;margin-bottom:5px;background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .modal-subtitle{text-align:center;font-size:0.82rem;color:#999;margin-bottom:22px}
+    .m-field{margin-bottom:13px}
+    .m-field label{display:block;font-size:0.79rem;font-weight:500;color:#555;margin-bottom:4px}
+    .m-field input{width:100%;padding:10px 12px;font-size:0.87rem;font-family:"Poppins",sans-serif;border:1.5px solid #e2e6f0;border-radius:8px;background:#fafbff;color:#222;transition:border 0.2s,box-shadow 0.2s}
+    .m-field input:focus{outline:none;border-color:#2c64fc;box-shadow:0 0 0 3px rgba(44,100,252,0.1);background:#fff}
+    .m-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .m-btn{width:100%;padding:12px;font-size:0.9rem;font-weight:600;font-family:"Poppins",sans-serif;border:none;border-radius:10px;cursor:pointer;background:linear-gradient(to right,#b927fc,#2c64fc);color:#fff;margin-top:8px;transition:opacity 0.2s,box-shadow 0.2s}
+    .m-btn:hover{opacity:0.88;box-shadow:0 6px 20px rgba(44,100,252,0.35)}
+    .m-btn:disabled{opacity:0.5;cursor:not-allowed}
+    .m-btn.loading-state{position:relative;color:transparent!important}
+    .m-btn.loading-state::after{content:'';position:absolute;width:18px;height:18px;top:50%;left:50%;transform:translate(-50%,-50%);border:2.5px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite}
+    .m-alert{display:none;border-radius:10px;padding:11px 14px 11px 44px;position:relative;font-size:0.81rem;line-height:1.5;margin-bottom:14px}
+    .m-alert.show{display:block}
+    .m-alert-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+    .m-alert-title{font-weight:600;font-size:0.82rem;margin-bottom:1px}
+    .m-alert-desc{font-size:0.77rem;opacity:0.9}
+    .m-alert.success{background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d}
+    .m-alert.success .m-alert-icon{background:#bbf7d0;color:#15803d}
+    .m-alert.error{background:#fef2f2;border:1px solid #fecaca;color:#b91c1c}
+    .m-alert.error .m-alert-icon{background:#fecaca;color:#b91c1c}
+    .m-alert.warning{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
+    .m-alert.warning .m-alert-icon{background:#fde68a;color:#92400e}
+    .m-switch{text-align:center;font-size:0.79rem;color:#999;margin-top:14px}
+    .m-switch a{color:#2c64fc;font-weight:500;cursor:pointer;text-decoration:none}
+    .m-switch a:hover{text-decoration:underline}
+    .m-sub-info{margin-top:10px;font-size:0.78rem;color:#555;line-height:1.6}
+    .m-sub-info strong{color:#2c64fc}
+    @media(max-width:480px){.m-row2{grid-template-columns:1fr}.modal-box{padding:22px 16px}#nt-toast-stack{width:calc(100vw - 24px);right:12px}}
 
-    }
-
-    .hamburger {
-      display: none;
-      cursor: pointer;
-    }
-
-    .hamburger .line {
-      width: 25px;
-      height: 1px;
-      background-color: #1f1f1f;
-      display: block;
-      margin: 7px auto;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .hamburger-active {
-      transition: all 0.3s ease-in-out;
-      transition-delay: 0.6s;
-      transform: rotate(45deg);
-    }
-
-    .hamburger-active .line:nth-child(2) {
-      width: 0px;
-    }
-
-    .hamburger-active .line:nth-child(1),
-    .hamburger-active .line:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-
-    .hamburger-active .line:nth-child(1) {
-      transform: translateY(12px);
-    }
-
-    .hamburger-active .line:nth-child(3) {
-      transform: translateY(-5px) rotate(90deg);
-    }
-
-    .menubar {
-      position: absolute;
-      top: 0;
-      left: -60%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      width: 60%;
-      height: 100vh;
-      padding: 20% 0;
-      background: rgba(255, 255, 255);
-      transition: all 0.5s ease-in;
-      z-index: 2;
-    }
-
-    .active {
-      left: 0;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
-
-    .menubar ul {
-      padding: 0;
-      list-style: none;
-    }
-
-    .menubar ul li {
-      margin-bottom: 32px;
-    }
-
-    .menubar ul li a {
-      text-decoration: none;
-      color: #000;
-      font-size: 95%;
-      font-weight: 400;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-
-    .menubar ul li a:hover {
-      background-color: #f5f5f5;
-    }
-
-    @media screen and (max-width: 790px) {
-      .hamburger {
-        display: block;
-      }
-
-      nav ul {
-        display: none;
-      }
-    }
-
-    .btn-login {
-      border: 1px solid #2c64fc;
-      color: #2c64fc !important;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-
-    .btn-login:hover {
-      background: #2c64fc;
-      color: #fff !important;
-    }
-
-    .btn-signup {
-      background: linear-gradient(to right, #b927fc, #2c64fc);
-      color: #fff !important;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-
-    .btn-signup:hover {
-
-
-      opacity: 0.9;
-    }
+    /* FOOTER */
+    footer{background:#0f172a;color:#94a3b8;padding:60px 5% 30px;margin-top:60px}
+    .footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;padding-bottom:40px;border-bottom:1px solid #1e293b}
+    .footer-brand h2{font-size:1.2rem;background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+    .footer-brand p{font-size:0.85rem;line-height:1.7;color:#64748b}
+    .footer-col h3{font-size:0.9rem;font-weight:600;color:#e2e8f0;margin-bottom:14px}
+    .footer-col ul{list-style:none}
+    .footer-col ul li{margin-bottom:8px}
+    .footer-col ul li a{text-decoration:none;color:#64748b;font-size:0.85rem;transition:color 0.2s}
+    .footer-col ul li a:hover{color:#a78bfa}
+    .footer-col p{font-size:0.85rem;color:#64748b;line-height:1.7;margin-bottom:6px}
+    .footer-bottom{max-width:1200px;margin:24px auto 0;text-align:center;font-size:0.8rem;color:#475569}
+    .footer-bottom a{color:#818cf8;text-decoration:none}
+    @media(max-width:900px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:500px){.footer-grid{grid-template-columns:1fr}}
   </style>
 </head>
-
 <body>
-  <nav>
-    <div class="logo">
-      <img src="assets/img/logo.png" alt="logo" />
-      <h1>Neelkanth Typing</h1>
-    </div>
 
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Exam</a></li>
-      <li><a href="/assets/subscription.html">Typing</a></li>
-      <li><a href="/assets/blogPage.html">Typing Tips</a></li>
-      <li><a href="#">Contact Us</a></li>
-      <!-- Buttons -->
-      <ul>
-        <li><a href="#" class="btn-login" id="openLogin">Login</a></li>
-        <li><a href="#" class="btn-signup" id="openSignup">New User</a></li>
-      </ul>
+<div id="nt-toast-stack"></div>
 
-      <!-- LOGIN MODAL -->
-      <div id="loginModal" class="modal"
-        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
-        <div style="background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; position:relative;">
-          <span class="close"
-            style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
-          <h2 style="text-align:center; margin-bottom:20px;">Login</h2>
-          <form>
-            <label>Email / Username</label>
-            <input type="text" placeholder="Enter your email or username"
-              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-            <label>Password</label>
-            <input type="password" placeholder="Enter your password"
-              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-            <button type="submit"
-              style="width:100%; padding:10px; margin-top:15px; background:#2c64fc; color:#fff; border:none; border-radius:5px; cursor:pointer;">Login</button>
-          </form>
-        </div>
-      </div>
-
-      <!-- SIGNUP MODAL -->
-      <div id="signupModal" class="modal"
-        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
-        <div style="background:#fff; padding:30px; border-radius:10px; width:90%; max-width:400px; position:relative;">
-          <span class="close"
-            style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
-          <h2 style="text-align:center; margin-bottom:20px;">Sign Up</h2>
-          <form>
-            <label>Full Name</label>
-            <input type="text" placeholder="Enter your full name"
-              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-            <label>Email</label>
-            <input type="email" placeholder="Enter your email"
-              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-            <label>Password</label>
-            <input type="password" placeholder="Enter password"
-              style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:5px;">
-            <button type="submit"
-              style="width:100%; padding:10px; margin-top:15px; background:#2c64fc; color:#fff; border:none; border-radius:5px; cursor:pointer;">Sign
-              Up</button>
-          </form>
-        </div>
-      </div>
-
-      <!-- JS -->
-      <script>
-        // Get elements
-        const loginModal = document.getElementById('loginModal');
-        const signupModal = document.getElementById('signupModal');
-        const openLogin = document.getElementById('openLogin');
-        const openSignup = document.getElementById('openSignup');
-        const closeButtons = document.querySelectorAll('.close');
-
-        // Open modals
-        openLogin.onclick = () => loginModal.style.display = 'flex';
-        openSignup.onclick = () => signupModal.style.display = 'flex';
-
-        // Close modals
-        closeButtons.forEach(btn => {
-          btn.onclick = () => {
-            loginModal.style.display = 'none';
-            signupModal.style.display = 'none';
-          }
-        });
-
-        // Close on outside click
-        window.onclick = (e) => {
-          if (e.target == loginModal) loginModal.style.display = 'none';
-          if (e.target == signupModal) signupModal.style.display = 'none';
-        }
-      </script>
-
-    </ul>
-
-    <div class="hamburger">
-      <span class="line"></span>
-      <span class="line"></span>
-      <span class="line"></span>
-    </div>
-  </nav>
-
-  <div class="menubar">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Exam</a></li>
-      <li><a href="/assets/subscription.html">Typing</a></li>
-      <li><a href="#">Typing Tips</a></li>
-      <li><a href="#">Contact Us</a></li>
-      <li><a href="#" class="btn-login">Login</a></li>
-      <li><a href="#" class="btn-signup">New User</a></li>
-    </ul>
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <img src="assets/img/logo.png" alt="Neelkanth Typing Logo" onerror="this.style.display='none'">
+    <h1>Neelkanth Typing</h1>
   </div>
-
-  <script>
-    const mobileNav = document.querySelector(".hamburger");
-    const navbar = document.querySelector(".menubar");
-
-    const toggleNav = () => {
-      navbar.classList.toggle("active");
-      mobileNav.classList.toggle("hamburger-active");
-    };
-    mobileNav.addEventListener("click", () => toggleNav());
-  </script>
-
-
-
-  <main style="padding:50px 5%; max-width:1390px; margin:auto;">
-
-    <section style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
-
-      <!-- LEFT CONTENT -->
-      <div>
-        <h1 style="font-size:2.2rem; margin-bottom:15px; font-weight:700; color:#111;">
-          Neelkanth Typing – Hindi & English Typing and Stenography Training Institute
-        </h1>
-
-        <p style="color:#555; line-height:1.7;">
-          <strong>Neelkanth Typing</strong> provides expert
-          training in <strong>Hindi and English Typing</strong>.
-          Our courses are specially designed for government exams,
-          competitive tests, and job-oriented typing skills.
-        </p>
-
-        <ul style="margin-top:15px; color:#444; line-height:1.8;">
-          <li>✔ Hindi Typing</li>
-          <li>✔ English Typing</li>
-          <li>✔ Stenography (Hindi / English)</li>
-          <li>✔ Speed & Accuracy Improvement</li>
-          <li>✔ Exam-Oriented Practice</li>
-        </ul>
-
-
-        </p>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="assets/subscription.html">Subscription</a></li>
+    <li><a href="assets/home-page.html">Typing</a></li>
+    <li><a href="assets/blogPage.html">Typing Tips</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+    <li id="nav-login-li"><a href="#" class="btn-login" id="openLogin">Login</a></li>
+    <li id="nav-signup-li"><a href="#" class="btn-signup" id="openSignup">New User</a></li>
+    <li id="nav-user-li" style="display:none">
+      <div class="nav-user-info">
+        <span class="nav-user-name" id="nav-user-name"></span>
+        <span class="nav-plan-badge" id="nav-plan-badge"></span>
+        <a class="btn-login btn-logout" href="#" onclick="doLogout()">Logout</a>
       </div>
+    </li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-      <!-- RIGHT IMAGE -->
-      <div style="text-align:center;">
-        <img src="assets/img/typing.jpg" alt="Typing Practice"
-          style="width:100%; max-width:500px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
+<!-- MOBILE MENU -->
+<div class="menubar" id="menubar">
+  <button class="menu-close" id="menuClose">&times;</button>
+  <ul>
+    <li><a href="#" onclick="closeMobileMenu()">Home</a></li>
+    <li><a href="assets/subscription.html" onclick="closeMobileMenu()">Subscription</a></li>
+    <li><a href="assets/home-page.html" onclick="closeMobileMenu()">Typing</a></li>
+    <li><a href="assets/blogPage.html" onclick="closeMobileMenu()">Typing Tips</a></li>
+    <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+    <!-- FIX: Logged-out buttons -->
+    <li id="mob-login-li"><a href="#" class="btn-login" onclick="openModal('loginModal');closeMobileMenu()">Login</a></li>
+    <li id="mob-signup-li"><a href="#" class="btn-signup" onclick="openModal('signupModal');closeMobileMenu()">New User</a></li>
+    <!-- FIX: Logged-in user info for mobile -->
+    <li id="mob-user-li" style="display:none">
+      <div class="mobile-user-info" style="display:flex">
+        <span class="mu-name" id="mob-user-name"></span>
+        <span class="mu-plan" id="mob-plan-badge"></span>
+        <button class="mu-logout" onclick="doLogout()">Logout</button>
       </div>
+    </li>
+  </ul>
+</div>
 
-    </section>
-    <section class="exam-cards" style=" padding-top: px; max-width:1200px;   ">
-      <div class="title-style-one text-center" style="justify-items: center; margin:50px;">
-        <!-- Small Title -->
-        <div class="sc-title text-uppercase"
-          style="Font-weight: 500; font-size:0.85rem; color:#71757e; letter-spacing:2px; margin-bottom:10px;">
-          ALL EXAMS
-        </div>
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+    <div class="modal-title">Welcome Back</div>
+    <div class="modal-subtitle">Sign in to your Neelkanth account</div>
+    <div class="m-alert" id="login-alert">
+      <div class="m-alert-icon" id="login-alert-icon"></div>
+      <div class="m-alert-title" id="login-alert-title"></div>
+      <div class="m-alert-desc" id="login-alert-desc"></div>
+    </div>
+    <div class="m-field">
+      <label>Email Address</label>
+      <input type="email" id="login-email" placeholder="abc@example.com">
+    </div>
+    <div class="m-field">
+      <label>Password</label>
+      <input type="password" id="login-password" placeholder="••••••••">
+    </div>
+    <button class="m-btn" id="login-btn" onclick="doLogin()">Login</button>
+    <div class="m-sub-info" id="login-sub-info" style="display:none"></div>
+    <div class="m-switch">Don't have an account? <a onclick="switchModal('loginModal','signupModal')">Register here</a></div>
+    <div class="m-switch" style="margin-top:8px"><a onclick="closeModal('loginModal')">← Back to home</a></div>
+  </div>
+</div>
 
-        <!-- Main Title -->
-        <h2 class="main-title fw-500 tx-dark" style="font-size:3rem; font-weight:500; color:#222; margin:0;">
-          Explore all Online Typing Exams
-        </h2>
+<!-- REGISTER MODAL -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('signupModal')">&times;</button>
+    <div class="modal-title">Create Account</div>
+    <div class="modal-subtitle">Get a FREE 48-hour plan on registration!</div>
+    <div class="m-alert" id="reg-alert">
+      <div class="m-alert-icon" id="reg-alert-icon"></div>
+      <div class="m-alert-title" id="reg-alert-title"></div>
+      <div class="m-alert-desc" id="reg-alert-desc"></div>
+    </div>
+    <div class="m-field">
+      <label>Full Name <span style="color:#e03">*</span></label>
+      <input type="text" id="reg-name" placeholder="Rahul Sharma">
+    </div>
+    <div class="m-row2">
+      <div class="m-field">
+        <label>Email <span style="color:#e03">*</span></label>
+        <input type="email" id="reg-email" placeholder="rahul@example.com">
       </div>
-
-      <div class="row" style="display:flex; flex-wrap:wrap; gap:20px;">
-
-
-        <!-- CARD 1 -->
-        <div class="card"
-          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
-            Skill ...</h4>
-          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-            <div>1800 <span style="font-weight:400;">keys</span></div>
-            <div>10:00 <span style="font-weight:400;">min.</span></div>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-              <i class="fa-solid fa-user"></i> 180931
-            </div>
-            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
-              Retyping </div>
-          </div>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="card"
-          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
-            Skill ...</h4>
-          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-            <div>1800 <span style="font-weight:400;">keys</span></div>
-            <div>10:00 <span style="font-weight:400;">min.</span></div>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-              <i class="fa-solid fa-user"></i> 180931
-            </div>
-            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
-              Retyping </div>
-          </div>
-        </div>
-
-
-        <!-- CARD 3 -->
-        <div class="card"
-          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
-            Skill ...</h4>
-          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-            <div>1800 <span style="font-weight:400;">keys</span></div>
-            <div>10:00 <span style="font-weight:400;">min.</span></div>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-              <i class="fa-solid fa-user"></i> 180931
-            </div>
-            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
-              Retyping </div>
-          </div>
-        </div>
-
-
-        <!-- CARD 4 -->
-        <div class="card"
-          style="flex:1 1 calc(25% - 20px); border:1px solid #000; background:#fff; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); padding:20px; display:flex; flex-direction:column; justify-content:space-between;">
-          <div style="font-size:0.85rem; color:#454141;">Created- Sep 26, 2024</div>
-          <h4 style="margin:10px 0; color:#222;" title="RRB NTPC English Typing Skill Test">RRB NTPC English Typing
-            Skill ...</h4>
-          <div style="display:flex; justify-content:space-between; margin:15px 0; font-weight:500;">
-            <div>1800 <span style="font-weight:400;">keys</span></div>
-            <div>10:00 <span style="font-weight:400;">min.</span></div>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div style="background:#020202; color:#fff; padding:5px 10px; border-radius:5px; font-size:0.85rem;">
-              <i class="fa-solid fa-user"></i> 180931
-            </div>
-            <div style=" border-radius: 15%; padding: 5px; font-size:0.85rem; background:#ffce4c; color:#000000;">
-              Retyping </div>
-          </div>
-        </div>
-
-
-      </div>
-    </section>
-
-
-  </main>
-
-  <!-- FOOTER START -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-col">
-        <h2 class="footer-logo">Neelkanth Typing</h2>
-        <p>
-          We provide expert training in Hindi & English Typing, Stenography
-          and exam-oriented practice with accuracy and speed.
-        </p>
-      </div>
-
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Exam</a></li>
-          <li><a href="#">Typing Tips</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3>Courses</h3>
-        <ul>
-          <li><a href="#">Hindi Typing</a></li>
-          <li><a href="#">English Typing</a></li>
-          <li><a href="#">Steno (Hindi / English)</a></li>
-          <li><a href="#">Practice Tests</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3>Contact</h3>
-        <p>
-          📍 G-21, Ground Floor, Vardhman Central Mall,<br>
-          Nehru Vihar, Delhi – 110054
-        </p>
-
-
-        <p>📞 +91 8851490717</p>
-        <p>
-          <a href="https://wa.me/918851490717?text=Hello,%20Neelkanth%20Typing%20%26%20Steno%20Classes,%0A%0AI%20want%20to%20enquire%20about%20Typing%20and%20Steno%20courses.%20Please%20share%20details%20regarding%20fees,%20timings%20and%20admission.%0A%0AThank%20you."
-            target="_blank"
-            style="text-decoration:none; color:#555;   display:inline-flex; align-items:center; gap:6px;">
-
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="20"
-              height="20">
-
-            +91 8851490717
-          </a>
-
-        </p>
-        <p>✉️ info@neelkanthclasses.com</p>
+      <div class="m-field">
+        <label>Phone <span style="color:#e03">*</span></label>
+        <input type="tel" id="reg-phone" placeholder="9876543210" maxlength="10">
       </div>
     </div>
+    <div class="m-field">
+      <label>Password <span style="color:#e03">*</span></label>
+      <input type="password" id="reg-password" placeholder="Minimum 6 characters">
+    </div>
+    <div class="m-row2">
+      <div class="m-field"><label>State</label><input type="text" id="reg-state" placeholder="Delhi"></div>
+      <div class="m-field"><label>City</label><input type="text" id="reg-city" placeholder="New Delhi"></div>
+    </div>
+    <div class="m-row2">
+      <div class="m-field"><label>Pincode</label><input type="text" id="reg-pincode" placeholder="110054" maxlength="6"></div>
+      <div class="m-field"><label>Address</label><input type="text" id="reg-address" placeholder="House No, Street"></div>
+    </div>
+    <button class="m-btn" id="reg-btn" onclick="doRegister()">Create Account &amp; Get FREE Plan</button>
+    <div class="m-sub-info" id="reg-sub-info" style="display:none"></div>
+    <div class="m-switch">Already have an account? <a onclick="switchModal('signupModal','loginModal')">Login here</a></div>
+  </div>
+</div>
 
-    <div class="footer-bottom">
-      <p>
-        © <span id="year"></span> Neelkanth Typing.
-        All Rights Reserved.
-        <span>| Developed by <br><br>
-          <a href="https://hmwebtech.com" target="_blank" style="text-decoration:none; color:#2c64fc; font-weight:600;">
-            HMWEBTECH
-          </a>
-        </span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Master <span>Typing Skills</span> for Government Exams</h1>
+    <p>Neelkanth Typing provides expert training in Hindi & English Typing and Stenography. Our courses are specially designed for SSC, DSSSB, High Court, and all government competitive exams.</p>
+    <ul class="hero-list">
+      <li>Hindi Typing – Mangal, KrutiDev, DevLys</li>
+      <li>English Typing with Speed & Accuracy</li>
+      <li>Stenography (Hindi / English)</li>
+      <li>Exam-Oriented Practice Tests</li>
+      <li>State & Central Exam Patterns</li>
+    </ul>
+    <div class="hero-btns">
+      <a href="assets/home-page.html" class="btn-primary">Start Typing Now</a>
+      <a href="assets/subscription.html" class="btn-secondary">View Plans</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="assets/img/typing.jpg" alt="Typing Practice" onerror="this.parentElement.style.display='none'">
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat-card"><div class="num">10,000+</div><div class="lbl">Students Trained</div></div>
+    <div class="stat-card"><div class="num">500+</div><div class="lbl">Practice Tests</div></div>
+    <div class="stat-card"><div class="num">15+</div><div class="lbl">Exam Patterns</div></div>
+    <div class="stat-card"><div class="num">98%</div><div class="lbl">Success Rate</div></div>
+  </div>
+</div>
+
+<!-- EXAM CARDS -->
+<div class="section-head">
+  <div class="tag">All Exams</div>
+  <h2>Explore Online Typing Exams</h2>
+  <p>Practice tests designed as per latest government exam patterns</p>
+</div>
+<div id="exam-cards-container" class="exam-grid">
+  <div class="exam-cards-loading" style="grid-column:1/-1">Loading exams...</div>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+  <div class="features-inner">
+    <div class="section-head" style="padding-top:0">
+      <div class="tag">Why Choose Us</div>
+      <h2>Everything You Need to Succeed</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⌨️</div>
+        <h3>Real Exam Interface</h3>
+        <p>Practice on interfaces that exactly replicate SSC, DSSSB, High Court and other government exam platforms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Detailed Analytics</h3>
+        <p>Track WPM, accuracy, errors, and improvement over time with detailed performance reports.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Leaderboard</h3>
+        <p>Compete with thousands of students across India and see where you stand nationally.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>Multi-Language Support</h3>
+        <p>Hindi (Mangal, KrutiDev, DevLys, Inscript, Remington) and English typing support.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Friendly</h3>
+        <p>Access from any device — desktop, laptop, or mobile — anytime, anywhere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <h3>Expert Guidance</h3>
+        <p>Structured lessons from beginner to advanced with exam-specific preparation strategies.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h2>Neelkanth Typing</h2>
+      <p>Expert training in Hindi & English Typing and Stenography. Serving thousands of students preparing for government exams across India.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="assets/subscription.html">Subscription</a></li>
+        <li><a href="assets/home-page.html">Typing Practice</a></li>
+        <li><a href="assets/blogPage.html">Typing Tips</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Courses</h3>
+      <ul>
+        <li><a href="#">Hindi Typing</a></li>
+        <li><a href="#">English Typing</a></li>
+        <li><a href="#">Steno Hindi/English</a></li>
+        <li><a href="#">Practice Tests</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <p>📍 G-21, Ground Floor, Vardhman Central Mall, Nehru Vihar, Delhi – 110054</p>
+      <p>📞 <a href="tel:+918851490717" style="color:#94a3b8;text-decoration:none">+91 8851490717</a></p>
+      <p>✉️ info@neelkanthclasses.com</p>
+      <p style="margin-top:10px">
+        <a href="https://wa.me/918851490717?text=Hello%2C%20I%20want%20to%20enquire%20about%20Typing%20courses." target="_blank" style="color:#25d366;text-decoration:none;display:flex;align-items:center;gap:6px;font-size:0.85rem">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="18" height="18" alt="WhatsApp"> Chat on WhatsApp
+        </a>
       </p>
-
     </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Neelkanth Typing. All Rights Reserved. | Developed by <a href="https://hmwebtech.com" target="_blank">HMWEBTECH</a></p>
+  </div>
+</footer>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+<script>
+  /* ─── CONFIG ─── */
+  const BASE_URL = 'https://backend-typingwebapp.onrender.com';
 
-  </footer>
+  /* ─── TOAST ─── */
+  const T_ICONS = {success:'✓',error:'✕',warning:'!',info:'i',loading:''};
+  const T_DUR   = {success:4000,error:5000,warning:5000,info:4000,loading:0};
+  function showToast(type,title,msg,dur){
+    const stack=document.getElementById('nt-toast-stack');
+    const t=document.createElement('div');
+    t.className='nt-toast '+type;
+    const d=dur!==undefined?dur:T_DUR[type];
+    t.innerHTML=`<div class="nt-toast-icon">${type==='loading'?'<div class="nt-spin"></div>':T_ICONS[type]}</div>
+      <button class="nt-toast-close" onclick="removeToast(this.parentNode)">&times;</button>
+      <div class="nt-toast-title">${title}</div><div class="nt-toast-msg">${msg}</div>
+      <div class="nt-toast-bar" style="${d>0?'animation-duration:'+d+'ms':''}"></div>`;
+    stack.appendChild(t);
+    if(d>0)setTimeout(()=>removeToast(t),d);
+    return t;
+  }
+  function removeToast(t){
+    if(!t||!t.parentNode)return;
+    t.classList.add('nt-out');
+    setTimeout(()=>{if(t.parentNode)t.parentNode.removeChild(t);},300);
+  }
 
-  <style>
-    .footer {
-      background: #f9f9f9;
-      margin-top: 40px;
-      font-family: "Poppins", sans-serif;
+  /* ─── INLINE ALERT ─── */
+  const A_ICONS={success:'✓',error:'✕',warning:'!',info:'i'};
+  function showAlert(id,title,desc,type){
+    const box=document.getElementById(id);
+    const icon=document.getElementById(id+'-icon');
+    const ttl=document.getElementById(id+'-title');
+    const dsc=document.getElementById(id+'-desc');
+    box.className='m-alert '+type+' show';
+    if(icon)icon.textContent=A_ICONS[type]||'!';
+    if(ttl)ttl.textContent=title;
+    if(dsc)dsc.textContent=desc;
+  }
+  function clearAlert(id){const b=document.getElementById(id);if(b)b.className='m-alert';}
+
+  /* ─── MODAL ─── */
+  function openModal(id){document.getElementById(id).classList.add('open');}
+  function closeModal(id){document.getElementById(id).classList.remove('open');}
+  function switchModal(a,b){closeModal(a);setTimeout(()=>openModal(b),160);}
+  document.querySelectorAll('.modal-overlay').forEach(el=>{
+    el.addEventListener('click',e=>{if(e.target===el)el.classList.remove('open');});
+  });
+  document.getElementById('openLogin').onclick=e=>{e.preventDefault();openModal('loginModal');};
+  document.getElementById('openSignup').onclick=e=>{e.preventDefault();openModal('signupModal');};
+
+  /* ─── SESSION ─── */
+  function saveSession(token,user){localStorage.setItem('nt_token',token);localStorage.setItem('nt_user',JSON.stringify(user));}
+  function clearSession(){localStorage.removeItem('nt_token');localStorage.removeItem('nt_user');}
+  function getSession(){return{token:localStorage.getItem('nt_token'),user:JSON.parse(localStorage.getItem('nt_user')||'null')};}
+
+  /* ─── NAV UPDATE (Desktop + Mobile dono) ─── */
+  function updateNav(user,plan){
+    const li=!!user;
+
+    /* Desktop nav */
+    document.getElementById('nav-login-li').style.display=li?'none':'';
+    document.getElementById('nav-signup-li').style.display=li?'none':'';
+    document.getElementById('nav-user-li').style.display=li?'':'none';
+    if(li){
+      document.getElementById('nav-user-name').textContent=user.fullName||user.email;
+      document.getElementById('nav-plan-badge').textContent=(plan||'FREE').toUpperCase();
     }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 5%;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
+    /* ✅ FIX: Mobile menu bhi update karo */
+    document.getElementById('mob-login-li').style.display=li?'none':'';
+    document.getElementById('mob-signup-li').style.display=li?'none':'';
+    document.getElementById('mob-user-li').style.display=li?'':'none';
+    if(li){
+      document.getElementById('mob-user-name').textContent=user.fullName||user.email;
+      document.getElementById('mob-plan-badge').textContent=(plan||'FREE').toUpperCase();
     }
+  }
 
-    .footer-col h2.footer-logo {
-      font-size: 1.2rem;
-      background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  function doLogout(){
+    clearSession();
+    updateNav(null);
+    showToast('info','Logged Out','You have been signed out successfully.');
+  }
 
-    .footer-col h3 {
-      font-size: 1rem;
-      margin-bottom: 12px;
-      color: #222;
-    }
+  window.addEventListener('DOMContentLoaded',()=>{
+    const {token,user}=getSession();
+    if(token&&user)updateNav(user,user.subscription?.plan);
+    loadExamTests();
+    document.getElementById('year').textContent=new Date().getFullYear();
+  });
 
-    .footer-col p {
-      font-size: 0.9rem;
-      color: #555;
-      line-height: 1.6;
-    }
+  /* ─── BTN LOADING ─── */
+  function setBtnLoading(id,state){
+    const b=document.getElementById(id);
+    b.disabled=state;
+    state?b.classList.add('loading-state'):b.classList.remove('loading-state');
+  }
 
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-col ul li a {
-      text-decoration: none;
-      color: #555;
-      font-size: 0.9rem;
-    }
-
-    .footer-col ul li a:hover {
-      color: #2c64fc;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding: 15px 5%;
-      border-top: 1px solid #ddd;
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    @media (max-width: 900px) {
-      .footer-container {
-        grid-template-columns: repeat(2, 1fr);
+  /* ─── LOGIN ─── */
+  async function doLogin(){
+    const email=document.getElementById('login-email').value.trim();
+    const password=document.getElementById('login-password').value;
+    clearAlert('login-alert');
+    if(!email||!password){showAlert('login-alert','Fields Required','Please enter your email and password.','error');showToast('error','Fields Required','Email and password are required.');return;}
+    setBtnLoading('login-btn',true);
+    const lt=showToast('loading','Signing in...','Please wait...');
+    try{
+      const res=await fetch(BASE_URL+'/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+      removeToast(lt);
+      const data=await res.json();
+      if(data.success){
+        saveSession(data.token,data.user);
+        updateNav(data.user,data.user?.subscription?.plan);
+        showAlert('login-alert','Login Successful!','Welcome back, '+(data.user?.fullName||email),'success');
+        showToast('success','Login Successful!','Welcome back, '+(data.user?.fullName||email));
+        const sub=data.user?.subscription;
+        if(sub){
+          const si=document.getElementById('login-sub-info');
+          si.style.display='block';
+          si.innerHTML='Plan: <strong>'+(sub.plan||'free').toUpperCase()+'</strong> &nbsp;|&nbsp; Remaining: <strong>'+(sub.remainingTime?.formatted||'N/A')+'</strong>';
+        }
+        setTimeout(()=>closeModal('loginModal'),2000);
+      }else{
+        let msg=data.message||'Login failed. Please try again.';
+        let type='error',title='Login Failed';
+        if(data.planExpired){msg='Your plan has expired. Please purchase a new plan.';type='warning';title='Plan Expired';}
+        showAlert('login-alert',title,msg,type);
+        showToast(type,title,msg);
+        if(data.planExpired){setTimeout(()=>{closeModal('loginModal');window.location.href='assets/subscription.html';},2500);}
       }
+    }catch(e){
+      removeToast(lt);
+      showAlert('login-alert','Connection Error','Cannot connect to server. Is the backend running? ('+BASE_URL+')','error');
+      showToast('error','Connection Error','Could not reach the server.');
     }
+    setBtnLoading('login-btn',false);
+  }
 
-    @media (max-width: 500px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
+  /* ─── REGISTER ─── */
+  async function doRegister(){
+    const payload={
+      fullName:document.getElementById('reg-name').value.trim(),
+      email:document.getElementById('reg-email').value.trim(),
+      phone:document.getElementById('reg-phone').value.trim(),
+      password:document.getElementById('reg-password').value,
+      state:document.getElementById('reg-state').value.trim(),
+      city:document.getElementById('reg-city').value.trim(),
+      pincode:document.getElementById('reg-pincode').value.trim(),
+      fullAddress:document.getElementById('reg-address').value.trim()
+    };
+    clearAlert('reg-alert');
+    if(!payload.fullName||!payload.email||!payload.phone||!payload.password){showAlert('reg-alert','Fields Required','Name, Email, Phone & Password are required.','error');showToast('error','Fields Required','Please fill all required fields.');return;}
+    if(!/^\d{10}$/.test(payload.phone)){showAlert('reg-alert','Invalid Phone','Phone must be exactly 10 digits.','error');showToast('error','Invalid Phone','Enter a valid 10-digit number.');return;}
+    if(payload.password.length<6){showAlert('reg-alert','Weak Password','Password must be at least 6 characters.','warning');showToast('warning','Weak Password','Use at least 6 characters.');return;}
+    if(!/\S+@\S+\.\S+/.test(payload.email)){showAlert('reg-alert','Invalid Email','Enter a valid email address.','error');showToast('error','Invalid Email','Check your email format.');return;}
+    setBtnLoading('reg-btn',true);
+    const lt=showToast('loading','Creating Account...','Setting up your free plan...');
+    try{
+      const res=await fetch(BASE_URL+'/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      removeToast(lt);
+      const data=await res.json();
+      if(data.success){
+        saveSession(data.token,data.user);
+        updateNav(data.user,data.user?.subscription?.plan);
+        showAlert('reg-alert','Registration Successful!','Your FREE 48-hour plan is now active! ✓','success');
+        showToast('success','Account Created!','Welcome! Your FREE 48-hour plan is active.');
+        const sub=data.user?.subscription;
+        if(sub){
+          const si=document.getElementById('reg-sub-info');
+          si.style.display='block';
+          si.innerHTML='Plan: <strong>'+(sub.plan||'free').toUpperCase()+'</strong> &nbsp;|&nbsp; Free plan active for <strong>'+(sub.remainingTime?.formatted||'48 hours')+'</strong>';
+        }
+        setTimeout(()=>closeModal('signupModal'),2500);
+      }else{
+        showAlert('reg-alert','Registration Failed',data.message||'Please try again.','error');
+        showToast('error','Registration Failed',data.message||'Something went wrong.');
       }
+    }catch(e){
+      removeToast(lt);
+      showAlert('reg-alert','Connection Error','Cannot connect to server. ('+BASE_URL+')','error');
+      showToast('error','Connection Error','Could not reach the server.');
     }
-  </style>
-  <!-- FOOTER END -->
+    setBtnLoading('reg-btn',false);
+  }
 
+  /* ─── LOAD EXAM TESTS FROM API ─── */
+  async function loadExamTests(){
+    const container=document.getElementById('exam-cards-container');
+    const {token}=getSession();
+    try{
+      const headers={'Content-Type':'application/json'};
+      if(token)headers['Authorization']='Bearer '+token;
+      const res=await fetch(BASE_URL+'/api/tests/grouped',{headers});
+      const data=await res.json();
+      if(data.success){
+        const tests=[];
+        if(data.data?.commonExamPattern){
+          tests.push(...data.data.commonExamPattern.slice(0,4));
+        }
+        if(data.data?.allIndiaLevelExams){
+          data.data.allIndiaLevelExams.forEach(cat=>{
+            if(cat.tests)tests.push(...cat.tests.slice(0,2));
+          });
+        }
+        if(tests.length===0){
+          container.innerHTML='<div class="exam-cards-loading" style="grid-column:1/-1">No exams available yet. Check back soon!</div>';
+          return;
+        }
+        /* ✅ FIX: closing parenthesis add ki gayi escHtml ke baad */
+        container.innerHTML=tests.slice(0,8).map(t=>`
+          <div class="exam-card" onclick="goToTest('${t._id}')">
+            <div class="date">Neelkanth Typing</div>
+            <h4>${escHtml(t.title||'Typing Test')}</h4>
+            <div class="meta">
+              <span><strong>${t.duration||5}</strong> min</span>
+              <span><strong>${t.minWpm||30}</strong> WPM min</span>
+            </div>
+            <div class="footer-row">
+              <div class="id-badge">${escHtml((t.displayLabel||'EN')+' Test')}</div>
+              <div class="type-badge ${t.language==='hindi'?'badge-green':'badge-blue'}">${t.language==='hindi'?'Hindi':'English'}</div>
+            </div>
+          </div>
+        `).join('');
+      }else{
+        showFallbackCards(container);
+      }
+    }catch(e){
+      showFallbackCards(container);
+    }
+  }
+
+  /* ✅ FIX: extra <div> wrapper hataya, seedha cards render ho rahe hain */
+  function showFallbackCards(container){
+    const fallback=[
+      {title:'RRB NTPC English Typing',dur:10,label:'EN Test',lang:'English'},
+      {title:'SSC CGL English Typing',dur:10,label:'EN Test',lang:'English'},
+      {title:'Hindi Typing – Mangal',dur:10,label:'HI Test',lang:'Hindi'},
+      {title:'DSSSB Hindi Typing',dur:10,label:'HI Test',lang:'Hindi'},
+    ];
+    container.innerHTML=fallback.map(t=>`
+      <div class="exam-card" onclick="showToast('info','Login Required','Please login or register to take tests.')">
+        <div class="date">Neelkanth Typing</div>
+        <h4>${t.title}</h4>
+        <div class="meta"><span><strong>${t.dur}</strong> min</span><span><strong>30</strong> WPM min</span></div>
+        <div class="footer-row">
+          <div class="id-badge">${t.label}</div>
+          <div class="type-badge ${t.lang==='Hindi'?'badge-green':'badge-blue'}">${t.lang}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function goToTest(id){
+    const {token}=getSession();
+    if(!token){showToast('warning','Login Required','Please login to start the test.');openModal('loginModal');return;}
+    window.location.href='assets/home-page.html?testId='+id;
+  }
+
+  function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  /* ─── ENTER KEY ─── */
+  document.addEventListener('keydown',e=>{
+    if(e.key!=='Enter')return;
+    if(document.getElementById('loginModal').classList.contains('open'))doLogin();
+    if(document.getElementById('signupModal').classList.contains('open'))doRegister();
+  });
+
+  /* ─── HAMBURGER ─── */
+  document.getElementById('hamburger').addEventListener('click',()=>{
+    document.getElementById('menubar').classList.toggle('active');
+  });
+  document.getElementById('menuClose').addEventListener('click',closeMobileMenu);
+  function closeMobileMenu(){document.getElementById('menubar').classList.remove('active');}
+</script>
 </body>
-
 </html>

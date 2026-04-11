@@ -1,886 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Neelkanth Typing</title>
-    <link rel="icon" type="image/png" href="./img/logo.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neelkanth Typing – Practice</title>
+  <link rel="icon" type="image/png" href="./img/logo.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+    body{font-family:"Poppins",sans-serif;background:#f4f6fb;color:#222}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f2f2f2;
-        }
+    /* HEADER */
+    .header{background:#fff;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8ecf0;box-shadow:0 2px 8px rgba(0,0,0,0.05);position:sticky;top:0;z-index:50}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo img{height:40px;width:auto}
+    .logo-text h1{font-size:1.15rem;background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+    .logo-text span{font-size:12px;color:#888}
+    .header-right{display:flex;align-items:center;gap:12px}
+    .header-right .version{font-size:12px;color:#aaa}
+    .header-right .phone{font-size:13px;color:#444}
+    .header-right .phone strong{color:#2e7d32}
 
-        .topbar {
-            background: #e9eef3;
-            padding: 8px 15px;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-        }
+    /* NOTICE BAR */
+    .notice-bar{background:linear-gradient(to right,#fff7ed,#fefce8);border-bottom:1px solid #fed7aa;padding:8px 24px;font-size:13px;color:#92400e;text-align:center}
 
-        .notice {
-            background: #ffe6c7;
-            padding: 10px 15px;
-            font-size: 14px;
-        }
+    /* LAYOUT */
+    .container{display:grid;grid-template-columns:1fr 380px;gap:16px;padding:16px;max-width:1400px;margin:0 auto}
+    @media(max-width:1024px){.container{grid-template-columns:1fr}}
 
-        .container {
-            display: flex;
-            padding: 15px;
-            gap: 15px;
-        }
+    /* CARDS */
+    .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:16px}
+    .card h3{font-size:1rem;font-weight:600;color:#222;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #f0f2f8;display:flex;align-items:center;gap:8px}
 
-        .left,
-        .right {
-            background: #fff;
-            padding: 15px;
-            border: 1px solid #ccc;
-        }
+    /* TYPING GRID */
+    .card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    @media(max-width:700px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+    .typing-card{border:1px solid #ffe0b2;border-radius:10px;padding:16px 10px;text-align:center;cursor:pointer;background:linear-gradient(135deg,#fff7ec,#fff3e0);transition:all 0.2s;text-decoration:none;color:inherit;display:block}
+    .typing-card:hover{background:linear-gradient(135deg,#ffe0b2,#ffd699);transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,152,0,0.2)}
+    .typing-card .icon{font-size:28px;font-weight:700;color:#ff9800;margin-bottom:6px;display:block}
+    .typing-card p{margin:0;font-size:13px;color:#333;font-weight:500}
+    .typing-card .badge{font-size:10px;background:#fff3e0;color:#e65100;border-radius:10px;padding:2px 6px;margin-top:4px;display:inline-block}
 
-        .left {
-            width: 60%;
-        }
+    /* TOOLS CARD */
+    .tool-card{border:1px solid #e0e7ff;border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;background:#f5f7ff;transition:all 0.2s;text-decoration:none;color:inherit;display:block}
+    .tool-card:hover{background:#e0e7ff;transform:translateY(-2px)}
+    .tool-card img{width:40px;height:40px;display:block;margin:0 auto 8px}
+    .tool-card p{font-size:12px;color:#333;margin:0;font-weight:500}
 
-        .right {
-            width: 40%;
-        }
+    /* EXAM SECTION ON RIGHT */
+    .exam-section h3{font-size:0.95rem;font-weight:600;color:#222;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #eee}
+    .sub-section{background:#f9faff;border:1px solid #eef0f8;border-radius:10px;padding:12px;margin-bottom:12px}
+    .sub-section h4{font-size:0.8rem;font-weight:600;color:#555;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .exam-grid{display:flex;flex-wrap:wrap;gap:8px}
+    .exam-card{width:105px;padding:10px 8px;border-radius:10px;background:#fff;border:1px solid #e5e7eb;text-align:center;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.04);text-decoration:none;color:inherit;display:block}
+    .exam-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
+    .exam-card.locked{opacity:0.6;cursor:default}
+    .exam-card.locked:hover{transform:none}
+    .code{display:block;font-size:13px;font-weight:700;margin-bottom:4px}
+    .en{color:#2563eb}.kd{color:#16a34a}.mg{color:#f59e0b}.hc{color:#7c3aed}.dc{color:#0891b2}
+    .exam-card p{margin:0;font-size:11px;color:#444;line-height:1.4}
+    .lock-badge{font-size:9px;background:#fee2e2;color:#991b1b;border-radius:4px;padding:1px 5px;margin-top:4px;display:inline-block}
 
-        .section {
-            border: 1px solid #ddd;
-            margin-bottom: 15px;
-            padding: 10px;
-        }
+    /* LOADING / EMPTY */
+    .loading-text{text-align:center;color:#aaa;font-size:13px;padding:20px}
+    .skeleton{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px;height:90px}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
-        .section h3 {
-            margin: 0 0 10px;
-            font-size: 16px;
-            color: #333;
-        }
+    /* PLAN BANNER */
+    .plan-banner{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .plan-banner.free{background:linear-gradient(135deg,#f093fb,#f5576c)}
+    .plan-banner.expired{background:linear-gradient(135deg,#e74c3c,#c0392b)}
+    .plan-banner.pro,.plan-banner.basic{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)}
+    .plan-banner-text{font-size:13px;font-weight:500}
+    .plan-banner-text strong{font-size:15px;display:block;margin-bottom:3px}
+    .plan-banner a{font-size:12px;background:#fff;color:#333;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0}
 
-        .section h4 {
-            margin: 0 0 10px;
-            font-size: 12px;
-            color: #333;
-        }
+    /* USER STATS */
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+    .stat-item{background:#f8f9ff;border:1px solid #e8ecff;border-radius:10px;padding:10px;text-align:center}
+    .stat-item .sv{font-size:1.2rem;font-weight:700;color:#2c64fc}
+    .stat-item .sl{font-size:10px;color:#888;margin-top:2px}
 
+    /* TOAST */
+    #nt-toast-stack{position:fixed;top:16px;right:16px;z-index:99999;display:flex;flex-direction:column;gap:8px;width:300px;pointer-events:none}
+    .nt-toast{pointer-events:all;background:#fff;border-radius:10px;border:1px solid #e8e8e8;padding:12px 34px 12px 44px;position:relative;box-shadow:0 6px 24px rgba(0,0,0,0.1);animation:ntIn 0.3s cubic-bezier(.22,.68,0,1.2);font-family:"Poppins",sans-serif;font-size:12px}
+    .nt-toast.nt-out{animation:ntOut 0.25s ease forwards}
+    @keyframes ntIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes ntOut{to{opacity:0;transform:translateX(40px)}}
+    .nt-toast-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+    .nt-toast.success .nt-toast-icon{background:#dcfce7;color:#16a34a}
+    .nt-toast.error .nt-toast-icon{background:#fee2e2;color:#dc2626}
+    .nt-toast.warning .nt-toast-icon{background:#fef3c7;color:#d97706}
+    .nt-toast.info .nt-toast-icon{background:#dbeafe;color:#2563eb}
+    .nt-toast.loading .nt-toast-icon{background:#f3e8ff}
+    .nt-toast-title{font-weight:600;color:#111;margin-bottom:1px}
+    .nt-toast-msg{color:#666}
+    .nt-toast-close{position:absolute;top:4px;right:8px;font-size:15px;color:#ccc;cursor:pointer;background:none;border:none}
+    .nt-spin{width:12px;height:12px;border:2px solid #e9d5ff;border-top-color:#9333ea;border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-        .boxes {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .box {
-            border: 1px solid #ff9800;
-            padding: 10px;
-            width: 120px;
-            text-align: center;
-            cursor: pointer;
-            background: #fff8ef;
-        }
-
-        .box:hover {
-            background: #ffe0b2;
-        }
-
-        .box span {
-            display: block;
-            font-size: 22px;
-            margin-bottom: 5px;
-            color: #ff9800;
-            font-weight: bold;
-        }
-
-        .exam {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .exam div {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 130px;
-            text-align: center;
-            background: #fafafa;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 13px;
-            color: #666;
-            padding: 10px;
-        }
-
-        .header {
-            background: linear-gradient(90deg, #ff9800, #ff5722);
-            color: #fff;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 45px;
-            width: auto;
-            margin-right: 12px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text h1 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        .logo-text span {
-            font-size: 13px;
-            opacity: 0.9;
-        }
-
-        .contact {
-            font-size: 14px;
-            text-align: right;
-        }
-
-        .contact strong {
-            font-size: 16px;
-        }
-
-        .notice-bar {
-            background: #fff3cd;
-            color: #333;
-            padding: 8px 20px;
-            font-size: 14px;
-            text-align: center;
-            border-bottom: 1px solid #ffd27f;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                gap: 8px;
-            }
-
-            .contact {
-                text-align: center;
-            }
-        }
-    </style>
+    /* FOOTER */
+    .footer{background:#1e293b;color:#94a3b8;text-align:center;padding:16px;font-size:12px;margin-top:10px}
+    .footer strong{color:#e2e8f0}
+  </style>
 </head>
-
 <body>
 
+<div id="nt-toast-stack"></div>
 
+<!-- HEADER -->
+<div class="header">
+  <a href="../index.html" class="logo">
+    <img src="./img/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div class="logo-text">
+      <h1>Neelkanth Typing</h1>
+      <span>English | Hindi | Stenography Training</span>
+    </div>
+  </a>
+  <div class="header-right">
+    <div id="header-user-info" style="display:none;align-items:center;gap:8px">
+      <span id="header-user-name" style="font-size:13px;font-weight:500;color:#333"></span>
+      <span id="header-plan-badge" style="font-size:11px;padding:2px 8px;border-radius:12px;background:linear-gradient(to right,#b927fc,#2c64fc);color:#fff;font-weight:600"></span>
+      <a href="#" onclick="doLogout()" style="font-size:12px;color:#dc2626;border:1px solid #dc2626;padding:4px 10px;border-radius:14px;text-decoration:none">Logout</a>
+    </div>
+    <div id="header-login-info" style="display:flex;align-items:center;gap:8px">
+      <span class="version">v5.1.102</span>
+      <a href="../index.html" onclick="openLoginPrompt(event)" style="font-size:12px;padding:6px 14px;border:1.5px solid #2c64fc;color:#2c64fc;border-radius:14px;text-decoration:none">Login / Register</a>
+    </div>
+    <div class="phone">📞 <strong>+91 8851490717</strong></div>
+  </div>
+</div>
 
-    <style>
-        .header {
-            background: #ffffff;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e0e0e0;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            flex-wrap: wrap;
-        }
+<!-- NOTICE -->
+<div class="notice-bar" id="notice-bar">
+  English &amp; Numeric Typing Free | Hindi Typing Activation Required | <span id="plan-notice-text">Login to check your plan status</span>
+</div>
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
+<!-- MAIN -->
+<div class="container">
+  <div class="left-col">
 
-        .logo img {
-            height: 45px;
-            width: auto;
-            margin-right: 12px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text h1 {
-            margin: 0;
-            font-size: 18px;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .logo-text span {
-            font-size: 13px;
-            color: #666;
-            margin-top: 3px;
-        }
-
-        .contact {
-            font-size: 14px;
-            color: #444;
-            text-align: right;
-            line-height: 1.6;
-        }
-
-        .contact strong {
-            color: #2e7d32;
-            font-weight: 600;
-        }
-
-        .notice-bar {
-            background: #f8f9fa;
-            color: #555;
-            padding: 8px 20px;
-            font-size: 13px;
-            text-align: center;
-            border-bottom: 0px solid #e0e0e0;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                gap: 8px;
-            }
-
-            .contact {
-                text-align: center;
-            }
-        }
-    </style>
-
-
-    <div class="header">
-        <div class="logo">
-            <a href="../index.html"><img src="./img/logo.png" alt="Neelkanth Typing Logo" /></a>
-            <div class="logo-text">
-                <h1 style="font-size: 1.2rem;
-      background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;">Neelkanth Typing</h1>
-                <span>English | Hindi | Stenography Training</span>
-            </div>
-        </div>
-
-        <div class="contact">
-            Version 5.1.102 <br>
-            📞 Customer Care: <strong>+91 8851490717</strong>
-        </div>
+    <!-- PLAN BANNER -->
+    <div id="plan-banner" class="plan-banner" style="display:none">
+      <div class="plan-banner-text">
+        <strong id="banner-plan-title">Your Plan</strong>
+        <span id="banner-plan-desc">Loading...</span>
+      </div>
+      <a href="subscription.html">Upgrade</a>
     </div>
 
-    <div class="notice-bar">
-        English & Numeric Typing Free | Hindi Typing Activation Required
-    </div>
-    <div class="container">
-
-        <div class="left">
-
-            <style>
-                .card {
-                    background: #ffffff;
-                    border-radius: 12px;
-                    padding: 15px;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    margin-bottom: 20px;
-                }
-
-                .card h3 {
-                    margin: 0 0 15px;
-                    font-size: 18px;
-                    color: #333;
-                    border-bottom: 1px solid #eee;
-                    padding-bottom: 8px;
-                }
-
-                .card-grid {
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr);
-                    gap: 15px;
-                }
-
-                .typing-card {
-                    border: 1px solid #ff9800;
-                    border-radius: 10px;
-                    padding: 18px 10px;
-                    text-align: center;
-                    cursor: pointer;
-                    background: #fff7ec;
-                    transition: 0.2s;
-                }
-
-                .typing-card:hover {
-                    background: #ffe0b2;
-                    transform: translateY(-3px);
-                }
-
-                .typing-card span {
-                    display: block;
-                    font-size: 26px;
-                    font-weight: bold;
-                    color: #ff9800;
-                    margin-bottom: 6px;
-                }
-
-                .typing-card p {
-                    margin: 0;
-                    font-size: 14px;
-                    color: #333;
-                }
-
-                .exam {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 12px;
-                }
-
-                .card-link {
-                    text-decoration: none;
-                    color: inherit;
-                }
-
-                .exam-card {
-                    width: 110px;
-                    padding: 12px;
-                    border-radius: 10px;
-                    background: #ffffff;
-                    border: 1px solid #e5e7eb;
-                    text-align: center;
-                    cursor: pointer;
-                    transition: 0.25s;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-                }
-
-                .exam-card:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
-                }
-
-                /* Top label (EN, KD, MG) */
-                .code {
-                    display: block;
-                    font-size: 14px;
-                    font-weight: 600;
-                    margin-bottom: 5px;
-                }
-
-                /* Color variants */
-                .en {
-                    color: #2563eb;
-                }
-
-                .kd {
-                    color: #16a34a;
-                }
-
-                .mg {
-                    color: #f59e0b;
-                }
-
-                /* Text */
-                .exam-card p {
-                    margin:5px;
-                    font-size: 15px;
-                }
-            </style>
-
-            <div class="card">
-                <h3>English Typing</h3>
-
-                <div class="card-grid">
-                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>A B</span>
-                            <p>Learn Typing</p>
-                        </div>
-                    </a>
-
-
-                    <a href="./page.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>A B</span>
-                            <p>Take Exercise</p>
-                        </div>
-                    </a>
-
-                    <a href="testEnglish.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>A B</span>
-                            <p>Take Tests</p>
-                        </div>
-                    </a>
-
-
-                    <a href="numberPage.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>1 2</span>
-                            <p>Number Typing</p>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-            <div class="card">
-                <h3>Hindi Typing Mangal</h3>
-
-                <div class="card-grid">
-                    <a href="./mangalLearn.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            <p>Learn Typing</p>
-                        </div>
-                    </a>
-
-
-                    <a href="./page.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            <p>Take Exercise</p>
-                        </div>
-                    </a>
-
-                    <a href="take-tests.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            <p>Take Tests</p>
-                        </div>
-                    </a>
-
-
-                    <a href="numberPage.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>1 2</span>
-                            <p>Number Typing</p>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Hindi Typing – KrutiDev & DevLys</h3>
-                <div class="card-grid">
-                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            <p>Learn Typing</p>
-                        </div>
-                    </a>
-                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            <p>Take Tests</p>
-                        </div>
-                    </a>
-                    
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Hindi Typing – Mangal Unicode</h3>
-                <div class="card-grid">
-                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            Remington
-                        </div>
-                    </a>
-                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            Inscript
-                        </div>
-                    </a>
-                    <a href="./learnEnglish.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                            <span>अ ब</span>
-                            CBI Layout
-                        </div>
-                    </a>
-                
-                </div>
-              
-            </div>
-            <div class="card">
-                <h3>Typing Tools</h3>
-                <div class="card-grid">
-                    <a href="./word2.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                    
-                            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png"
-                                style="width:45px; height:45px; display:block; margin:auto;" />
-                    
-                            <p style="margin-top:8px;">Practice Pad</p>
-                        </div>
-                    </a>
-                    <a href="./word-game.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                    
-                            <img src="https://cdn-icons-png.flaticon.com/512/686/686589.png"
-                                style="width:45px; height:45px; display:block; margin:auto;" />
-                    
-                            <p style="margin-top:8px;">Words Game</p>
-                        </div>
-                    </a>
-                    
-                    
-                    <a href="./letter-game.html" style="text-decoration: none; color: inherit;">
-                        <div class="typing-card">
-                    
-                            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png"
-                                style="width:45px; height:45px; display:block; margin:auto;" />
-                    
-                            <p style="margin-top:8px;">Letter Game</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="right">
-
-            <div class="section">
-                <h3>Common Exam Pattern</h3>
-
-                <div class="exam">
-
-                    <a href="testEnglishtrial.html" class="card-link">
-                        <div class="exam-card">
-                            <span class="code en">EN</span>
-                            <p>English Test</p>
-                        </div>
-                    </a>
-
-                    <a href="mangalTest.html" class="card-link">
-                        <div class="exam-card">
-                            <span class="code kd">KD</span>
-                            <p>Hindi – KrutiDev</p>
-                        </div>
-                    </a>
-
-                    <a href="mangalTest.html" class="card-link">
-                        <div class="exam-card">
-                            <span class="code mg">MG</span>
-                            <p>Hindi – Mangal</p>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-            <br>
-            <div class="section">
-                <h3>All India Level Exams</h3>
-                <div class="section">
-                    <h4>SSC CGL/CHSL</h4>
-                
-                    <div class="exam">
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code en">EN</span>
-                                <p>SSC English</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code kd">HI</span>
-                                <p>SSC Hindi</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code en">EN</span>
-                                <p>NTPC English</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code kd">HI</span>
-                                <p>NTPC Hindi</p>
-                            </div>
-                        </a>
-                
-                    </div>
-                </div>
-                <br>
-                <br><br>
-                <div class="section">
-                    <h3>Rajasthan Exams</h3>
-                
-                    <div class="exam">
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code en">HC</span>
-                                <p>High Court-SA/LDC(JJA)</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code en">HC</span>
-                                <p>High Court-Steno</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code kd">DC</span>
-                                <p>RSSBL DC 2024 Pattern</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code mg">IA</span>
-                                <p>RSSBL IA 2024 Pattern</p>
-                            </div>
-                        </a>
-                
-                    </div>
-                </div>
-                <br>
-                <br><br>
-                <div class="section">
-                    <h3>Utter Pradesh Exams</h3>
-                
-                    <!-- Common -->
-                    <div class="exam">
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code en">EN</span>
-                                <p>English Test</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code kd">KD</span>
-                                <p>Hindi - KrutiDev</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code mg">MG</span>
-                                <p>Hindi - Mangal</p>
-                            </div>
-                        </a>
-                
-                    </div>
-                
-                    <br>
-                
-                    <!-- UP Police -->
-                    <div class="section">
-                        <h4>UP Police ASI/SI Comp. Operator</h4>
-                
-                        <div class="exam">
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code en">EN</span>
-                                    <p>English Test</p>
-                                </div>
-                            </a>
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code kd">HI</span>
-                                    <p>Hindi Test</p>
-                                </div>
-                            </a>
-                
-                        </div>
-                    </div>
-                
-                    <br>
-                
-                    <!-- UPPCL -->
-                    <div class="section">
-                        <h4>UPPCL</h4>
-                
-                        <div class="exam">
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code en">EN</span>
-                                    <p>English Test</p>
-                                </div>
-                            </a>
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code kd">HI</span>
-                                    <p>Hindi Test</p>
-                                </div>
-                            </a>
-                
-                        </div>
-                    </div>
-                
-                    <br>
-                
-                    <!-- Allahabad HC -->
-                    <div class="section">
-                        <h4>Allahabad High Court Group-C ARO/RO</h4>
-                
-                        <div class="exam">
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code en">EN</span>
-                                    <p>English Test</p>
-                                </div>
-                            </a>
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code kd">HI</span>
-                                    <p>Hindi Test</p>
-                                </div>
-                            </a>
-                
-                        </div>
-                    </div>
-                
-                </div>
-                <br>
-                <br><br>
-                <div class="section">
-                    <h3>Madhya Pradesh Exams</h3>
-                
-                    <!-- Common -->
-                    <div class="exam">
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code en">EN</span>
-                                <p>English Test</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code kd">KD</span>
-                                <p>Hindi - KrutiDev</p>
-                            </div>
-                        </a>
-                
-                        <a href="#" class="card-link">
-                            <div class="exam-card">
-                                <span class="code mg">MG</span>
-                                <p>Hindi - Mangal</p>
-                            </div>
-                        </a>
-                
-                    </div>
-                
-                    <br>
-                
-                    <!-- MP Police -->
-                    <div class="section">
-                        <h4>MP Police</h4>
-                
-                        <div class="exam">
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code en">EN</span>
-                                    <p>English Test</p>
-                                </div>
-                            </a>
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code kd">HI</span>
-                                    <p>Hindi Test</p>
-                                </div>
-                            </a>
-                
-                        </div>
-                    </div>
-                
-                    <br>
-                
-                    <!-- MP High Court -->
-                    <div class="section">
-                        <h4>MP High Court Exams</h4>
-                
-                        <div class="exam">
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code en">EN</span>
-                                    <p>MP High Court English</p>
-                                </div>
-                            </a>
-                
-                            <a href="#" class="card-link">
-                                <div class="exam-card">
-                                    <span class="code kd">HI</span>
-                                    <p>MP High Court Hindi</p>
-                                </div>
-                            </a>
-                
-                        </div>
-                    </div>
-                
-                </div>
-            </div>
-
-
-        </div>
-
+    <!-- USER STATS (logged in) -->
+    <div id="user-stats" class="stats-row" style="display:none">
+      <div class="stat-item"><div class="sv" id="stat-wpm">—</div><div class="sl">Avg WPM</div></div>
+      <div class="stat-item"><div class="sv" id="stat-acc">—</div><div class="sl">Avg Accuracy</div></div>
+      <div class="stat-item"><div class="sv" id="stat-tests">—</div><div class="sl">Tests Today</div></div>
     </div>
 
-    <style>
-        .footer {
-            background: #ececec;
-            color: #232323;
-            text-align: center;
-            padding: 20px 10px;
-            font-size: 14px;
-            margin-top: 20px;
-        }
+    <!-- ENGLISH TYPING -->
+    <div class="card">
+      <h3>⌨️ English Typing</h3>
+      <div class="card-grid">
+        <a href="./learnEnglish.html" class="typing-card"><span class="icon">A B</span><p>Learn Typing</p><span class="badge">Beginner</span></a>
+        <a href="./page.html" class="typing-card"><span class="icon">A B</span><p>Take Exercise</p><span class="badge">Practice</span></a>
+        <a href="testEnglish.html" class="typing-card"><span class="icon">A B</span><p>Take Tests</p><span class="badge">Free</span></a>
+        <a href="numberPage.html" class="typing-card"><span class="icon">1 2</span><p>Number Typing</p><span class="badge">Free</span></a>
+      </div>
+    </div>
 
-        .footer strong {
-            color: #000000;
-            font-size: 16px;
-        }
+    <!-- HINDI MANGAL -->
+    <div class="card">
+      <h3>🇮🇳 Hindi Typing – Mangal</h3>
+      <div class="card-grid">
+        <a href="./mangalLearn.html" class="typing-card"><span class="icon" style="font-family:serif">अ ब</span><p>Learn Typing</p><span class="badge">Beginner</span></a>
+        <a href="./page.html" class="typing-card"><span class="icon" style="font-family:serif">अ ब</span><p>Take Exercise</p><span class="badge">Practice</span></a>
+        <a href="take-tests.html" class="typing-card" id="mangal-test-link"><span class="icon" style="font-family:serif">अ ब</span><p>Take Tests</p><span class="badge" id="mangal-badge">Requires Plan</span></a>
+        <a href="numberPage.html" class="typing-card"><span class="icon">1 2</span><p>Number Typing</p><span class="badge">Free</span></a>
+      </div>
+    </div>
 
-        .footer p {
-            margin: 5px 0;
-        }
-    </style>
+    <!-- HINDI KRUTIDEB / DEVLYS -->
+    <div class="card">
+      <h3>🖋️ Hindi Typing – KrutiDev &amp; DevLys</h3>
+      <div class="card-grid">
+        <a href="./learnEnglish.html" class="typing-card"><span class="icon" style="font-family:serif">अ ब</span><p>Learn Typing</p><span class="badge">Beginner</span></a>
+        <a href="./learnEnglish.html" class="typing-card"><span class="icon" style="font-family:serif">अ ब</span><p>Take Tests</p><span class="badge" id="kd-badge">Requires Plan</span></a>
+      </div>
+    </div>
 
-        <div class="footer">
-            <p><strong>Neelkanth Typing</strong></p>
-            <p>Expert Training for English & Hindi Typing | Stenography</p>
-            <p>SSC | DSSSB | High Court | LDC | Clerk Preparation</p>
-            <p>📞 Contact: +91 8851490717</p>
-            <p>© 2026 Neelkanth Typing. All Rights Reserved.</p>
-            
+    <!-- MANGAL UNICODE -->
+    <div class="card">
+      <h3>🔤 Hindi Typing – Mangal Unicode</h3>
+      <div class="card-grid">
+        <a href="./learnEnglish.html" class="typing-card"><span class="icon" style="font-family:serif">अ ब</span><p>Remington</p></a>
+        <a href="./learnEnglish.html" class="typing-card"><span class="icon" style="font-family:serif">अ ब</span><p>Inscript</p></a>
+        <a href="./learnEnglish.html" class="typing-card"><span class="icon" style="font-family:serif">अ ब</span><p>CBI Layout</p></a>
+      </div>
+    </div>
+
+    <!-- TOOLS -->
+    <div class="card">
+      <h3>🛠️ Typing Tools</h3>
+      <div class="card-grid">
+        <a href="./word2.html" class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png" onerror="this.src=''" alt="pad"><p>Practice Pad</p></a>
+        <a href="./word-game.html" class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/686/686589.png" onerror="this.src=''" alt="game"><p>Words Game</p></a>
+        <a href="./letter-game.html" class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" onerror="this.src=''" alt="letters"><p>Letter Game</p></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="right-col">
+
+    <!-- COMMON EXAM PATTERN -->
+    <div class="card exam-section">
+      <h3>📋 Common Exam Pattern</h3>
+      <div class="exam-grid" id="common-tests">
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+      </div>
+    </div>
+
+    <!-- ALL INDIA CENTRAL EXAMS -->
+    <div class="card exam-section">
+      <h3>🏛️ All India Level Exams</h3>
+      <div id="central-exams"><div class="loading-text">Loading...</div></div>
+    </div>
+
+    <!-- STATE EXAMS -->
+    <div class="card exam-section">
+      <h3>📍 State Exams</h3>
+      <div id="state-exams"><div class="loading-text">Loading...</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>Neelkanth Typing</strong> | Expert Training for English &amp; Hindi Typing | Stenography</p>
+  <p>SSC | DSSSB | High Court | LDC | Clerk Preparation &nbsp;|&nbsp; 📞 +91 8851490717</p>
+  <p style="margin-top:6px">© <span id="year"></span> Neelkanth Typing. All Rights Reserved.</p>
+</div>
+
+<script>
+const BASE_URL='https://backend-typingwebapp.onrender.com';
+
+/* ─── TOAST ─── */
+const T_ICONS={success:'✓',error:'✕',warning:'!',info:'i',loading:''};
+const T_DUR={success:4000,error:5000,warning:5000,info:4000,loading:0};
+function showToast(type,title,msg,dur){
+  const stack=document.getElementById('nt-toast-stack');
+  const t=document.createElement('div');t.className='nt-toast '+type;
+  const d=dur!==undefined?dur:T_DUR[type];
+  t.innerHTML=`<div class="nt-toast-icon">${type==='loading'?'<div class="nt-spin"></div>':T_ICONS[type]}</div>
+    <button class="nt-toast-close" onclick="removeToast(this.parentNode)">&times;</button>
+    <div class="nt-toast-title">${title}</div><div class="nt-toast-msg">${msg}</div>`;
+  stack.appendChild(t);
+  if(d>0)setTimeout(()=>removeToast(t),d);
+  return t;
+}
+function removeToast(t){if(!t||!t.parentNode)return;t.classList.add('nt-out');setTimeout(()=>{if(t.parentNode)t.parentNode.removeChild(t);},280);}
+
+/* ─── SESSION ─── */
+function getSession(){return{token:localStorage.getItem('nt_token'),user:JSON.parse(localStorage.getItem('nt_user')||'null')};}
+function clearSession(){localStorage.removeItem('nt_token');localStorage.removeItem('nt_user');}
+function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ─── LOGOUT ─── */
+function doLogout(){clearSession();showToast('info','Logged Out','Redirecting...');setTimeout(()=>window.location.href='../index.html',1200);}
+
+/* ─── LOGIN PROMPT ─── */
+function openLoginPrompt(e){e.preventDefault();showToast('info','Login Required','Please login on the home page.');setTimeout(()=>window.location.href='../index.html',1500);}
+
+/* ─── NAVIGATE TO TEST ─── */
+function goToTest(testId){
+  const {token}=getSession();
+  if(!token){showToast('warning','Login Required','Please login to take tests.');setTimeout(()=>window.location.href='../index.html',1500);return;}
+  window.location.href='take-tests.html?testId='+testId;
+}
+
+/* ─── UPDATE UI FOR LOGGED IN USER ─── */
+function updateUIForUser(user,plan){
+  const isLoggedIn=!!user;
+  document.getElementById('header-user-info').style.display=isLoggedIn?'flex':'none';
+  document.getElementById('header-login-info').style.display=isLoggedIn?'none':'flex';
+  if(isLoggedIn){
+    document.getElementById('header-user-name').textContent=user.fullName||user.email;
+    document.getElementById('header-plan-badge').textContent=(plan||'free').toUpperCase();
+    const banner=document.getElementById('plan-banner');
+    banner.style.display='flex';
+    const planName=(plan||'free').toLowerCase();
+    banner.className='plan-banner '+planName;
+    document.getElementById('banner-plan-title').textContent=planName.toUpperCase()+' Plan';
+    const sub=user.subscription;
+    if(sub){
+      document.getElementById('banner-plan-desc').textContent='Remaining: '+(sub.remainingTime?.formatted||'Check subscription');
+      document.getElementById('plan-notice-text').textContent='Plan: '+(planName.toUpperCase())+' | Expires: '+(sub.remainingTime?.formatted||'N/A');
+      if(planName==='free'||planName==='basic'){
+        document.getElementById('mangal-badge').textContent='Active';
+        document.getElementById('kd-badge').textContent='Active';
+      }
+    }
+    loadUserStats();
+  }
+}
+
+/* ─── LOAD USER STATS ─── */
+async function loadUserStats(){
+  const {token}=getSession();
+  if(!token)return;
+  try{
+    const res=await fetch(BASE_URL+'/api/results/stats',{headers:{'Authorization':'Bearer '+token}});
+    const data=await res.json();
+    if(data.success&&data.data){
+      document.getElementById('user-stats').style.display='grid';
+      document.getElementById('stat-wpm').textContent=Math.round(data.data.averageWpm||0);
+      document.getElementById('stat-acc').textContent=Math.round(data.data.averageAccuracy||0)+'%';
+      document.getElementById('stat-tests').textContent=(data.data.todayAttempts||0)+'/'+(data.data.remainingToday!==undefined?data.data.todayAttempts+(data.data.remainingToday||0):'∞');
+    }
+  }catch(e){}
+}
+
+/* ─── LOAD GROUPED TESTS ─── */
+async function loadGroupedTests(){
+  const {token}=getSession();
+  const headers={'Content-Type':'application/json'};
+  if(token)headers['Authorization']='Bearer '+token;
+  try{
+    const res=await fetch(BASE_URL+'/api/tests/grouped',{headers});
+    const data=await res.json();
+    if(data.success&&data.data){
+      renderCommonTests(data.data.commonExamPattern||[]);
+      renderCentralExams(data.data.allIndiaLevelExams||[]);
+      renderStateExams(data.data.stateExams||[]);
+    }else{
+      showFallbackTests();
+    }
+  }catch(e){
+    showFallbackTests();
+  }
+}
+
+/* ─── RENDER COMMON TESTS ─── */
+function renderCommonTests(tests){
+  const el=document.getElementById('common-tests');
+  if(!tests||tests.length===0){el.innerHTML='<div class="loading-text">No common tests available.</div>';return;}
+  const colorMap={english:'en',hindi_krutidev:'kd',hindi_mangal:'mg'};
+  el.innerHTML=tests.map(t=>`
+    <a href="#" class="exam-card" onclick="event.preventDefault();goToTest('${t._id}')">
+      <span class="code ${colorMap[t.language+'_'+t.fontType]||( t.language==='english'?'en':'mg')}">${escHtml(t.displayLabel||'EN')}</span>
+      <p>${escHtml(t.title||'Test')}</p>
+    </a>
+  `).join('');
+}
+
+/* ─── RENDER CENTRAL EXAMS ─── */
+function renderCentralExams(categories){
+  const el=document.getElementById('central-exams');
+  if(!categories||categories.length===0){el.innerHTML='<div class="loading-text">No central exam tests available.</div>';return;}
+  el.innerHTML=categories.map(cat=>`
+    <div class="sub-section">
+      <h4>🏛️ ${escHtml(cat.categoryName||'Exam')}</h4>
+      <div class="exam-grid">
+        ${(cat.tests||[]).map(t=>`
+          <a href="#" class="exam-card" onclick="event.preventDefault();goToTest('${t._id}')">
+            <span class="code en">${escHtml(t.displayLabel||'EN')}</span>
+            <p>${escHtml(t.title||'Test')}</p>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ─── RENDER STATE EXAMS ─── */
+function renderStateExams(states){
+  const el=document.getElementById('state-exams');
+  if(!states||states.length===0){el.innerHTML='<div class="loading-text">No state exam tests available.</div>';return;}
+  const stateIcons={'Rajasthan':'🏜️','Madhya Pradesh':'🌳','Uttar Pradesh':'🏺','Delhi':'🏛️','Maharashtra':'🌊'};
+  el.innerHTML=states.map(state=>`
+    <div class="sub-section">
+      <h4>${stateIcons[state.stateName]||'📍'} ${escHtml(state.stateName||'State')}</h4>
+      ${(state.categories||[]).map(cat=>`
+        <div style="margin-bottom:10px">
+          <div style="font-size:11px;color:#888;margin-bottom:6px;font-weight:500">${escHtml(cat.categoryName||'')}</div>
+          <div class="exam-grid">
+            ${(cat.tests||[]).map(t=>`
+              <a href="#" class="exam-card" onclick="event.preventDefault();goToTest('${t._id}')">
+                <span class="code dc">${escHtml(t.displayLabel||'HC')}</span>
+                <p>${escHtml(t.title||'Test')}</p>
+              </a>
+            `).join('')}
+          </div>
         </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
 
+/* ─── FALLBACK ─── */
+function showFallbackTests(){
+  document.getElementById('common-tests').innerHTML=`
+    <a href="testEnglishtrial.html" class="exam-card"><span class="code en">EN</span><p>English Test</p></a>
+    <a href="mangalTest.html" class="exam-card"><span class="code kd">KD</span><p>Hindi – KrutiDev</p></a>
+    <a href="mangalTest.html" class="exam-card"><span class="code mg">MG</span><p>Hindi – Mangal</p></a>
+  `;
+  document.getElementById('central-exams').innerHTML=`
+    <div class="sub-section"><h4>SSC CGL/CHSL</h4>
+      <div class="exam-grid">
+        <div class="exam-card"><span class="code en">EN</span><p>SSC English</p></div>
+        <div class="exam-card"><span class="code kd">HI</span><p>SSC Hindi</p></div>
+        <div class="exam-card"><span class="code en">EN</span><p>NTPC English</p></div>
+        <div class="exam-card"><span class="code kd">HI</span><p>NTPC Hindi</p></div>
+      </div>
+    </div>`;
+  document.getElementById('state-exams').innerHTML=`
+    <div class="sub-section"><h4>🏜️ Rajasthan</h4>
+      <div class="exam-grid">
+        <div class="exam-card"><span class="code hc">HC</span><p>High Court SA/LDC</p></div>
+        <div class="exam-card"><span class="code hc">HC</span><p>High Court Steno</p></div>
+      </div>
+    </div>
+    <div class="sub-section"><h4>🌳 Madhya Pradesh</h4>
+      <div class="exam-grid">
+        <div class="exam-card"><span class="code en">EN</span><p>MP English Test</p></div>
+        <div class="exam-card"><span class="code kd">HI</span><p>MP Hindi Test</p></div>
+      </div>
+    </div>`;
+}
 
+/* ─── INIT ─── */
+window.addEventListener('DOMContentLoaded',()=>{
+  const {token,user}=getSession();
+  if(token&&user){
+    updateUIForUser(user,user.subscription?.plan);
+  }
+  loadGroupedTests();
+  document.getElementById('year').textContent=new Date().getFullYear();
+});
+</script>
 </body>
-
 </html>
