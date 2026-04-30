@@ -8,58 +8,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
-    body{font-family:"Poppins",sans-serif;background:#f4f6fb;color:#222}
+    body{font-family:"Poppins",sans-serif;background:#f0f2f8;color:#222}
 
     /* HEADER */
-    .header{background:#fff;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8ecf0;box-shadow:0 2px 8px rgba(0,0,0,0.05);position:sticky;top:0;z-index:50}
+    .header{background:#fff;padding:10px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8ecf0;box-shadow:0 2px 8px rgba(0,0,0,0.05);position:sticky;top:0;z-index:50}
     .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .logo img{height:40px;width:auto}
-    .logo-text h1{font-size:1.15rem;background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
-    .logo-text span{font-size:12px;color:#888}
+    .logo img{height:36px;width:auto}
+    .logo-text h1{font-size:1.1rem;background:linear-gradient(to right,#b927fc,#2c64fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+    .logo-text span{font-size:11px;color:#888}
     .header-right{display:flex;align-items:center;gap:12px}
     .header-right .version{font-size:12px;color:#aaa}
     .header-right .phone{font-size:13px;color:#444}
     .header-right .phone strong{color:#2e7d32}
 
     /* NOTICE BAR */
-    .notice-bar{background:linear-gradient(to right,#fff7ed,#fefce8);border-bottom:1px solid #fed7aa;padding:8px 24px;font-size:13px;color:#92400e;text-align:center}
+    .notice-bar{background:linear-gradient(to right,#fff7ed,#fefce8);border-bottom:1px solid #fed7aa;padding:6px 24px;font-size:12px;color:#92400e;text-align:center}
 
-    /* LAYOUT */
-    .container{display:grid;grid-template-columns:1fr 380px;gap:16px;padding:16px;max-width:1400px;margin:0 auto}
-    @media(max-width:1024px){.container{grid-template-columns:1fr}}
+    /* LAYOUT — wider right sidebar */
+    .container{display:grid;grid-template-columns:1fr 440px;gap:14px;padding:14px;max-width:1440px;margin:0 auto}
+    @media(max-width:1100px){.container{grid-template-columns:1fr}}
 
     /* CARDS */
-    .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:16px}
-    .card h3{font-size:1rem;font-weight:600;color:#222;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #f0f2f8;display:flex;align-items:center;gap:8px}
+    .card{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-bottom:12px}
+    .card h3{font-size:.9rem;font-weight:600;color:#222;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0f2f8;display:flex;align-items:center;gap:6px}
 
-    /* TYPING GRID */
-    .card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    /* ── TYPING GRID – compact cards ── */
+    .card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
     @media(max-width:700px){.card-grid{grid-template-columns:repeat(2,1fr)}}
-    .typing-card{border:1px solid #ffe0b2;border-radius:10px;padding:16px 10px;text-align:center;cursor:pointer;background:linear-gradient(135deg,#fff7ec,#fff3e0);transition:all 0.2s;text-decoration:none;color:inherit;display:block}
-    .typing-card:hover{background:linear-gradient(135deg,#ffe0b2,#ffd699);transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,152,0,0.2)}
-    .typing-card .icon{font-size:28px;font-weight:700;color:#ff9800;margin-bottom:6px;display:block}
-    .typing-card p{margin:0;font-size:13px;color:#333;font-weight:500}
-    .typing-card .badge{font-size:10px;background:#fff3e0;color:#e65100;border-radius:10px;padding:2px 6px;margin-top:4px;display:inline-block}
+
+    .typing-card{
+      border:1px solid #ffe0b2;
+      border-radius:8px;
+      padding:10px 6px 8px;
+      text-align:center;
+      cursor:pointer;
+      background:linear-gradient(135deg,#fff7ec,#fff3e0);
+      transition:all .18s;
+      text-decoration:none;
+      color:inherit;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:3px;
+    }
+    .typing-card:hover{background:linear-gradient(135deg,#ffe0b2,#ffd699);transform:translateY(-2px);box-shadow:0 4px 14px rgba(255,152,0,.18)}
+    .typing-card .icon{font-size:20px;font-weight:700;color:#ff9800;line-height:1}
+    .typing-card p{margin:0;font-size:11.5px;color:#333;font-weight:500}
+    .typing-card .badge{font-size:9px;background:#fff3e0;color:#e65100;border-radius:8px;padding:1px 6px}
 
     /* TOOLS CARD */
-    .tool-card{border:1px solid #e0e7ff;border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;background:#f5f7ff;transition:all 0.2s;text-decoration:none;color:inherit;display:block}
+    .tool-card{border:1px solid #e0e7ff;border-radius:8px;padding:10px 8px;text-align:center;cursor:pointer;background:#f5f7ff;transition:all .18s;text-decoration:none;color:inherit;display:block}
     .tool-card:hover{background:#e0e7ff;transform:translateY(-2px)}
-    .tool-card img{width:40px;height:40px;display:block;margin:0 auto 8px}
-    .tool-card p{font-size:12px;color:#333;margin:0;font-weight:500}
+    .tool-card img{width:32px;height:32px;display:block;margin:0 auto 6px}
+    .tool-card p{font-size:11px;color:#333;margin:0;font-weight:500}
 
-    /* EXAM SECTION ON RIGHT */
-    .exam-section h3{font-size:0.95rem;font-weight:600;color:#222;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #eee}
-    .sub-section{background:#f9faff;border:1px solid #eef0f8;border-radius:10px;padding:12px;margin-bottom:12px}
-    .sub-section h4{font-size:0.8rem;font-weight:600;color:#555;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-    .exam-grid{display:flex;flex-wrap:wrap;gap:8px}
-    .exam-card{width:105px;padding:10px 8px;border-radius:10px;background:#fff;border:1px solid #e5e7eb;text-align:center;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.04);text-decoration:none;color:inherit;display:block}
-    .exam-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
-    .exam-card.locked{opacity:0.6;cursor:default}
+    /* ══ RIGHT SIDEBAR ══ */
+    .right-col .card{padding:16px 18px}
+    .right-col .card h3{font-size:.95rem;margin-bottom:14px}
+
+    /* Common Exam Pattern */
+    .exam-grid{display:flex;flex-wrap:wrap;gap:10px}
+    .exam-card{
+      width:115px;
+      padding:12px 10px;
+      border-radius:10px;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      text-align:center;
+      cursor:pointer;
+      transition:all .2s;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+      text-decoration:none;
+      color:inherit;
+      display:block;
+    }
+    .exam-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1);border-color:#c7d2fe}
+    .exam-card.locked{opacity:.6;cursor:default}
     .exam-card.locked:hover{transform:none}
-    .code{display:block;font-size:13px;font-weight:700;margin-bottom:4px}
+    .code{display:block;font-size:14px;font-weight:700;margin-bottom:5px}
     .en{color:#2563eb}.kd{color:#16a34a}.mg{color:#f59e0b}.hc{color:#7c3aed}.dc{color:#0891b2}
-    .exam-card p{margin:0;font-size:11px;color:#444;line-height:1.4}
+    .exam-card p{margin:0;font-size:11.5px;color:#444;line-height:1.4}
     .lock-badge{font-size:9px;background:#fee2e2;color:#991b1b;border-radius:4px;padding:1px 5px;margin-top:4px;display:inline-block}
+
+    /* Sub sections inside right sidebar */
+    .sub-section{background:#f9faff;border:1px solid #eef0f8;border-radius:10px;padding:14px;margin-bottom:12px}
+    .sub-section h4{font-size:.82rem;font-weight:600;color:#444;margin-bottom:10px;display:flex;align-items:center;gap:6px}
 
     /* LOADING / EMPTY */
     .loading-text{text-align:center;color:#aaa;font-size:13px;padding:20px}
@@ -67,24 +100,24 @@
     @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
     /* PLAN BANNER */
-    .plan-banner{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .plan-banner{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:10px;padding:12px 16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
     .plan-banner.free{background:linear-gradient(135deg,#f093fb,#f5576c)}
     .plan-banner.expired{background:linear-gradient(135deg,#e74c3c,#c0392b)}
     .plan-banner.pro,.plan-banner.basic{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)}
     .plan-banner-text{font-size:13px;font-weight:500}
-    .plan-banner-text strong{font-size:15px;display:block;margin-bottom:3px}
-    .plan-banner a{font-size:12px;background:#fff;color:#333;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0}
+    .plan-banner-text strong{font-size:14px;display:block;margin-bottom:2px}
+    .plan-banner a{font-size:12px;background:#fff;color:#333;padding:5px 13px;border-radius:18px;text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0}
 
     /* USER STATS */
-    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
-    .stat-item{background:#f8f9ff;border:1px solid #e8ecff;border-radius:10px;padding:10px;text-align:center}
-    .stat-item .sv{font-size:1.2rem;font-weight:700;color:#2c64fc}
-    .stat-item .sl{font-size:10px;color:#888;margin-top:2px}
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+    .stat-item{background:#f8f9ff;border:1px solid #e8ecff;border-radius:8px;padding:8px;text-align:center}
+    .stat-item .sv{font-size:1.15rem;font-weight:700;color:#2c64fc}
+    .stat-item .sl{font-size:10px;color:#888;margin-top:1px}
 
     /* TOAST */
     #nt-toast-stack{position:fixed;top:16px;right:16px;z-index:99999;display:flex;flex-direction:column;gap:8px;width:300px;pointer-events:none}
-    .nt-toast{pointer-events:all;background:#fff;border-radius:10px;border:1px solid #e8e8e8;padding:12px 34px 12px 44px;position:relative;box-shadow:0 6px 24px rgba(0,0,0,0.1);animation:ntIn 0.3s cubic-bezier(.22,.68,0,1.2);font-family:"Poppins",sans-serif;font-size:12px}
-    .nt-toast.nt-out{animation:ntOut 0.25s ease forwards}
+    .nt-toast{pointer-events:all;background:#fff;border-radius:10px;border:1px solid #e8e8e8;padding:12px 34px 12px 44px;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.1);animation:ntIn .3s cubic-bezier(.22,.68,0,1.2);font-family:"Poppins",sans-serif;font-size:12px}
+    .nt-toast.nt-out{animation:ntOut .25s ease forwards}
     @keyframes ntIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
     @keyframes ntOut{to{opacity:0;transform:translateX(40px)}}
     .nt-toast-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
@@ -96,11 +129,11 @@
     .nt-toast-title{font-weight:600;color:#111;margin-bottom:1px}
     .nt-toast-msg{color:#666}
     .nt-toast-close{position:absolute;top:4px;right:8px;font-size:15px;color:#ccc;cursor:pointer;background:none;border:none}
-    .nt-spin{width:12px;height:12px;border:2px solid #e9d5ff;border-top-color:#9333ea;border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block}
+    .nt-spin{width:12px;height:12px;border:2px solid #e9d5ff;border-top-color:#9333ea;border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
     @keyframes spin{to{transform:rotate(360deg)}}
 
     /* FOOTER */
-    .footer{background:#1e293b;color:#94a3b8;text-align:center;padding:16px;font-size:12px;margin-top:10px}
+    .footer{background:#1e293b;color:#94a3b8;text-align:center;padding:14px;font-size:12px;margin-top:8px}
     .footer strong{color:#e2e8f0}
   </style>
 </head>
@@ -125,7 +158,7 @@
     </div>
     <div id="header-login-info" style="display:flex;align-items:center;gap:8px">
       <span class="version">v5.1.102</span>
-      <a href="../index.html" onclick="openLoginPrompt(event)" style="font-size:12px;padding:6px 14px;border:1.5px solid #2c64fc;color:#2c64fc;border-radius:14px;text-decoration:none">Login / Register</a>
+      <a href="../index.html" onclick="openLoginPrompt(event)" style="font-size:12px;padding:5px 14px;border:1.5px solid #2c64fc;color:#2c64fc;border-radius:14px;text-decoration:none">Login / Register</a>
     </div>
     <div class="phone">📞 <strong>+91 8851490717</strong></div>
   </div>
@@ -149,7 +182,7 @@
       <a href="subscription.html">Upgrade</a>
     </div>
 
-    <!-- USER STATS (logged in) -->
+    <!-- USER STATS -->
     <div id="user-stats" class="stats-row" style="display:none">
       <div class="stat-item"><div class="sv" id="stat-wpm">—</div><div class="sl">Avg WPM</div></div>
       <div class="stat-item"><div class="sv" id="stat-acc">—</div><div class="sl">Avg Accuracy</div></div>
@@ -209,7 +242,7 @@
 
   </div>
 
-  <!-- RIGHT SIDEBAR -->
+  <!-- RIGHT SIDEBAR – wider, more prominent -->
   <div class="right-col">
 
     <!-- COMMON EXAM PATTERN -->
@@ -245,7 +278,6 @@
 <script>
 const BASE_URL='https://backend-typingwebapp.onrender.com';
 
-/* ─── TOAST ─── */
 const T_ICONS={success:'✓',error:'✕',warning:'!',info:'i',loading:''};
 const T_DUR={success:4000,error:5000,warning:5000,info:4000,loading:0};
 function showToast(type,title,msg,dur){
@@ -261,25 +293,19 @@ function showToast(type,title,msg,dur){
 }
 function removeToast(t){if(!t||!t.parentNode)return;t.classList.add('nt-out');setTimeout(()=>{if(t.parentNode)t.parentNode.removeChild(t);},280);}
 
-/* ─── SESSION ─── */
 function getSession(){return{token:localStorage.getItem('nt_token'),user:JSON.parse(localStorage.getItem('nt_user')||'null')};}
 function clearSession(){localStorage.removeItem('nt_token');localStorage.removeItem('nt_user');}
 function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-/* ─── LOGOUT ─── */
 function doLogout(){clearSession();showToast('info','Logged Out','Redirecting...');setTimeout(()=>window.location.href='../index.html',1200);}
-
-/* ─── LOGIN PROMPT ─── */
 function openLoginPrompt(e){e.preventDefault();showToast('info','Login Required','Please login on the home page.');setTimeout(()=>window.location.href='../index.html',1500);}
 
-/* ─── NAVIGATE TO TEST ─── */
 function goToTest(testId){
   const {token}=getSession();
   if(!token){showToast('warning','Login Required','Please login to take tests.');setTimeout(()=>window.location.href='../index.html',1500);return;}
   window.location.href='take-tests.html?testId='+testId;
 }
 
-/* ─── UPDATE UI FOR LOGGED IN USER ─── */
 function updateUIForUser(user,plan){
   const isLoggedIn=!!user;
   document.getElementById('header-user-info').style.display=isLoggedIn?'flex':'none';
@@ -305,7 +331,6 @@ function updateUIForUser(user,plan){
   }
 }
 
-/* ─── LOAD USER STATS ─── */
 async function loadUserStats(){
   const {token}=getSession();
   if(!token)return;
@@ -321,7 +346,6 @@ async function loadUserStats(){
   }catch(e){}
 }
 
-/* ─── LOAD GROUPED TESTS ─── */
 async function loadGroupedTests(){
   const {token}=getSession();
   const headers={'Content-Type':'application/json'};
@@ -333,28 +357,21 @@ async function loadGroupedTests(){
       renderCommonTests(data.data.commonExamPattern||[]);
       renderCentralExams(data.data.allIndiaLevelExams||[]);
       renderStateExams(data.data.stateExams||[]);
-    }else{
-      showFallbackTests();
-    }
-  }catch(e){
-    showFallbackTests();
-  }
+    }else{showFallbackTests();}
+  }catch(e){showFallbackTests();}
 }
 
-/* ─── RENDER COMMON TESTS ─── */
 function renderCommonTests(tests){
   const el=document.getElementById('common-tests');
   if(!tests||tests.length===0){el.innerHTML='<div class="loading-text">No common tests available.</div>';return;}
   const colorMap={english:'en',hindi_krutidev:'kd',hindi_mangal:'mg'};
   el.innerHTML=tests.map(t=>`
     <a href="#" class="exam-card" onclick="event.preventDefault();goToTest('${t._id}')">
-      <span class="code ${colorMap[t.language+'_'+t.fontType]||( t.language==='english'?'en':'mg')}">${escHtml(t.displayLabel||'EN')}</span>
+      <span class="code ${colorMap[t.language+'_'+t.fontType]||(t.language==='english'?'en':'mg')}">${escHtml(t.displayLabel||'EN')}</span>
       <p>${escHtml(t.title||'Test')}</p>
-    </a>
-  `).join('');
+    </a>`).join('');
 }
 
-/* ─── RENDER CENTRAL EXAMS ─── */
 function renderCentralExams(categories){
   const el=document.getElementById('central-exams');
   if(!categories||categories.length===0){el.innerHTML='<div class="loading-text">No central exam tests available.</div>';return;}
@@ -366,14 +383,11 @@ function renderCentralExams(categories){
           <a href="#" class="exam-card" onclick="event.preventDefault();goToTest('${t._id}')">
             <span class="code en">${escHtml(t.displayLabel||'EN')}</span>
             <p>${escHtml(t.title||'Test')}</p>
-          </a>
-        `).join('')}
+          </a>`).join('')}
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-/* ─── RENDER STATE EXAMS ─── */
 function renderStateExams(states){
   const el=document.getElementById('state-exams');
   if(!states||states.length===0){el.innerHTML='<div class="loading-text">No state exam tests available.</div>';return;}
@@ -389,22 +403,17 @@ function renderStateExams(states){
               <a href="#" class="exam-card" onclick="event.preventDefault();goToTest('${t._id}')">
                 <span class="code dc">${escHtml(t.displayLabel||'HC')}</span>
                 <p>${escHtml(t.title||'Test')}</p>
-              </a>
-            `).join('')}
+              </a>`).join('')}
           </div>
-        </div>
-      `).join('')}
-    </div>
-  `).join('');
+        </div>`).join('')}
+    </div>`).join('');
 }
 
-/* ─── FALLBACK ─── */
 function showFallbackTests(){
   document.getElementById('common-tests').innerHTML=`
     <a href="testEnglishtrial.html" class="exam-card"><span class="code en">EN</span><p>English Test</p></a>
     <a href="mangalTest.html" class="exam-card"><span class="code kd">KD</span><p>Hindi – KrutiDev</p></a>
-    <a href="mangalTest.html" class="exam-card"><span class="code mg">MG</span><p>Hindi – Mangal</p></a>
-  `;
+    <a href="mangalTest.html" class="exam-card"><span class="code mg">MG</span><p>Hindi – Mangal</p></a>`;
   document.getElementById('central-exams').innerHTML=`
     <div class="sub-section"><h4>SSC CGL/CHSL</h4>
       <div class="exam-grid">
@@ -429,12 +438,9 @@ function showFallbackTests(){
     </div>`;
 }
 
-/* ─── INIT ─── */
 window.addEventListener('DOMContentLoaded',()=>{
   const {token,user}=getSession();
-  if(token&&user){
-    updateUIForUser(user,user.subscription?.plan);
-  }
+  if(token&&user){updateUIForUser(user,user.subscription?.plan);}
   loadGroupedTests();
   document.getElementById('year').textContent=new Date().getFullYear();
 });
